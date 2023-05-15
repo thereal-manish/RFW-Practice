@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.5 on win32)" generated="20230515 14:01:19.794" rpa="false">
+<suite id="s1" name="Sauce Demo" source="C:\Users\kumaran\eclipse-workspace\RedEditor\Sauce_Demo">
+<suite id="s1-s1" name="TestCase" source="C:\Users\kumaran\eclipse-workspace\RedEditor\Sauce_Demo\TestCase">
+<suite id="s1-s1-s1" name="Login" source="C:\Users\kumaran\eclipse-workspace\RedEditor\Sauce_Demo\TestCase\Login.robot">
+<test id="s1-s1-s1-t1" name="Null Username and Null Password">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:20.304" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:20.303" endtime="20230515 14:01:28.782"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:01:28.783" endtime="20230515 14:01:28.975"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:01:28.977" endtime="20230515 14:01:29.031"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:29.032" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:01:29.031" endtime="20230515 14:01:29.143"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${emptyErrorMsg}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:29.213" level="INFO">Current page contains text 'Epic sadface: Username is required'.</msg>
+<status status="PASS" starttime="20230515 14:01:29.143" endtime="20230515 14:01:29.214"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:01:29.214" endtime="20230515 14:01:31.732"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:20.299" endtime="20230515 14:01:31.732" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t2" name="Null Username and validpassword">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:31.743" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:31.742" endtime="20230515 14:01:34.142"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:01:34.143" endtime="20230515 14:01:34.297"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:01:34.298" endtime="20230515 14:01:34.335"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_password}</arg>
+<arg>${validPassword}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:34.342" level="INFO">Typing text 'secret_sauce' into text field '//input[@id='password']'.</msg>
+<status status="PASS" starttime="20230515 14:01:34.338" endtime="20230515 14:01:34.552"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:34.553" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:01:34.553" endtime="20230515 14:01:34.715"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${userError}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:34.743" level="INFO">Current page contains text 'Epic sadface: Username is required'.</msg>
+<status status="PASS" starttime="20230515 14:01:34.716" endtime="20230515 14:01:34.743"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:01:34.744" endtime="20230515 14:01:37.215"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:31.734" endtime="20230515 14:01:37.216" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t3" name="Valid Username and NullPassword">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:37.228" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:37.225" endtime="20230515 14:01:39.539"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:01:39.540" endtime="20230515 14:01:39.669"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:01:39.670" endtime="20230515 14:01:39.697"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>${invalidUser}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:39.698" level="INFO">Typing text 'demo' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230515 14:01:39.697" endtime="20230515 14:01:39.900"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:39.902" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:01:39.901" endtime="20230515 14:01:40.021"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${passwordError}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:40.048" level="INFO">Current page contains text 'Epic sadface: Password is required'.</msg>
+<status status="PASS" starttime="20230515 14:01:40.022" endtime="20230515 14:01:40.048"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:01:40.049" endtime="20230515 14:01:42.443"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:37.220" endtime="20230515 14:01:42.444" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t4" name="Invalid Username and Invalidpassword">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:42.456" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:42.451" endtime="20230515 14:01:44.542"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:01:44.543" endtime="20230515 14:01:44.737"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:01:44.737" endtime="20230515 14:01:44.764"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>${invalidUser}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:44.765" level="INFO">Typing text 'demo' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230515 14:01:44.765" endtime="20230515 14:01:44.972"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_password}</arg>
+<arg>${invalidPassword}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:44.973" level="INFO">Typing text 'password' into text field '//input[@id='password']'.</msg>
+<status status="PASS" starttime="20230515 14:01:44.973" endtime="20230515 14:01:45.136"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:45.138" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:01:45.138" endtime="20230515 14:01:45.204"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${invalidErrorMsg}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:45.223" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230515 14:01:45.205" endtime="20230515 14:01:45.224"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:01:45.224" endtime="20230515 14:01:47.621"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:42.446" endtime="20230515 14:01:47.621" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t5" name="Invalid Username and validpassword">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:47.631" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:47.628" endtime="20230515 14:01:50.073"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:01:50.074" endtime="20230515 14:01:50.398"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:01:50.399" endtime="20230515 14:01:50.458"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>${invalidUser}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:50.459" level="INFO">Typing text 'demo' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230515 14:01:50.458" endtime="20230515 14:01:50.751"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_password}</arg>
+<arg>${validPassword}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:50.752" level="INFO">Typing text 'secret_sauce' into text field '//input[@id='password']'.</msg>
+<status status="PASS" starttime="20230515 14:01:50.751" endtime="20230515 14:01:50.859"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:50.860" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:01:50.859" endtime="20230515 14:01:50.939"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${invalidErrorMsg}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:50.960" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230515 14:01:50.940" endtime="20230515 14:01:50.961"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:01:50.961" endtime="20230515 14:01:53.377"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:47.623" endtime="20230515 14:01:53.379" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t6" name="Valid Username and Invalidpassword">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:53.391" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:53.388" endtime="20230515 14:01:55.551"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:01:55.553" endtime="20230515 14:01:55.719"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:01:55.719" endtime="20230515 14:01:55.745"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>${validUser}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:55.747" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230515 14:01:55.746" endtime="20230515 14:01:55.995"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_password}</arg>
+<arg>${invalidPassword}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:55.996" level="INFO">Typing text 'password' into text field '//input[@id='password']'.</msg>
+<status status="PASS" starttime="20230515 14:01:55.995" endtime="20230515 14:01:56.180"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:56.180" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:01:56.180" endtime="20230515 14:01:56.260"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${invalidPasswordErrorMsg}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:56.279" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230515 14:01:56.260" endtime="20230515 14:01:56.279"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:01:56.280" endtime="20230515 14:01:58.702"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:53.382" endtime="20230515 14:01:58.704" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t7" name="Valid Username and Validpassword">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230515 14:01:58.719" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20230515 14:01:58.715" endtime="20230515 14:02:01.159"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230515 14:02:01.160" endtime="20230515 14:02:01.309"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${page_text}</arg>
+</arguments>
+<status status="PASS" starttime="20230515 14:02:01.310" endtime="20230515 14:02:01.333"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>${validUser}</arg>
+</arguments>
+<msg timestamp="20230515 14:02:01.334" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230515 14:02:01.334" endtime="20230515 14:02:01.554"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${user_password}</arg>
+<arg>${validPassword}</arg>
+</arguments>
+<msg timestamp="20230515 14:02:01.556" level="INFO">Typing text 'secret_sauce' into text field '//input[@id='password']'.</msg>
+<status status="PASS" starttime="20230515 14:02:01.554" endtime="20230515 14:02:01.719"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${login_btn}</arg>
+</arguments>
+<msg timestamp="20230515 14:02:01.720" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230515 14:02:01.719" endtime="20230515 14:02:01.844"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<arguments>
+<arg>C:/Users/kumaran/eclipse-workspace/RedEditor/Sauce_Demo/Results/screenshot.png</arg>
+</arguments>
+<msg timestamp="20230515 14:02:02.241" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Results/screenshot.png"&gt;&lt;img src="Results/screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230515 14:02:01.845" endtime="20230515 14:02:02.242"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230515 14:02:02.242" endtime="20230515 14:02:04.639"></status>
+</kw>
+<status status="PASS" starttime="20230515 14:01:58.709" endtime="20230515 14:02:04.640" critical="yes"></status>
+</test>
+<doc>To validate the Login page</doc>
+<status status="PASS" starttime="20230515 14:01:19.879" endtime="20230515 14:02:04.648"></status>
+</suite>
+<status status="PASS" starttime="20230515 14:01:19.873" endtime="20230515 14:02:04.691"></status>
+</suite>
+<status status="PASS" starttime="20230515 14:01:19.842" endtime="20230515 14:02:04.707"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0">Critical Tests</stat>
+<stat pass="7" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" id="s1" name="Sauce Demo">Sauce Demo</stat>
+<stat pass="7" fail="0" id="s1-s1" name="TestCase">Sauce Demo.TestCase</stat>
+<stat pass="7" fail="0" id="s1-s1-s1" name="Login">Sauce Demo.TestCase.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

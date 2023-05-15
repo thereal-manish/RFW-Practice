@@ -1,0 +1,7 @@
+invalidUser="demo"
+invalidPassword="password"
+invalidErrorMsg="Epic sadface: Username and password do not match any user in this service"
+emptyErrorMsg="Epic sadface: Username is required"
+invalidPasswordErrorMsg="Epic sadface: Username and password do not match any user in this service"
+userError="Epic sadface: Username is required"
+passwordError="Epic sadface: Password is required"
