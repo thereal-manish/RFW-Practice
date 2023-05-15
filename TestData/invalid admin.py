@@ -1,0 +1,2 @@
+inEmail="admin@yourstore"
+inpassword=""
