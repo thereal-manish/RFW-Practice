@@ -64,20 +64,4 @@ Valid Username and Validpassword
     Click Button    ${login_btn}   
     Capture Page Screenshot    C:/Users/kumaran/eclipse-workspace/RedEditor/Sauce_Demo/Results/screenshot.png
       
-
-# Invalid Data      
-    # Maximize Browser Window
-    # Wait Until Page Contains    ${page_text} 
-    # Click Button    ${login_btn}
-    # Page Should Contain    ${emptyErrorMsg}   
-   
-    # Input Text    ${user_name}    ${validUser}
-    # Input Text    ${user_password}   ${invalidPassword}
-    # Click Button    ${login_btn}
-    # Page Should Contain    ${invalidPasswordErrorMsg} 
-    
-    # Input Text    ${user_name}    ${invalidUser}
-    # Input Text    ${user_password}   ${invalidPassword}
-    # Click Button    ${login_btn}
-    # Page Should Contain    ${invalidErrorMsg} 
     
