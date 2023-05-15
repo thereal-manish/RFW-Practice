@@ -7,7 +7,7 @@ Variables    ../TestData/config.py
 Variables    ../Locators/RegAccLocators.py
 Variables    ../TestData/RegisteraccVariables.py
 Test Setup    Open Browser    ${url}    ${browser}    
-
+Test Teardown    Close Browser
 *** Variables ***  
 ${Email}      
 ${password}   
