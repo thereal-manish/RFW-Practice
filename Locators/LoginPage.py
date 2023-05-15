@@ -1,0 +1,8 @@
+username_loc="//input[@id='user-name']"
+password_loc="//input[@id='password']"
+login_btn_loc="//input[@id='login-button']"
+cart_icon="//*[@id='shopping_cart_container']/a"
+products_txt="Products"
+ivu_ivp_error_msg="Epic sadface: Username and password do not match any user in this service"
+uname_req_txt="Epic sadface: Username is required"
+pwd_req_txt="Epic sadface: Password is required"
