@@ -2,6 +2,7 @@
 Documentation     Click Register here button
 Library    SeleniumLibrary
 Library    FakerLibrary    
+Library    Screenshot    
 Variables    ../TestData/config.py
 Variables    ../Locators/RegAccLocators.py
 Variables    ../TestData/RegisteraccVariables.py
@@ -16,7 +17,7 @@ Create new account
     
    Maximize Browser Window
    Click Element    ${btn_RegisterHere}    
-   Wait Until Page Contains    Register        
+           
    Set Global Variable    ${Email} 
    Set Global Variable    ${password}  
    ${Firstname}    FakerLibrary.First Name Male
@@ -33,4 +34,6 @@ Create new account
    Input Password    ${txt_password}    ${password}    
    Input Password    ${txt_Confirmpassword}    ${password}
    Click Element    ${Chech_box}
-   Click Button    ${btn_Login}        
+   Click Button    ${btn_Login}   
+   Wait Until Page Contains    Account Created Successfully
+   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
