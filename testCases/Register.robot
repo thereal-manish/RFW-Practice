@@ -10,7 +10,7 @@ Variables    ../locators/homePage.py
 Variables    ../locators/registerPage.py
 Variables    ../TestData/invalidRegisterPageTestData.py
 Test Setup    Open Browser    ${url}    ${browserName}
-# Test Teardown    Close Browser
+Test Teardown    Close Browser
 
 
 *** Test Cases ***     
@@ -72,7 +72,7 @@ Register with incorrect data and validating
    
     Click Button    ${register_btn} 
     # Wait Until Page Contains    ${successRegisterPagetxt}
-    Wait Until Page Contains    ${errorMsgTxt}�
+    Wait Until Page Contains    ${errorMsgTxt}
 
     
    
