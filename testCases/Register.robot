@@ -10,7 +10,7 @@ Variables    ../locators/homePage.py
 Variables    ../locators/registerPage.py
 Variables    ../TestData/invalidRegisterPageTestData.py
 Test Setup    Open Browser    ${url}    ${browserName}
-# Test Teardown    Close Browser
+Test Teardown    Close Browser
 
 
 *** Test Cases ***     
