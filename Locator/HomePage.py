@@ -1,0 +1,7 @@
+HomePage="//button[contains(text(),'Home')]"
+Register="//a[normalize-space()='Register']"
+SignUpWithMail="//button[normalize-space()='Sign up with email']"
+AlreadyHaveTheAccount="//a[normalize-space()='Log in']"
+ForgotPassword="//a[normalize-space()='Forgot Password']"
+email="//input[@id='email']"
+next="//input[@name='commit']"
