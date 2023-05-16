@@ -2,6 +2,7 @@
 This is repo is to collaborate for test script development
 
 ################ COMMIT NOTES ################
+
 Used RFW with VSCode 
 Extensions used: Robot Framework Language Server, Python [VSCode extensions]
 Python packages & Versions used:
