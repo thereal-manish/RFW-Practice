@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation    YAML file - This test suite is to perform login scenario testcases
 Library          SeleniumLibrary
-Variables        ../Config/Config.py
-Variables        Variables.yaml
-Variables        ../Locators/LoginPage.py
+Variables        ../Config/Config.yaml
+Variables        ../Test Data/Variables.yaml
+Variables        ../Locators/LoginPage.yaml
 Test Setup       Open Browser    ${url}    ${browser}    
 Test Teardown    Close Browser
 
