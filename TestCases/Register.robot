@@ -96,6 +96,7 @@ Create new account
    ${Email}    FakerLibrary.Email    
    ${password}    FakerLibrary.Password    
    Input Text    ${txt_FirstName}    ${Firstname} 
+   Log    ${Firstname}
    Input Text    ${txt_LastName}    ${Lastname}
    Input Text    ${txt_Email}     ${Email} 
    Input Text    ${txt_mobile}    ${mobileNo}
