@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.5 on win32)" generated="20230516 10:08:45.643" rpa="false">
+<suite id="s1" name="Admin" source="C:\Users\kumaran\RFW-Practice\Testcase\Admin.robot">
+<test id="s1-t1" name="invalid credentails">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230516 10:08:47.041" level="INFO">Opening browser 'Chrome' to base url 'https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F'.</msg>
+<status status="PASS" starttime="20230516 10:08:47.038" endtime="20230516 10:08:56.877"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230516 10:08:56.879" endtime="20230516 10:08:57.067"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Email}</arg>
+</arguments>
+<msg timestamp="20230516 10:08:57.070" level="INFO">Clicking element 'Email'.</msg>
+<status status="PASS" starttime="20230516 10:08:57.069" endtime="20230516 10:08:57.210"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Email}</arg>
+</arguments>
+<status status="PASS" starttime="20230516 10:08:57.211" endtime="20230516 10:08:57.323"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20230516 10:09:02.340" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230516 10:08:57.324" endtime="20230516 10:09:02.340"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Email}</arg>
+<arg>${inEmail}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:02.342" level="INFO">Typing text 'admin@yourstore' into text field 'Email'.</msg>
+<status status="PASS" starttime="20230516 10:09:02.341" endtime="20230516 10:09:02.513"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Password}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:02.514" level="INFO">Clicking element '//input[@id='Password']'.</msg>
+<status status="PASS" starttime="20230516 10:09:02.513" endtime="20230516 10:09:02.622"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_password}</arg>
+</arguments>
+<status status="PASS" starttime="20230516 10:09:02.623" endtime="20230516 10:09:02.692"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20230516 10:09:07.694" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230516 10:09:02.693" endtime="20230516 10:09:07.694"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_password}</arg>
+<arg>${inpassword}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:07.698" level="INFO">Typing text '' into text field '//input[@id='Password']'.</msg>
+<status status="PASS" starttime="20230516 10:09:07.696" endtime="20230516 10:09:07.843"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${cb_remainder}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:07.845" level="INFO">Clicking element 'RememberMe'.</msg>
+<status status="PASS" starttime="20230516 10:09:07.844" endtime="20230516 10:09:07.946"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${btn_Login}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:07.948" level="INFO">Clicking button '//button[normalize-space()='Log in']'.</msg>
+<status status="PASS" starttime="20230516 10:09:07.947" endtime="20230516 10:09:09.226"></status>
+</kw>
+<status status="PASS" starttime="20230516 10:08:47.035" endtime="20230516 10:09:09.228" critical="yes"></status>
+</test>
+<test id="s1-t2" name="valid credentials">
+<kw name="Open Browser" library="SeleniumLibrary" type="setup">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${browserName}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:09.235" level="INFO">Opening browser 'Chrome' to base url 'https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F'.</msg>
+<status status="PASS" starttime="20230516 10:09:09.234" endtime="20230516 10:09:12.752"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230516 10:09:12.753" endtime="20230516 10:09:12.905"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Email}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:12.907" level="INFO">Clicking element 'Email'.</msg>
+<status status="PASS" starttime="20230516 10:09:12.907" endtime="20230516 10:09:13.099"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Email}</arg>
+</arguments>
+<status status="PASS" starttime="20230516 10:09:13.100" endtime="20230516 10:09:13.206"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20230516 10:09:18.218" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230516 10:09:13.208" endtime="20230516 10:09:18.218"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Email}</arg>
+<arg>${Email}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:18.221" level="INFO">Typing text 'admin@yourstore.com' into text field 'Email'.</msg>
+<status status="PASS" starttime="20230516 10:09:18.220" endtime="20230516 10:09:18.418"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_Password}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:18.419" level="INFO">Clicking element '//input[@id='Password']'.</msg>
+<status status="PASS" starttime="20230516 10:09:18.419" endtime="20230516 10:09:18.510"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_password}</arg>
+</arguments>
+<status status="PASS" starttime="20230516 10:09:18.511" endtime="20230516 10:09:18.575"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20230516 10:09:23.585" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230516 10:09:18.576" endtime="20230516 10:09:23.585"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${txt_password}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:23.587" level="INFO">Typing text 'admin' into text field '//input[@id='Password']'.</msg>
+<status status="PASS" starttime="20230516 10:09:23.586" endtime="20230516 10:09:23.732"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${cb_remainder}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:23.734" level="INFO">Clicking element 'RememberMe'.</msg>
+<status status="PASS" starttime="20230516 10:09:23.733" endtime="20230516 10:09:23.826"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${btn_Login}</arg>
+</arguments>
+<msg timestamp="20230516 10:09:23.828" level="INFO">Clicking button '//button[normalize-space()='Log in']'.</msg>
+<status status="PASS" starttime="20230516 10:09:23.827" endtime="20230516 10:09:28.399"></status>
+</kw>
+<status status="PASS" starttime="20230516 10:09:09.233" endtime="20230516 10:09:28.400" critical="yes"></status>
+</test>
+<doc>This file is for registering account</doc>
+<status status="PASS" starttime="20230516 10:08:45.646" endtime="20230516 10:09:28.404"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Admin">Admin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

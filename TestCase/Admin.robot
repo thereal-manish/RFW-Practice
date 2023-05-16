@@ -2,7 +2,6 @@
 Documentation    This file is for registering account
 Library    SeleniumLibrary
 Library    FakerLibrary
-# have to install seleniumScreenshots
 Library    Screenshot
 Variables    ../TestData/Admin.py
 Variables    ../TestData/invalid admin.py
@@ -10,7 +9,6 @@ Variables    ../config/config.py
 variables    ../locators/loginpag.py   
 
 Test Setup    Open Browser    ${url}    ${browserName}   
-Test Teardown    Close Browser
 
 
 *** Test Cases ***
@@ -28,7 +26,7 @@ invalid credentails
     Click Button    ${btn_Login}  
 
 
-Log into the admin nopcommerce application
+valid credentials
     
     Maximize Browser Window
     Click Element    ${txt_Email}    
@@ -40,5 +38,5 @@ Log into the admin nopcommerce application
     sleep    5    
     Input Text    ${txt_password}    ${password}    
     Click Element    ${cb_remainder}    
-    Click Button    ${btn_Login}    
-    
+    Click Button    ${btn_Login} 
+   
