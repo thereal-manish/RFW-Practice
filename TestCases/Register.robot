@@ -29,7 +29,11 @@ Empty Firstname
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    *First Name is required
+<<<<<<< HEAD
    Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
+=======
+    Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
+>>>>>>> 31dda1c4514a0f8c1c75a7433141ef79504da645
     
 
 Invalid Email
