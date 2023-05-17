@@ -40,7 +40,7 @@ Create Muliple Config files and pass arguments
 1. create .args file under TestCase
 2. store all common variables in it
 3. use command 
-    robot -A .args filename TestCaseName[.robot fileName]
+    robot -A .args filename TestCaseName[.robot fileName]..
     robot -A .args filename  --variable browserName: Firefox TestCaseName[.robot fileName]
     
  To store Output file in results folder under TestCases
