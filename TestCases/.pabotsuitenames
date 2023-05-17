@@ -1,0 +1,9 @@
+datasources:ac9bc3ab32dde4591550407d8809bd3991846dc2
+commandlineoptions:65f95c924ba97541f47949701c4e3c51192a5b43
+suitesfrom:no-suites-from-option
+file:8d2ed2cd1b64c1d8c686472facd9beb8621cb53e
+--test Register.Empty Firstname
+--test Register.Invalid Email
+--test Register.Invalid Phonenumber
+--test Register.Invalid Password
+--test Register.Create new account

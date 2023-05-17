@@ -3,9 +3,10 @@ Documentation     Create new account
 Library    SeleniumLibrary
 Library    FakerLibrary    
 Library    Screenshot    
-Variables    ../TestData/config.py
-Variables    ../Locators/RegAccLocators.py
-Variables    ../TestData/TestVariables.py
+Variables    ../TestData/Testdatavariables.yaml
+Variables    ../TestData/Configdata.yaml
+Variables    ../Locators/RegAccLocators.yaml
+# Variables    ../TestData/TestVariables.py
 Test Setup    Open Browser    ${url}    ${browser}    
 Test Teardown     Close Browser
 
@@ -29,17 +30,12 @@ Empty Firstname
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    *First Name is required
-<<<<<<< HEAD
-   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
-=======
-    Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
->>>>>>> 31dda1c4514a0f8c1c75a7433141ef79504da645
-    
+   Capture Page Screenshot         C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot1.png
 
 Invalid Email
    Maximize Browser Window
    Click Element    ${btn_RegisterHere}    
-   Input Text    ${txt_FirstName}    ${Email_name}
+   Input Text    ${txt_FirstName}    ${mail_name}
    Input Text    ${txt_Email}     ${Invalid_Email}
    Input Text    ${txt_mobile}    ${Email_mob}
    Wait Until Element Is Visible    ${dropdown_btn}    
@@ -50,7 +46,7 @@ Invalid Email
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    *Enter Valid Email   
-   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
+   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot2.png
 
 Invalid Phonenumber
    Maximize Browser Window
@@ -66,7 +62,8 @@ Invalid Phonenumber
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    *Phone Number must be 10 digit   
-   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
+   Capture Page Screenshot          C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot3.png
+
 
 Invalid Password
    Maximize Browser Window
@@ -82,13 +79,12 @@ Invalid Password
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains   *Password is required 
-   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
+   Capture Page Screenshot         C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot4.png
 
-Create new account
-    
+
+Create new account 
    Maximize Browser Window
    Click Element    ${btn_RegisterHere}    
-           
    Set Global Variable    ${Email} 
    Set Global Variable    ${password}  
    ${Firstname}    FakerLibrary.First Name Male
@@ -108,4 +104,4 @@ Create new account
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    Account Created Successfully
-   Capture Page Screenshot        C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png
+   Capture Page Screenshot          C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot5.png
