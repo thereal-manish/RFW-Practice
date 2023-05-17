@@ -20,5 +20,11 @@ This is repo is to collaborate for test script development
  
  To run testcases and test suites in parallel
  ---------------------------------------------
- 1. To run test suites parallel but test cases in sequentially
-     pabot Register.robot
+ 1. To run test suites parallel but test cases in sequentially --
+     pabot --suitelevelsplit Register.robot
+ 2. To run parallel test suites and testcases parallely --
+     pabot --testlevelsplit Register.robot
+     
+     
+     
+     
