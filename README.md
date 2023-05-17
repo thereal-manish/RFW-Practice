@@ -25,6 +25,22 @@ This is repo is to collaborate for test script development
  2. To run parallel test suites and testcases parallely --
      pabot --testlevelsplit Register.robot
      
+To generate Timestamps & report using Command line
+---------------------------------------------------
+   robot -T -l Mylog.html -o myoutput.xml -r myreport.html
+   
+To generate Screenshots
+-----------------------
+1. have to install Pillow 
+2. using robot screenshot keyword 
+   Take Screenshot  pathName
+   
+   
+   
+   
+
+ 
+     
      
      
      
