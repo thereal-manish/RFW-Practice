@@ -71,7 +71,7 @@ Register User and Validating Registration details
    
     Click Button    ${register_btn} 
     Wait Until Page Contains    ${successRegisterPagetxt} 
-    
+    Take Screenshot    ${CURDIR}../../results/${TEST NAME}.png
     # How to take screenshot for passed testcases
     Capture Page Screenshot    C:/Users/UdhayaParanthaman/eclipse-workspace/RobotProjects/nopCommerceProject/result/screenshot.png 
  
