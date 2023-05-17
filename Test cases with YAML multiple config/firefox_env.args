@@ -1,0 +1,2 @@
+--variable browser: firefox
+--variable url:https://saucedemo.com

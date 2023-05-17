@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230517 12:36:12.526" rpa="false" schemaversion="3">
+<suite id="s1" name="Login Scenario With Yaml First Half" source="c:\Users\mani3359\Downloads\RFW-Practice\test cases with yaml multiple config\01__login scenario with yaml first half.robot">
+<test id="s1-t1" name="Enter invalid username and invalid password" line="13">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 12:36:12.931" level="FAIL">Variable '${url}' not found.</msg>
+<status status="FAIL" starttime="20230517 12:36:12.931" endtime="20230517 12:36:12.931"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230517 12:36:12.939" endtime="20230517 12:36:12.939"/>
+</kw>
+<status status="FAIL" starttime="20230517 12:36:12.931" endtime="20230517 12:36:12.939">Setup failed:
+Variable '${url}' not found.</status>
+</test>
+<test id="s1-t2" name="Enter invalid username and valid password" line="21">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 12:36:12.947" level="FAIL">Variable '${url}' not found.</msg>
+<status status="FAIL" starttime="20230517 12:36:12.947" endtime="20230517 12:36:12.947"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230517 12:36:12.955" endtime="20230517 12:36:12.955"/>
+</kw>
+<status status="FAIL" starttime="20230517 12:36:12.947" endtime="20230517 12:36:12.955">Setup failed:
+Variable '${url}' not found.</status>
+</test>
+<test id="s1-t3" name="Enter valid username and invalid password" line="28">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 12:36:12.955" level="FAIL">Variable '${url}' not found.</msg>
+<status status="FAIL" starttime="20230517 12:36:12.955" endtime="20230517 12:36:12.955"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230517 12:36:12.963" endtime="20230517 12:36:12.963"/>
+</kw>
+<status status="FAIL" starttime="20230517 12:36:12.955" endtime="20230517 12:36:12.963">Setup failed:
+Variable '${url}' not found.</status>
+</test>
+<doc>YAML file 1- This test suite is to perform login scenario testcases</doc>
+<status status="FAIL" starttime="20230517 12:36:12.542" endtime="20230517 12:36:12.971"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="3" skip="0" id="s1" name="Login Scenario With Yaml First Half">Login Scenario With Yaml First Half</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230517 12:36:12.907" level="ERROR">Error in file 'c:\Users\mani3359\Downloads\RFW-Practice\test cases with yaml multiple config\01__login scenario with yaml first half.robot' on line 5: Replacing variables from setting 'Resource' failed: Variable '${environments}' not found.</msg>
+</errors>
+</robot>
