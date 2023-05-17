@@ -3,3 +3,4 @@ robotframework-seleniumlibrary
 robotframework-faker
 selenium
 robotframework-pabot
+PyYaml

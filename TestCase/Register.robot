@@ -4,11 +4,18 @@ Library    SeleniumLibrary
 Library    FakerLibrary
 # have to install seleniumScreenshots
 Library    Screenshot
-Variables    ../TestData/registerPageTestData.py
-Variables    ../TestData/config.py
+# Variables    ../TestData/config.py
+Variables    ../TestData/config.yaml
+
+# Variables    ../TestData/registerPageTestData.py
+Variables    ../TestData/registerPageTestData .yaml
+
+# Variables    ../TestData/invalidRegisterPageTestData.py
+Variables    ../TestData/invalidRegisterPageTestData.yaml
+
 Variables    ../locators/homePage.py
 Variables    ../locators/registerPage.py
-Variables    ../TestData/invalidRegisterPageTestData.py
+
 Test Setup    Open Browser    ${url}    ${browserName}
 Test Teardown    Close Browser
 
