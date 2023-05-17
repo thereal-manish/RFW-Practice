@@ -91,20 +91,3 @@ Register with incorrect data and validating
    
     Click Button    ${register_btn} 
     Wait Until Page Contains    ${errorMsgTxt} 
-            
-
-    
-   
-    
-       
-       
-    
-      
-     
-    
-      
-
-         
-         
-    
-    
