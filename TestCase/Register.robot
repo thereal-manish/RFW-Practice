@@ -13,8 +13,11 @@ Variables    ../TestData/registerPageTestData .yaml
 # Variables    ../TestData/invalidRegisterPageTestData.py
 Variables    ../TestData/invalidRegisterPageTestData.yaml
 
-Variables    ../locators/homePage.py
-Variables    ../locators/registerPage.py
+# Variables    ../locators/homePage.py
+Variables    ../Locators/homePage.yaml
+
+# Variables    ../locators/registerPage.py
+Variables    ../Locators/registerPage.yml
 
 Test Setup    Open Browser    ${url}    ${browserName}
 Test Teardown    Close Browser
