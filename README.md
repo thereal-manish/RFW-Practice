@@ -35,6 +35,20 @@ To generate Screenshots
 2. using robot screenshot keyword 
    Take Screenshot  pathName
    
+Create Muliple Config files and pass arguments 
+---------------------------------------------
+1. create .args file under TestCase
+2. store all common variables in it
+3. use command 
+    robot -A .args filename TestCaseName[.robot fileName]
+    robot -A .args filename  --variable browserName: Firefox TestCaseName[.robot fileName]
+    
+ To store Output file in results folder under TestCases
+ ------------------------------------------------------
+ *** directory -d ***
+ robot -T -d Results -l mylog.html -o myoutput.xml -r myreport.html Register.robot
+
+    
    
    
    
