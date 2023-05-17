@@ -27,12 +27,14 @@ robot -A firefox_env.args --variable browser:EDGE .
   -o - Outputs (XML)
   -l - Logs
   -r - Report 
+  -d - Output directory
   
 **Argument format**
-  robot -T -o <outputName>.xml -l <logName>.html -r <reportName>.html <filename>.robot
+  robot -T -d <oūtputDirectory> -o <outputName>.xml -l <logName>.html -r <reportName>.html <filename>.robot
+  //Here output directory denotes current working directory, not project directory
   
 **Example**
-  robot -T -o MyOutput.xml -l MyLog.html -r MyReport.html .
+  robot -T -d results -o MyOutput.xml -l MyLog.html -r MyReport.html .
   
 **Parallel execution**
 pabot --<splitLevel> <filename.robot>
@@ -42,3 +44,4 @@ pabot --<splitLevel> <filename.robot>
 
 ****Screenshot library requires Pillow library**
   Take Screenshot   <Directory><filename>.<format>
+

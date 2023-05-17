@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    YAML file 2- This test suite is to perform login scenario testcases
 Library          SeleniumLibrary
-Variables        ../Config/Config.yaml
+# Variables        ../Config/Config.yaml
 Variables        ../Test Data/Variables.yaml
 Variables        ../Locators/LoginPage.yaml
 Library          Screenshot
