@@ -17,3 +17,8 @@ This is repo is to collaborate for test script development
  Create requirements.txt file under project and store all dependencies in it
  create venv and select latest python version, enable requirements.txt file and then click ok
  finally it will download latest version that had mention in requirements file
+ 
+ To run testcases and test suites in parallel
+ ---------------------------------------------
+ 1. To run test suites parallel but test cases in sequentially
+     pabot Register.robot
