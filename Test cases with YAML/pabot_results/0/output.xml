@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230517 10:44:55.881" rpa="false" schemaversion="3">
+<suite id="s1" name="Test cases with YAML" source="C:\Users\mani3359\Downloads\RFW-Practice\Test cases with YAML">
+<suite id="s1-s1" name="Login scenario with YAML first half" source="C:\Users\mani3359\Downloads\RFW-Practice\Test cases with YAML\01__Login scenario with YAML first half.robot">
+<test id="s1-s1-t1" name="Enter invalid username and invalid password" line="11">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 10:44:56.225" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230517 10:44:56.225" endtime="20230517 10:44:59.092"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230517 10:44:59.093" endtime="20230517 10:44:59.259"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${ivusername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 10:44:59.260" level="INFO">Typing text 'invalid_username' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230517 10:44:59.259" endtime="20230517 10:44:59.605"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${ivpassword}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 10:44:59.609" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230517 10:44:59.672" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 10:44:59.804" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 10:44:59.607" endtime="20230517 10:44:59.804"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 10:44:59.804" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230517 10:44:59.804" endtime="20230517 10:44:59.945"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ivu_ivp_error_msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230517 10:44:59.976" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230517 10:44:59.945" endtime="20230517 10:44:59.976"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230517 10:44:59.977" endtime="20230517 10:45:03.486"/>
+</kw>
+<status status="PASS" starttime="20230517 10:44:56.225" endtime="20230517 10:45:03.486"/>
+</test>
+<test id="s1-s1-t2" name="Enter invalid username and valid password" line="18">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 10:45:03.491" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230517 10:45:03.489" endtime="20230517 10:45:06.032"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230517 10:45:06.032" endtime="20230517 10:45:06.195"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${ivusername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 10:45:06.195" level="INFO">Typing text 'invalid_username' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230517 10:45:06.195" endtime="20230517 10:45:06.467"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${vpassword}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 10:45:06.470" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230517 10:45:06.516" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 10:45:06.587" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 10:45:06.467" endtime="20230517 10:45:06.587"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 10:45:06.587" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230517 10:45:06.587" endtime="20230517 10:45:06.651"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ivu_ivp_error_msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230517 10:45:06.666" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230517 10:45:06.651" endtime="20230517 10:45:06.666"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230517 10:45:06.666" endtime="20230517 10:45:08.922"/>
+</kw>
+<status status="PASS" starttime="20230517 10:45:03.488" endtime="20230517 10:45:08.922"/>
+</test>
+<test id="s1-s1-t3" name="Enter valid username and invalid password" line="25">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 10:45:08.922" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230517 10:45:08.922" endtime="20230517 10:45:11.861"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230517 10:45:11.861" endtime="20230517 10:45:11.997"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${vusername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 10:45:11.997" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230517 10:45:11.997" endtime="20230517 10:45:12.290"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${ivpassword}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 10:45:12.291" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230517 10:45:12.361" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 10:45:12.496" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 10:45:12.290" endtime="20230517 10:45:12.496"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 10:45:12.500" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230517 10:45:12.499" endtime="20230517 10:45:12.601"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ivu_ivp_error_msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230517 10:45:12.625" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230517 10:45:12.601" endtime="20230517 10:45:12.626"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230517 10:45:12.626" endtime="20230517 10:45:14.893"/>
+</kw>
+<status status="PASS" starttime="20230517 10:45:08.922" endtime="20230517 10:45:14.893"/>
+</test>
+<doc>YAML file 1- This test suite is to perform login scenario testcases</doc>
+<status status="PASS" starttime="20230517 10:44:55.915" endtime="20230517 10:45:14.893"/>
+</suite>
+<status status="PASS" starttime="20230517 10:44:55.891" endtime="20230517 10:45:14.893"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Test cases with YAML">Test cases with YAML</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="Login scenario with YAML first half">Test cases with YAML.Login scenario with YAML first half</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

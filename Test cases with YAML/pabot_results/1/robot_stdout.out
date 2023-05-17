@@ -1,0 +1,20 @@
+==============================================================================
+Test cases with YAML                                                          
+==============================================================================
+Test cases with YAML.Login scenario with YAML second half :: YAML file 2- T...
+==============================================================================
+Enter null username and invalid password                              | PASS |
+------------------------------------------------------------------------------
+Enter valid username and null password                                | PASS |
+------------------------------------------------------------------------------
+Enter null username and null password                                 | PASS |
+------------------------------------------------------------------------------
+Enter valid username and valid password                               | PASS |
+------------------------------------------------------------------------------
+Test cases with YAML.Login scenario with YAML second half :: YAML ... | PASS |
+4 tests, 4 passed, 0 failed
+==============================================================================
+Test cases with YAML                                                  | PASS |
+4 tests, 4 passed, 0 failed
+==============================================================================
+Output:  C:\Users\mani3359\Downloads\RFW-Practice\Test cases with YAML\pabot_results\1\output.xml

@@ -1,0 +1,6 @@
+datasources:1d068400bd6e92a040b351fbb11eb8fcee143651
+commandlineoptions:97d170e1550eee4afc0af065b78cda302a97674c
+suitesfrom:no-suites-from-option
+file:905bd8af432f616c2db57d77bf698a144550228d
+--suite Test cases with YAML.Login scenario with YAML first half
+--suite Test cases with YAML.Login scenario with YAML second half
