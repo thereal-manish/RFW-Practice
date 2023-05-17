@@ -21,6 +21,7 @@ Multiple config file: Format
 robot -A <args file> --variable <attribute>:<value> <filename.robot>
 
 **Example**
+  -A stands for --argumentfile
 robot -A firefox_env.args --variable browser:EDGE . 
   
 **Custom timestamped outputs**
