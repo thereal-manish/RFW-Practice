@@ -1,23 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230517 19:57:07.024" rpa="false" schemaversion="3">
-<suite id="s1" name="Login scenario with YAML second half" source="c:\Users\mani3359\Downloads\RFW-Practice\Test cases with YAML multiple config\02__Login scenario with YAML second half.robot">
-<test id="s1-t1" name="Enter valid username and valid password" line="54">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>${browser}</arg>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230518 10:56:08.617" rpa="false" schemaversion="3">
+<suite id="s1" name="Autoit Test Scenario" source="c:\Users\mani3359\Downloads\RFW-Practice\testcases with autoit\autoit test scenario.robot">
+<test id="s1-t1" name="Go to file upload form" line="6">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://demo.automationtesting.in/FileUpload.html</arg>
+<arg>Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230517 19:57:07.708" level="FAIL">Variable '${url}' not found.</msg>
-<status status="FAIL" starttime="20230517 19:57:07.708" endtime="20230517 19:57:07.717"/>
+<msg timestamp="20230518 10:56:09.203" level="INFO">Opening browser 'Chrome' to base url 'https://demo.automationtesting.in/FileUpload.html'.</msg>
+<status status="PASS" starttime="20230518 10:56:09.202" endtime="20230518 10:56:14.207"/>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230517 19:57:07.717" endtime="20230517 19:57:07.717"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//input[@id='input-4']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230518 10:56:14.207" level="INFO">Clicking element '//input[@id='input-4']'.</msg>
+<msg timestamp="20230518 10:56:14.530" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20230518 10:56:14.533" level="FAIL">InvalidArgumentException: Message: invalid argument
+  (Session info: chrome=113.0.5672.93)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x004A8893+48451]
+	(No symbol) [0x0043B8A1]
+	(No symbol) [0x00344F20]
+	(No symbol) [0x0036A005]
+	(No symbol) [0x0038A2BC]
+	(No symbol) [0x00369586]
+	(No symbol) [0x0038A614]
+	(No symbol) [0x0039C482]
+	(No symbol) [0x0038A0B6]
+	(No symbol) [0x00367E08]
+	(No symbol) [0x00368F2D]
+	GetHandleVerifier [0x00708E3A+2540266]
+	GetHandleVerifier [0x00748959+2801161]
+	GetHandleVerifier [0x0074295C+2776588]
+	GetHandleVerifier [0x00532280+612144]
+	(No symbol) [0x00444F6C]
+	(No symbol) [0x004411D8]
+	(No symbol) [0x004412BB]
+	(No symbol) [0x00434857]
+	BaseThreadInitThunk [0x761C00C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77287B4E+286]
+	RtlGetAppContainerNamedObjectPath [0x77287B1E+238]
+</msg>
+<status status="FAIL" starttime="20230518 10:56:14.207" endtime="20230518 10:56:14.539"/>
 </kw>
-<status status="FAIL" starttime="20230517 19:57:07.701" endtime="20230517 19:57:07.717">Setup failed:
-Variable '${url}' not found.</status>
+<status status="FAIL" starttime="20230518 10:56:09.201" endtime="20230518 10:56:14.539">InvalidArgumentException: Message: invalid argument
+  (Session info: chrome=113.0.5672.93)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x004A8893+48451]
+	(No symbol) [0x0043B8A1]
+	(No symbol) [0x00344F20]
+	(No symbol) [0x0036A005]
+	(No symbol) [0x0038A2BC]
+	(No symbol) [0x00369586]
+	(No symbol) [0x0038A614]
+	(No symbol) [0x0039C482]
+	(No symbol) [0x0038A0B6]
+	(No symbol) [0x00367E08]
+	(No symbol) [0x00368F2D]
+	GetHandleVerifier [0x00708E3A+2540266]
+	GetHandleVerifier [0x00748959+2801161]
+	GetHandleVerifier [0x0074295C+2776588]
+	GetHandleVerifier [0x00532280+612144]
+	(No symbol) [0x00444F6C]
+	(No symbol) [0x004411D8]
+	(No symbol) [0x004412BB]
+	(No symbol) [0x00434857]
+	BaseThreadInitThunk [0x761C00C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77287B4E+286]
+	RtlGetAppContainerNamedObjectPath [0x77287B1E+238]
+</status>
 </test>
-<doc>YAML file 2- This test suite is to perform login scenario testcases</doc>
-<status status="FAIL" starttime="20230517 19:57:07.034" endtime="20230517 19:57:07.717"/>
+<status status="FAIL" starttime="20230518 10:56:08.626" endtime="20230518 10:56:14.554"/>
 </suite>
 <statistics>
 <total>
@@ -26,7 +80,7 @@ Variable '${url}' not found.</status>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Login scenario with YAML second half">Login scenario with YAML second half</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Autoit Test Scenario">Autoit Test Scenario</stat>
 </suite>
 </statistics>
 <errors>
