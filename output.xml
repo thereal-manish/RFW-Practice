@@ -1,86 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230518 10:56:08.617" rpa="false" schemaversion="3">
-<suite id="s1" name="Autoit Test Scenario" source="c:\Users\mani3359\Downloads\RFW-Practice\testcases with autoit\autoit test scenario.robot">
-<test id="s1-t1" name="Go to file upload form" line="6">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>https://demo.automationtesting.in/FileUpload.html</arg>
-<arg>Chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230518 10:56:09.203" level="INFO">Opening browser 'Chrome' to base url 'https://demo.automationtesting.in/FileUpload.html'.</msg>
-<status status="PASS" starttime="20230518 10:56:09.202" endtime="20230518 10:56:14.207"/>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230519 16:05:21.304" rpa="false" schemaversion="3">
+<suite id="s1" name="Test cases with Excel Data" source="c:\Users\mani3359\Downloads\RFW-Practice\TestCases with Excel\Test cases with Excel Data.robot">
+<test id="s1-t1" name="Open and read excel data" line="12">
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>c:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=TestDataSheet</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230519 16:05:22.221" endtime="20230519 16:05:22.234"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>//input[@id='input-4']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230518 10:56:14.207" level="INFO">Clicking element '//input[@id='input-4']'.</msg>
-<msg timestamp="20230518 10:56:14.530" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20230518 10:56:14.533" level="FAIL">InvalidArgumentException: Message: invalid argument
-  (Session info: chrome=113.0.5672.93)
-Stacktrace:
-Backtrace:
-	GetHandleVerifier [0x004A8893+48451]
-	(No symbol) [0x0043B8A1]
-	(No symbol) [0x00344F20]
-	(No symbol) [0x0036A005]
-	(No symbol) [0x0038A2BC]
-	(No symbol) [0x00369586]
-	(No symbol) [0x0038A614]
-	(No symbol) [0x0039C482]
-	(No symbol) [0x0038A0B6]
-	(No symbol) [0x00367E08]
-	(No symbol) [0x00368F2D]
-	GetHandleVerifier [0x00708E3A+2540266]
-	GetHandleVerifier [0x00748959+2801161]
-	GetHandleVerifier [0x0074295C+2776588]
-	GetHandleVerifier [0x00532280+612144]
-	(No symbol) [0x00444F6C]
-	(No symbol) [0x004411D8]
-	(No symbol) [0x004412BB]
-	(No symbol) [0x00434857]
-	BaseThreadInitThunk [0x761C00C9+25]
-	RtlGetAppContainerNamedObjectPath [0x77287B4E+286]
-	RtlGetAppContainerNamedObjectPath [0x77287B1E+238]
-</msg>
-<status status="FAIL" starttime="20230518 10:56:14.207" endtime="20230518 10:56:14.539"/>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${sheetName}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230519 16:05:22.235" endtime="20230519 16:05:22.236"/>
 </kw>
-<status status="FAIL" starttime="20230518 10:56:09.201" endtime="20230518 10:56:14.539">InvalidArgumentException: Message: invalid argument
-  (Session info: chrome=113.0.5672.93)
-Stacktrace:
-Backtrace:
-	GetHandleVerifier [0x004A8893+48451]
-	(No symbol) [0x0043B8A1]
-	(No symbol) [0x00344F20]
-	(No symbol) [0x0036A005]
-	(No symbol) [0x0038A2BC]
-	(No symbol) [0x00369586]
-	(No symbol) [0x0038A614]
-	(No symbol) [0x0039C482]
-	(No symbol) [0x0038A0B6]
-	(No symbol) [0x00367E08]
-	(No symbol) [0x00368F2D]
-	GetHandleVerifier [0x00708E3A+2540266]
-	GetHandleVerifier [0x00748959+2801161]
-	GetHandleVerifier [0x0074295C+2776588]
-	GetHandleVerifier [0x00532280+612144]
-	(No symbol) [0x00444F6C]
-	(No symbol) [0x004411D8]
-	(No symbol) [0x004412BB]
-	(No symbol) [0x00434857]
-	BaseThreadInitThunk [0x761C00C9+25]
-	RtlGetAppContainerNamedObjectPath [0x77287B4E+286]
-	RtlGetAppContainerNamedObjectPath [0x77287B1E+238]
-</status>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{dataSheet}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230519 16:05:22.239" level="INFO">@{dataSheet} = [ {'username': 'ivusername', 'password': 'invalid_username'} | {'username': 'ivpassword', 'password': 'invalid_password'} | {'username': 'vusername', 'password': 'standard_user'} | {'username': 'vpass...</msg>
+<status status="PASS" starttime="20230519 16:05:22.238" endtime="20230519 16:05:22.249"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{dataSheet}</value>
+<iter>
+<var name="${row}">{'username': 'ivusername', 'password': 'invalid_username'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${username}</var>
+<arg>${row}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.252" level="INFO">${username} = ivusername</msg>
+<status status="PASS" starttime="20230519 16:05:22.251" endtime="20230519 16:05:22.252"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.253" level="INFO">ivusername</msg>
+<status status="PASS" starttime="20230519 16:05:22.252" endtime="20230519 16:05:22.253"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${row}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.254" level="INFO">${password} = invalid_username</msg>
+<status status="PASS" starttime="20230519 16:05:22.253" endtime="20230519 16:05:22.254"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.255" level="INFO">invalid_username</msg>
+<status status="PASS" starttime="20230519 16:05:22.254" endtime="20230519 16:05:22.255"/>
+</kw>
+<status status="PASS" starttime="20230519 16:05:22.251" endtime="20230519 16:05:22.255"/>
+</iter>
+<iter>
+<var name="${row}">{'username': 'ivpassword', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${username}</var>
+<arg>${row}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.256" level="INFO">${username} = ivpassword</msg>
+<status status="PASS" starttime="20230519 16:05:22.256" endtime="20230519 16:05:22.256"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.257" level="INFO">ivpassword</msg>
+<status status="PASS" starttime="20230519 16:05:22.256" endtime="20230519 16:05:22.257"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${row}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.259" level="INFO">${password} = invalid_password</msg>
+<status status="PASS" starttime="20230519 16:05:22.257" endtime="20230519 16:05:22.260"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.263" level="INFO">invalid_password</msg>
+<status status="PASS" starttime="20230519 16:05:22.261" endtime="20230519 16:05:22.264"/>
+</kw>
+<status status="PASS" starttime="20230519 16:05:22.255" endtime="20230519 16:05:22.264"/>
+</iter>
+<iter>
+<var name="${row}">{'username': 'vusername', 'password': 'standard_user'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${username}</var>
+<arg>${row}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.266" level="INFO">${username} = vusername</msg>
+<status status="PASS" starttime="20230519 16:05:22.265" endtime="20230519 16:05:22.266"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.267" level="INFO">vusername</msg>
+<status status="PASS" starttime="20230519 16:05:22.266" endtime="20230519 16:05:22.267"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${row}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.268" level="INFO">${password} = standard_user</msg>
+<status status="PASS" starttime="20230519 16:05:22.267" endtime="20230519 16:05:22.268"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.269" level="INFO">standard_user</msg>
+<status status="PASS" starttime="20230519 16:05:22.268" endtime="20230519 16:05:22.269"/>
+</kw>
+<status status="PASS" starttime="20230519 16:05:22.265" endtime="20230519 16:05:22.269"/>
+</iter>
+<iter>
+<var name="${row}">{'username': 'vpassword', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${username}</var>
+<arg>${row}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.270" level="INFO">${username} = vpassword</msg>
+<status status="PASS" starttime="20230519 16:05:22.270" endtime="20230519 16:05:22.272"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.280" level="INFO">vpassword</msg>
+<status status="PASS" starttime="20230519 16:05:22.273" endtime="20230519 16:05:22.280"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${row}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.282" level="INFO">${password} = secret_sauce</msg>
+<status status="PASS" starttime="20230519 16:05:22.281" endtime="20230519 16:05:22.282"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.284" level="INFO">secret_sauce</msg>
+<status status="PASS" starttime="20230519 16:05:22.283" endtime="20230519 16:05:22.285"/>
+</kw>
+<status status="PASS" starttime="20230519 16:05:22.269" endtime="20230519 16:05:22.285"/>
+</iter>
+<iter>
+<var name="${row}">{'username': 'null_data', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${username}</var>
+<arg>${row}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.286" level="INFO">${username} = null_data</msg>
+<status status="PASS" starttime="20230519 16:05:22.286" endtime="20230519 16:05:22.286"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.287" level="INFO">null_data</msg>
+<status status="PASS" starttime="20230519 16:05:22.286" endtime="20230519 16:05:22.287"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${row}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230519 16:05:22.287" level="INFO">${password} = </msg>
+<status status="PASS" starttime="20230519 16:05:22.287" endtime="20230519 16:05:22.287"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 16:05:22.288" level="INFO"/>
+<status status="PASS" starttime="20230519 16:05:22.287" endtime="20230519 16:05:22.288"/>
+</kw>
+<status status="PASS" starttime="20230519 16:05:22.285" endtime="20230519 16:05:22.289"/>
+</iter>
+<status status="PASS" starttime="20230519 16:05:22.250" endtime="20230519 16:05:22.293"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<arg>alias=TestDataSheet</arg>
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230519 16:05:22.302" endtime="20230519 16:05:22.303"/>
+</kw>
+<status status="PASS" starttime="20230519 16:05:22.220" endtime="20230519 16:05:22.304"/>
 </test>
-<status status="FAIL" starttime="20230518 10:56:08.626" endtime="20230518 10:56:14.554"/>
+<doc>This test suite is for tesing excellibrary-xwfintech</doc>
+<status status="PASS" starttime="20230519 16:05:21.316" endtime="20230519 16:05:22.312"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Autoit Test Scenario">Autoit Test Scenario</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test cases with Excel Data">Test cases with Excel Data</stat>
 </suite>
 </statistics>
 <errors>

@@ -3,3 +3,4 @@ robotframework-seleniumlibrary
 selenium
 PyYAML
 robotframework-autoitlibrary
+robotframework-excellentlibrary
