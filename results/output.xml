@@ -1,264 +1,439 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230516 12:21:18.328" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230519 12:02:29.538" rpa="false" schemaversion="3">
 <suite id="s1" name="RFW-Practice" source="C:\Users\kumaran\Downloads\RFW-Practice">
-<suite id="s1-s1" name="testCases" source="C:\Users\kumaran\Downloads\RFW-Practice\testCases">
-<suite id="s1-s1-s1" name="Register" source="C:\Users\kumaran\Downloads\RFW-Practice\testCases\Register.robot">
-<test id="s1-s1-s1-t1" name="Register User and Validating Registration details" line="17">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>${browserName}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230516 12:21:20.315" level="INFO">Opening browser 'Chrome' to base url 'https://demo.nopcommerce.com/'.</msg>
-<status status="PASS" starttime="20230516 12:21:20.313" endtime="20230516 12:21:25.779"/>
+<suite id="s1-s1" name="ExcelTestCase" source="C:\Users\kumaran\Downloads\RFW-Practice\ExcelTestCase.robot">
+<test id="s1-s1-t1" name="Verify format of data from Each cell" line="12">
+<kw name="Open Excel" library="ExcelUtil">
+<arg>EmployeesData.xlsx</arg>
+<doc>Open excel file
+Arguments:
+    | File             | Filename with fullpath to open and test upon        |</doc>
+<status status="PASS" starttime="20230519 12:02:30.299" endtime="20230519 12:02:30.312"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 12:21:25.784" endtime="20230516 12:21:26.144"/>
+<kw name="Get Row Count" library="ExcelUtil">
+<var>${rowCount}</var>
+<arg>EmployeeDetails</arg>
+<doc>Return the Row count of the given sheet
+Example:
+| Open Excel      |  C:\Data\ExcelTest.xlsx  |
+| Get Row count     |  Sheet1 |</doc>
+<msg timestamp="20230519 12:02:30.319" level="INFO">${rowCount} = 3</msg>
+<status status="PASS" starttime="20230519 12:02:30.318" endtime="20230519 12:02:30.321"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${img_demoStore}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230516 12:21:26.145" endtime="20230516 12:21:26.328"/>
+<kw name="Log" library="BuiltIn">
+<arg>${rowCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.321" level="INFO">3</msg>
+<status status="PASS" starttime="20230519 12:02:30.321" endtime="20230519 12:02:30.331"/>
 </kw>
-<kw name="Click Link" library="SeleniumLibrary">
-<arg>${lnk_register}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:26.334" level="INFO">Clicking link '//a[@class='ico-register']'.</msg>
-<status status="PASS" starttime="20230516 12:21:26.329" endtime="20230516 12:21:27.190"/>
+<kw name="Get Column Count" library="ExcelUtil">
+<var>${colCount}</var>
+<arg>EmployeeDetails</arg>
+<doc>Return the column count of the given sheet
+Example:
+| Open Excel      |  C:\Data\ExcelTest.xlsx  |
+| Get Column count     |  Sheet1 |</doc>
+<msg timestamp="20230519 12:02:30.331" level="INFO">${colCount} = 5</msg>
+<status status="PASS" starttime="20230519 12:02:30.331" endtime="20230519 12:02:30.334"/>
 </kw>
-<kw name="Select Radio Button" library="SeleniumLibrary">
-<arg>${rdBtn_name}</arg>
-<arg>${genderName}</arg>
-<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
-<msg timestamp="20230516 12:21:27.193" level="INFO">Selecting 'F' from radio button 'Gender'.</msg>
-<status status="PASS" starttime="20230516 12:21:27.191" endtime="20230516 12:21:27.304"/>
+<kw name="Log" library="BuiltIn">
+<arg>${colCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.335" level="INFO">5</msg>
+<status status="PASS" starttime="20230519 12:02:30.335" endtime="20230519 12:02:30.335"/>
 </kw>
-<kw name="First Name" library="FakerLibrary">
-<var>${firstName}</var>
-<msg timestamp="20230516 12:21:27.306" level="INFO">${firstName} = Brandon</msg>
-<status status="PASS" starttime="20230516 12:21:27.305" endtime="20230516 12:21:27.306"/>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${data}</var>
+<arg>EmployeeDetails</arg>
+<arg>2</arg>
+<arg>3</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.344" level="INFO">${data} = abc@gmail.com</msg>
+<status status="PASS" starttime="20230519 12:02:30.343" endtime="20230519 12:02:30.344"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_fName}</arg>
-<arg>${firstName}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:27.308" level="INFO">Typing text 'Brandon' into text field 'FirstName'.</msg>
-<status status="PASS" starttime="20230516 12:21:27.307" endtime="20230516 12:21:27.486"/>
+<kw name="Log" library="BuiltIn">
+<arg>${data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.344" level="INFO">abc@gmail.com</msg>
+<status status="PASS" starttime="20230519 12:02:30.344" endtime="20230519 12:02:30.344"/>
 </kw>
-<kw name="Last Name" library="FakerLibrary">
-<var>${lastName}</var>
-<msg timestamp="20230516 12:21:27.488" level="INFO">${lastName} = Richardson</msg>
-<status status="PASS" starttime="20230516 12:21:27.487" endtime="20230516 12:21:27.488"/>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount}+1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${empId}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>1</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.352" level="INFO">${empId} = 123456</msg>
+<status status="PASS" starttime="20230519 12:02:30.352" endtime="20230519 12:02:30.355"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_lName}</arg>
-<arg>${lastName}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:27.490" level="INFO">Typing text 'Richardson' into text field 'LastName'.</msg>
-<status status="PASS" starttime="20230516 12:21:27.489" endtime="20230516 12:21:27.677"/>
+<kw name="Log" library="BuiltIn">
+<arg>${empId}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.357" level="INFO">123456</msg>
+<status status="PASS" starttime="20230519 12:02:30.355" endtime="20230519 12:02:30.357"/>
 </kw>
-<kw name="Month Name" library="FakerLibrary">
-<var>${monthIndex}</var>
-<msg timestamp="20230516 12:21:27.681" level="INFO">${monthIndex} = January</msg>
-<status status="PASS" starttime="20230516 12:21:27.678" endtime="20230516 12:21:27.681"/>
+<kw name="Convert To String" library="BuiltIn">
+<var>${emp}</var>
+<arg>${empId}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230519 12:02:30.357" level="INFO">${emp} = 123456</msg>
+<status status="PASS" starttime="20230519 12:02:30.357" endtime="20230519 12:02:30.357"/>
 </kw>
-<kw name="Year" library="FakerLibrary">
-<var>${yearIndex}</var>
-<msg timestamp="20230516 12:21:27.684" level="INFO">${yearIndex} = 1983</msg>
-<status status="PASS" starttime="20230516 12:21:27.683" endtime="20230516 12:21:27.684"/>
+<kw name="Get Regexp Matches" library="String">
+<var>${emp1}</var>
+<arg>${emp}</arg>
+<arg>^\\d{6}</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.365" level="INFO">${emp1} = ['123456']</msg>
+<status status="PASS" starttime="20230519 12:02:30.357" endtime="20230519 12:02:30.365"/>
 </kw>
-<kw name="Select From List By Label" library="SeleniumLibrary">
-<arg>${date_locator}</arg>
-<arg>${dateIndex}</arg>
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<msg timestamp="20230516 12:21:27.687" level="INFO">Selecting options from selection list 'DateOfBirthDay' by label 1.</msg>
-<status status="PASS" starttime="20230516 12:21:27.686" endtime="20230516 12:21:27.810"/>
+<kw name="Log" library="BuiltIn">
+<arg>${emp1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.365" level="INFO">['123456']</msg>
+<status status="PASS" starttime="20230519 12:02:30.365" endtime="20230519 12:02:30.365"/>
 </kw>
-<kw name="Select From List By Label" library="SeleniumLibrary">
-<arg>${month_locator}</arg>
-<arg>${monthIndex}</arg>
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<msg timestamp="20230516 12:21:27.824" level="INFO">Selecting options from selection list 'DateOfBirthMonth' by label January.</msg>
-<status status="PASS" starttime="20230516 12:21:27.822" endtime="20230516 12:21:27.928"/>
+<status status="PASS" starttime="20230519 12:02:30.352" endtime="20230519 12:02:30.365"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${empId}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>1</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.365" level="INFO">${empId} = 1234</msg>
+<status status="PASS" starttime="20230519 12:02:30.365" endtime="20230519 12:02:30.373"/>
 </kw>
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>${year_locator}</arg>
-<arg>${yearIndex}</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20230516 12:21:27.934" level="INFO">Selecting options from selection list 'DateOfBirthYear' by value 1983.</msg>
-<status status="PASS" starttime="20230516 12:21:27.929" endtime="20230516 12:21:28.036"/>
+<kw name="Log" library="BuiltIn">
+<arg>${empId}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.373" level="INFO">1234</msg>
+<status status="PASS" starttime="20230519 12:02:30.373" endtime="20230519 12:02:30.373"/>
 </kw>
-<kw name="Email" library="FakerLibrary">
+<kw name="Convert To String" library="BuiltIn">
+<var>${emp}</var>
+<arg>${empId}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230519 12:02:30.373" level="INFO">${emp} = 1234</msg>
+<status status="PASS" starttime="20230519 12:02:30.373" endtime="20230519 12:02:30.373"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${emp1}</var>
+<arg>${emp}</arg>
+<arg>^\\d{6}</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.381" level="INFO">${emp1} = []</msg>
+<status status="PASS" starttime="20230519 12:02:30.381" endtime="20230519 12:02:30.381"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${emp1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.381" level="INFO">[]</msg>
+<status status="PASS" starttime="20230519 12:02:30.381" endtime="20230519 12:02:30.386"/>
+</kw>
+<status status="PASS" starttime="20230519 12:02:30.365" endtime="20230519 12:02:30.387"/>
+</iter>
+<status status="PASS" starttime="20230519 12:02:30.344" endtime="20230519 12:02:30.387"/>
+</for>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount}+1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${name}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>2</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.393" level="INFO">${name} = Ghouseuddin</msg>
+<status status="PASS" starttime="20230519 12:02:30.392" endtime="20230519 12:02:30.393"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.398" level="INFO">Ghouseuddin</msg>
+<status status="PASS" starttime="20230519 12:02:30.393" endtime="20230519 12:02:30.398"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${empName}</var>
+<arg>${name}</arg>
+<arg>^[A-Za-z]{5,20}$</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.399" level="INFO">${empName} = ['Ghouseuddin']</msg>
+<status status="PASS" starttime="20230519 12:02:30.399" endtime="20230519 12:02:30.399"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${empName}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.399" level="INFO">['Ghouseuddin']</msg>
+<status status="PASS" starttime="20230519 12:02:30.399" endtime="20230519 12:02:30.399"/>
+</kw>
+<status status="PASS" starttime="20230519 12:02:30.390" endtime="20230519 12:02:30.399"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${name}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>2</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.407" level="INFO">${name} = gous</msg>
+<status status="PASS" starttime="20230519 12:02:30.399" endtime="20230519 12:02:30.407"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.407" level="INFO">gous</msg>
+<status status="PASS" starttime="20230519 12:02:30.407" endtime="20230519 12:02:30.407"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${empName}</var>
+<arg>${name}</arg>
+<arg>^[A-Za-z]{5,20}$</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.407" level="INFO">${empName} = []</msg>
+<status status="PASS" starttime="20230519 12:02:30.407" endtime="20230519 12:02:30.415"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${empName}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.415" level="INFO">[]</msg>
+<status status="PASS" starttime="20230519 12:02:30.415" endtime="20230519 12:02:30.415"/>
+</kw>
+<status status="PASS" starttime="20230519 12:02:30.399" endtime="20230519 12:02:30.415"/>
+</iter>
+<status status="PASS" starttime="20230519 12:02:30.390" endtime="20230519 12:02:30.415"/>
+</for>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount}+1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
 <var>${email}</var>
-<msg timestamp="20230516 12:21:28.038" level="INFO">${email} = rachel60@example.com</msg>
-<status status="PASS" starttime="20230516 12:21:28.037" endtime="20230516 12:21:28.038"/>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>3</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.426" level="INFO">${email} = abc@gmail.com</msg>
+<status status="PASS" starttime="20230519 12:02:30.424" endtime="20230519 12:02:30.427"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_email}</arg>
+<kw name="Log" library="BuiltIn">
 <arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:28.042" level="INFO">Typing text 'rachel60@example.com' into text field 'Email'.</msg>
-<status status="PASS" starttime="20230516 12:21:28.040" endtime="20230516 12:21:28.266"/>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.428" level="INFO">abc@gmail.com</msg>
+<status status="PASS" starttime="20230519 12:02:30.428" endtime="20230519 12:02:30.428"/>
 </kw>
-<kw name="Company" library="FakerLibrary">
-<var>${company}</var>
-<doc>:example: 'Acme Ltd'</doc>
-<msg timestamp="20230516 12:21:28.268" level="INFO">${company} = Bryan, Matthews and Norman</msg>
-<status status="PASS" starttime="20230516 12:21:28.267" endtime="20230516 12:21:28.269"/>
+<kw name="Get Regexp Matches" library="String">
+<var>${empEmail}</var>
+<arg>${email}</arg>
+<arg>^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.428" level="INFO">${empEmail} = ['abc@gmail.com']</msg>
+<status status="PASS" starttime="20230519 12:02:30.428" endtime="20230519 12:02:30.428"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_company}</arg>
-<arg>${company}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:28.271" level="INFO">Typing text 'Bryan, Matthews and Norman' into text field 'Company'.</msg>
-<status status="PASS" starttime="20230516 12:21:28.270" endtime="20230516 12:21:28.469"/>
+<kw name="Log" library="BuiltIn">
+<arg>${empEmail}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.436" level="INFO">['abc@gmail.com']</msg>
+<status status="PASS" starttime="20230519 12:02:30.428" endtime="20230519 12:02:30.436"/>
 </kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${txt_password}</arg>
-<arg>${password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:28.471" level="INFO">Typing password into text field 'Password'.</msg>
-<msg timestamp="20230516 12:21:28.531" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20230516 12:21:28.665" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20230516 12:21:28.470" endtime="20230516 12:21:28.665"/>
+<status status="PASS" starttime="20230519 12:02:30.424" endtime="20230519 12:02:30.436"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${email}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>3</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.436" level="INFO">${email} = gousegmail.com</msg>
+<status status="PASS" starttime="20230519 12:02:30.436" endtime="20230519 12:02:30.436"/>
 </kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${txt_cnfPassword}</arg>
-<arg>${confirmPassword}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:28.668" level="INFO">Typing password into text field 'ConfirmPassword'.</msg>
-<msg timestamp="20230516 12:21:28.726" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20230516 12:21:28.847" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20230516 12:21:28.667" endtime="20230516 12:21:28.848"/>
+<kw name="Log" library="BuiltIn">
+<arg>${email}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.446" level="INFO">gousegmail.com</msg>
+<status status="PASS" starttime="20230519 12:02:30.436" endtime="20230519 12:02:30.446"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${password}</arg>
-<arg>${confirmPassword}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20230516 12:21:28.849" endtime="20230516 12:21:28.850"/>
+<kw name="Get Regexp Matches" library="String">
+<var>${empEmail}</var>
+<arg>${email}</arg>
+<arg>^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.446" level="INFO">${empEmail} = []</msg>
+<status status="PASS" starttime="20230519 12:02:30.446" endtime="20230519 12:02:30.446"/>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${register_btn}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:28.853" level="INFO">Clicking button 'register-button'.</msg>
-<status status="PASS" starttime="20230516 12:21:28.851" endtime="20230516 12:21:30.168"/>
+<kw name="Log" library="BuiltIn">
+<arg>${empEmail}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.451" level="INFO">[]</msg>
+<status status="PASS" starttime="20230519 12:02:30.446" endtime="20230519 12:02:30.452"/>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>${successRegisterPagetxt}</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20230516 12:21:30.170" endtime="20230516 12:21:30.207"/>
+<status status="PASS" starttime="20230519 12:02:30.436" endtime="20230519 12:02:30.452"/>
+</iter>
+<status status="PASS" starttime="20230519 12:02:30.423" endtime="20230519 12:02:30.452"/>
+</for>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount}+1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${mobileNo}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>4</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.458" level="INFO">${mobileNo} = 9606407263</msg>
+<status status="PASS" starttime="20230519 12:02:30.457" endtime="20230519 12:02:30.458"/>
 </kw>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<arg>C:/Users/kumaran/eclipse-workspace/robotframework1/nopCommerceRFWProjects/result/screenshot.png</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230516 12:21:30.393" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../../../eclipse-workspace/robotframework1/nopCommerceRFWProjects/result/screenshot.png"&gt;&lt;img src="../../../eclipse-workspace/robotframework1/nopCommerceRFWProjects/result/screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230516 12:21:30.208" endtime="20230516 12:21:30.394"/>
+<kw name="Log" library="BuiltIn">
+<arg>${mobileNo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.458" level="INFO">9606407263</msg>
+<status status="PASS" starttime="20230519 12:02:30.458" endtime="20230519 12:02:30.458"/>
 </kw>
-<tag>smoke</tag>
-<status status="PASS" starttime="20230516 12:21:20.307" endtime="20230516 12:21:30.398"/>
+<kw name="Convert To String" library="BuiltIn">
+<var>${empMobile}</var>
+<arg>${mobileNo}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230519 12:02:30.458" level="INFO">${empMobile} = 9606407263</msg>
+<status status="PASS" starttime="20230519 12:02:30.458" endtime="20230519 12:02:30.458"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${empmobileNo}</var>
+<arg>${empMobile}</arg>
+<arg>^[0-9]{1,10}$</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.466" level="INFO">${empmobileNo} = ['9606407263']</msg>
+<status status="PASS" starttime="20230519 12:02:30.466" endtime="20230519 12:02:30.466"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${empmobileNo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.466" level="INFO">['9606407263']</msg>
+<status status="PASS" starttime="20230519 12:02:30.466" endtime="20230519 12:02:30.466"/>
+</kw>
+<status status="PASS" starttime="20230519 12:02:30.452" endtime="20230519 12:02:30.466"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${mobileNo}</var>
+<arg>EmployeeDetails</arg>
+<arg>${rowIndex}</arg>
+<arg>4</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<msg timestamp="20230519 12:02:30.474" level="INFO">${mobileNo} = 983654267</msg>
+<status status="PASS" starttime="20230519 12:02:30.474" endtime="20230519 12:02:30.474"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${mobileNo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.474" level="INFO">983654267</msg>
+<status status="PASS" starttime="20230519 12:02:30.474" endtime="20230519 12:02:30.474"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${empMobile}</var>
+<arg>${mobileNo}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230519 12:02:30.482" level="INFO">${empMobile} = 983654267</msg>
+<status status="PASS" starttime="20230519 12:02:30.474" endtime="20230519 12:02:30.482"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${empmobileNo}</var>
+<arg>${empMobile}</arg>
+<arg>^[0-9]{1,10}$</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20230519 12:02:30.482" level="INFO">${empmobileNo} = ['983654267']</msg>
+<status status="PASS" starttime="20230519 12:02:30.482" endtime="20230519 12:02:30.482"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${empmobileNo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230519 12:02:30.490" level="INFO">['983654267']</msg>
+<status status="PASS" starttime="20230519 12:02:30.490" endtime="20230519 12:02:30.490"/>
+</kw>
+<status status="PASS" starttime="20230519 12:02:30.473" endtime="20230519 12:02:30.490"/>
+</iter>
+<status status="PASS" starttime="20230519 12:02:30.452" endtime="20230519 12:02:30.490"/>
+</for>
+<status status="PASS" starttime="20230519 12:02:30.296" endtime="20230519 12:02:30.495"/>
 </test>
-<test id="s1-s1-s1-t2" name="Register with incorrect data and validating" line="55">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>${browserName}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230516 12:21:30.404" level="INFO">Opening browser 'Chrome' to base url 'https://demo.nopcommerce.com/'.</msg>
-<status status="PASS" starttime="20230516 12:21:30.402" endtime="20230516 12:21:35.349"/>
-</kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 12:21:35.350" endtime="20230516 12:21:35.608"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${img_demoStore}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230516 12:21:35.613" endtime="20230516 12:21:35.668"/>
-</kw>
-<kw name="Click Link" library="SeleniumLibrary">
-<arg>${lnk_register}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:35.670" level="INFO">Clicking link '//a[@class='ico-register']'.</msg>
-<status status="PASS" starttime="20230516 12:21:35.669" endtime="20230516 12:21:36.590"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_fName}</arg>
-<arg>${nameFirst}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:36.593" level="INFO">Typing text ' ' into text field 'FirstName'.</msg>
-<status status="PASS" starttime="20230516 12:21:36.591" endtime="20230516 12:21:36.781"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_lName}</arg>
-<arg>${nameLast}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:36.783" level="INFO">Typing text ' ' into text field 'LastName'.</msg>
-<status status="PASS" starttime="20230516 12:21:36.782" endtime="20230516 12:21:36.940"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_email}</arg>
-<arg>${invalidEmail}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:36.942" level="INFO">Typing text 'gouse@gmail.com' into text field 'Email'.</msg>
-<status status="PASS" starttime="20230516 12:21:36.941" endtime="20230516 12:21:37.128"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${txt_company}</arg>
-<arg>${invalidCompany}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:37.131" level="INFO">Typing text 'Kumaran Systems Private Limited' into text field 'Company'.</msg>
-<status status="PASS" starttime="20230516 12:21:37.129" endtime="20230516 12:21:37.339"/>
-</kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${txt_password}</arg>
-<arg>${invalidpassword}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:37.341" level="INFO">Typing password into text field 'Password'.</msg>
-<msg timestamp="20230516 12:21:37.402" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20230516 12:21:37.530" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20230516 12:21:37.340" endtime="20230516 12:21:37.530"/>
-</kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${txt_password}</arg>
-<arg>${invalidConfirmPassword}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:37.541" level="INFO">Typing password into text field 'Password'.</msg>
-<msg timestamp="20230516 12:21:37.601" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20230516 12:21:37.700" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20230516 12:21:37.534" endtime="20230516 12:21:37.700"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${register_btn}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20230516 12:21:37.705" level="INFO">Clicking button 'register-button'.</msg>
-<status status="PASS" starttime="20230516 12:21:37.701" endtime="20230516 12:21:37.831"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>${errorMsgTxt}</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20230516 12:21:37.836" endtime="20230516 12:21:37.864"/>
-</kw>
-<tag>regression</tag>
-<status status="PASS" starttime="20230516 12:21:30.401" endtime="20230516 12:21:37.865"/>
-</test>
-<doc>This file is for registering account</doc>
-<status status="PASS" starttime="20230516 12:21:18.484" endtime="20230516 12:21:37.868"/>
+<doc>This file has to verify the format of each data cell</doc>
+<status status="PASS" starttime="20230519 12:02:29.653" endtime="20230519 12:02:30.499"/>
 </suite>
-<status status="PASS" starttime="20230516 12:21:18.462" endtime="20230516 12:21:37.876"/>
-</suite>
-<status status="PASS" starttime="20230516 12:21:18.341" endtime="20230516 12:21:37.880"/>
+<status status="PASS" starttime="20230519 12:02:29.567" endtime="20230519 12:02:30.511"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">regression</stat>
-<stat pass="1" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1" name="testCases">RFW-Practice.testCases</stat>
-<stat pass="2" fail="0" skip="0" id="s1-s1-s1" name="Register">RFW-Practice.testCases.Register</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="ExcelTestCase">RFW-Practice.ExcelTestCase</stat>
 </suite>
 </statistics>
 <errors>

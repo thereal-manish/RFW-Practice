@@ -5,7 +5,8 @@ Library    FakerLibrary
 # have to install seleniumScreenshots
 Library    Screenshot
 Variables    ../TestData/registerPageTestData.py
-Variables    ../TestData/config.py
+# Variables    ../TestData/config.py
+Variables    ../TestData/config.yaml
 Variables    ../locators/homePage.py
 Variables    ../locators/registerPage.py
 Variables    ../TestData/invalidRegisterPageTestData.py

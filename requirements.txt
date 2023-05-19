@@ -2,3 +2,6 @@ robotframework
 robotframework-seleniumlibrary
 robotframework-faker
 selenium
+robotframework-pabot
+PyYaml
+robotframework-excelutil

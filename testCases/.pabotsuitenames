@@ -1,0 +1,6 @@
+datasources:7f20c04a064768caff776de805757fb5215e6274
+commandlineoptions:65f95c924ba97541f47949701c4e3c51192a5b43
+suitesfrom:no-suites-from-option
+file:ad2e7b66e02b790c87f4b8ce7c1b4c2db4cfb525
+--test Register.Register User and Validating Registration details
+--test Register.Register with incorrect data and validating
