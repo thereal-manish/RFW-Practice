@@ -5,3 +5,4 @@ selenium
 robotframework-pabot
 PyYaml
 pillow
+robotframework-excelutil

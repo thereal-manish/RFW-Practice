@@ -1,9 +1,20 @@
 ==============================================================================
 Register :: This file is for registering account                              
 ==============================================================================
-Register User and Validating Registration details                     | PASS |
+Register User and Validating Registration details                       
+  Traceback (most recent call last):
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase\Register.robot:26
+    T:  Register User and Validating Registration details    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase\Register.robot:30
+      Wait Until Element Is Visible    ${img_demoStore}
+      |  ${img_demoStore} = //img[@alt='nopCommerce demo store'] (str)
+______________________________________________________________________________
+| FAIL |
+Element '//img[@alt='nopCommerce demo store']' not visible after 5 seconds.
 ------------------------------------------------------------------------------
-Register :: This file is for registering account                      | PASS |
-1 test, 1 passed, 0 failed
+Register :: This file is for registering account                      | FAIL |
+1 test, 0 passed, 1 failed
 ==============================================================================
 Output:  C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase\pabot_results\0\output.xml

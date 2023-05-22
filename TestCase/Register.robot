@@ -2,6 +2,7 @@
 Documentation    This file is for registering account
 Library    SeleniumLibrary
 Library    FakerLibrary
+Library   ExcelLibrary
 # have to install seleniumScreenshots
 Library    Screenshot
 Variables    ../TestData/config.py
@@ -9,10 +10,12 @@ Variables    ../TestData/registerPageTestData.py
 Variables    ../TestData/invalidRegisterPageTestData.py
 Variables    ../locators/homePage.py
 Variables    ../locators/registerPage.py
+Resource    ../Resources/DatasfromExcel.resource
 Test Setup    Open Browser    ${url}    ${browserName}
 Test Teardown    Close Browser
 
-# *** Variables ***
+*** Variables ***
+${file}    C:/Users/UdhayaParanthaman/Downloads/RFW-Practice/nopcommerce.xlsx
 # ${firstName}    FakerLibrary.First Name
 # ${lastName}    FakerLibrary.Last Name
 # ${monthIndex}    FakerLibrary.Month Name
@@ -47,7 +50,8 @@ Register User and Validating Registration details
     
     ${yearIndex}    FakerLibrary.Year
     Select From List By Label    ${year_locator}    ${yearIndex}
-    
+
+
     ${email}    FakerLibrary.Email  
     Input Text    ${txt_email}    ${email} 
     
@@ -62,7 +66,7 @@ Register User and Validating Registration details
     Click Button    ${register_btn} 
     Wait Until Page Contains    ${successRegisterPagetxt} 
     Take Screenshot    ${CURDIR}../../results/${TEST NAME}.png
-    # How to take screenshot for passed testcases
+    ...    # How to take screenshot for passed testcases
     Capture Page Screenshot    C:/Users/UdhayaParanthaman/eclipse-workspace/RobotProjects/nopCommerceProject/result/screenshot.png 
  
 Register with incorrect data and validating 

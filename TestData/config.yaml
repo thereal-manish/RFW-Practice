@@ -1,4 +1,4 @@
-browserName: "Chrome"
+browserName: Chrome
 url: "https://demo.nopcommerce.com/"
 
  
