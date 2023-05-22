@@ -1,0 +1,2641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 6.0.2 (Python 3.11.3 on win32)" generated="20230522 13:31:48.889" rpa="false" schemaversion="3">
+<suite id="s1" name="Login Scenario" source="C:\Users\mani3359\Downloads\RFW-Practice\TestCases with Excel\Login Scenario.robot">
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary" type="SETUP">
+<arg>3s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230522 13:30:50.663" endtime="20230522 13:30:50.663"/>
+</kw>
+<test id="s1-t1" name="Enter invalid username and valid password" line="30">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:30:50.663" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:30:50.663" endtime="20230522 13:31:14.129"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.147" level="INFO">${username_local} = invalid_username</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.147"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.147" level="INFO">${password_local} = secret_sauce</msg>
+<status status="PASS" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.147"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.147" level="INFO">${username_local} = invalid_username</msg>
+<status status="PASS" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.147"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${password_local} = secret_sauce</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.149"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.149"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.149"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.157"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.157"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.157"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.157"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.157"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.167" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.166" endtime="20230522 13:31:14.167"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.169" endtime="20230522 13:31:14.169"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.169" endtime="20230522 13:31:14.169"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.169" endtime="20230522 13:31:14.177"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.177" endtime="20230522 13:31:14.177"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.167" endtime="20230522 13:31:14.177"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.167" endtime="20230522 13:31:14.177"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.166" endtime="20230522 13:31:14.177"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.177"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:14.185" endtime="20230522 13:31:14.185"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:14.185" endtime="20230522 13:31:14.774"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:14.774" level="INFO">Typing text 'invalid_username' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:14.774" endtime="20230522 13:31:15.148"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:15.148" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:15.213" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:15.345" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:15.148" endtime="20230522 13:31:15.345"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:15.345" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.345" endtime="20230522 13:31:15.607"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ivu_ivp_error_msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:15.898" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.607" endtime="20230522 13:31:15.898"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:15.898" endtime="20230522 13:31:18.949"/>
+</kw>
+<status status="PASS" starttime="20230522 13:30:50.663" endtime="20230522 13:31:18.949"/>
+</test>
+<test id="s1-t2" name="Enter valid username and invalid password" line="53">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:30:50.781" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:30:50.781" endtime="20230522 13:31:14.119"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:14.119" endtime="20230522 13:31:14.129"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:14.129" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.129" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.137"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.139"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.139"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${username_local} = standard_user</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${password_local} = invalid_password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.147" level="INFO">${username_local} = standard_user</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.147"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.147" level="INFO">${password_local} = invalid_password</msg>
+<status status="PASS" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.147"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.147"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.147"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.147"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.149"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.157" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.157"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.157"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.159"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.159"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.758"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:14.766" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:14.766" endtime="20230522 13:31:15.762"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:15.762" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:16.002" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:16.157" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:15.762" endtime="20230522 13:31:16.157"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:16.157" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:16.157" endtime="20230522 13:31:16.270"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ivu_ivp_error_msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:16.286" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230522 13:31:16.270" endtime="20230522 13:31:16.294"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:16.294" endtime="20230522 13:31:18.970"/>
+</kw>
+<status status="PASS" starttime="20230522 13:30:50.781" endtime="20230522 13:31:18.970"/>
+</test>
+<test id="s1-t3" name="Enter null username and invalid password" line="75">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:30:50.663" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:30:50.663" endtime="20230522 13:31:14.039"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:14.039" endtime="20230522 13:31:14.055"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.055"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:14.055" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.055"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.055" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.055"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.063" endtime="20230522 13:31:14.063"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.063" endtime="20230522 13:31:14.063"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.063" endtime="20230522 13:31:14.063"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.063" endtime="20230522 13:31:14.063"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.063"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.063"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.063"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.063" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.063" endtime="20230522 13:31:14.068"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.069" endtime="20230522 13:31:14.069"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.069" endtime="20230522 13:31:14.071"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.071" endtime="20230522 13:31:14.073"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.069" endtime="20230522 13:31:14.073"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.069" endtime="20230522 13:31:14.073"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.063" endtime="20230522 13:31:14.073"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.073" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.073" endtime="20230522 13:31:14.073"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.081" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.081"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.081" level="INFO">${username_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.081"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.081" level="INFO">${password_local} = invalid_password</msg>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.081"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.081" level="INFO">${username_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.089"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.089" level="INFO">${password_local} = invalid_password</msg>
+<status status="PASS" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.089"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.089"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.081" endtime="20230522 13:31:14.089"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.089" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.089"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.097" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.097"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.089" endtime="20230522 13:31:14.097"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.105" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.105"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.097" endtime="20230522 13:31:14.105"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:14.055" endtime="20230522 13:31:14.105"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.105"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:14.105" endtime="20230522 13:31:14.496"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:14.496" level="INFO">Typing text '' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:14.496" endtime="20230522 13:31:14.904"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:14.904" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:14.956" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:15.132" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:14.904" endtime="20230522 13:31:15.132"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:15.132" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.132" endtime="20230522 13:31:15.329"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${uname_req_txt}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:15.361" level="INFO">Current page contains text 'Epic sadface: Username is required'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.329" endtime="20230522 13:31:15.361"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:15.361" endtime="20230522 13:31:18.918"/>
+</kw>
+<status status="PASS" starttime="20230522 13:30:50.663" endtime="20230522 13:31:18.918"/>
+</test>
+<test id="s1-t4" name="Enter valid username and valid password" line="99">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:30:50.703" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:30:50.703" endtime="20230522 13:31:14.119"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:14.119" endtime="20230522 13:31:14.129"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:14.129" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.129" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.129"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.137"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.137"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.137"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.137"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.137" endtime="20230522 13:31:14.139"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.139" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.139"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.147" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.147"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.147"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.149"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.147" endtime="20230522 13:31:14.149"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.139" endtime="20230522 13:31:14.149"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.149" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.149"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.157"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.157"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.157"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.157"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.149" endtime="20230522 13:31:14.157"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${username_local} = standard_user</msg>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${password_local} = secret_sauce</msg>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${username_local} = standard_user</msg>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:14.159" level="INFO">${password_local} = secret_sauce</msg>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:14.157" endtime="20230522 13:31:14.159"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:14.129" endtime="20230522 13:31:14.159"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.159"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:14.159" endtime="20230522 13:31:14.758"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:14.758" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:14.758" endtime="20230522 13:31:15.076"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:15.076" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:15.132" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:15.283" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:15.076" endtime="20230522 13:31:15.283"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:15.283" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.283" endtime="20230522 13:31:15.663"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${cart_icon}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230522 13:31:15.930" level="INFO">Current page contains element '//*[@id='shopping_cart_container']/a'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.663" endtime="20230522 13:31:15.930"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${products_txt}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:15.954" level="INFO">Current page contains text 'Products'.</msg>
+<status status="PASS" starttime="20230522 13:31:15.930" endtime="20230522 13:31:15.954"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:15.954" endtime="20230522 13:31:18.970"/>
+</kw>
+<status status="PASS" starttime="20230522 13:30:50.703" endtime="20230522 13:31:18.970"/>
+</test>
+<test id="s1-t5" name="Enter valid username and null password" line="122">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:31:25.778" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:31:25.776" endtime="20230522 13:31:39.747"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:39.747" endtime="20230522 13:31:39.763"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:39.763" endtime="20230522 13:31:39.763"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:39.771" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:39.763" endtime="20230522 13:31:39.771"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.771" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.771"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.779" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.779"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.779"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.779"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.779"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.787"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.787"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.779" endtime="20230522 13:31:39.787"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.787"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.787" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.787"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.795" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.787" endtime="20230522 13:31:39.795"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.795" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.795"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.803" level="INFO">${username_local} = standard_user</msg>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.803"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.803" level="INFO">${password_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.803"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:39.803" level="INFO">${username_local} = standard_user</msg>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.803"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:39.803" level="INFO">${password_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.803"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.803"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.803"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.795" endtime="20230522 13:31:39.803"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.803" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.803"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.811"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.811"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.811"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.811"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.811"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.811"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.803" endtime="20230522 13:31:39.811"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:39.811" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.811"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.811"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.811"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.819"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:39.819" endtime="20230522 13:31:39.819"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.819"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.819"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:39.811" endtime="20230522 13:31:39.819"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:39.771" endtime="20230522 13:31:39.819"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:39.819" endtime="20230522 13:31:39.819"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:39.819" endtime="20230522 13:31:40.014"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:40.014" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:40.014" endtime="20230522 13:31:40.259"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:40.259" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:40.338" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:40.402" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:40.259" endtime="20230522 13:31:40.402"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:40.402" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:40.402" endtime="20230522 13:31:40.504"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${pwd_req_txt}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:40.518" level="INFO">Current page contains text 'Epic sadface: Password is required'.</msg>
+<status status="PASS" starttime="20230522 13:31:40.504" endtime="20230522 13:31:40.518"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:40.526" endtime="20230522 13:31:44.390"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:25.771" endtime="20230522 13:31:44.390"/>
+</test>
+<test id="s1-t6" name="Enter invalid username and invalid password" line="145">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:31:25.231" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:31:25.231" endtime="20230522 13:31:27.966"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:27.966" endtime="20230522 13:31:27.996"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:27.996" endtime="20230522 13:31:27.996"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:27.996" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:27.996" endtime="20230522 13:31:27.996"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:27.996" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:27.996" endtime="20230522 13:31:28.004"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.004" level="INFO">${username_local} = invalid_username</msg>
+<status status="PASS" starttime="20230522 13:31:28.004" endtime="20230522 13:31:28.006"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.006" level="INFO">${password_local} = invalid_password</msg>
+<status status="PASS" starttime="20230522 13:31:28.006" endtime="20230522 13:31:28.006"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:28.006" level="INFO">${username_local} = invalid_username</msg>
+<status status="PASS" starttime="20230522 13:31:28.006" endtime="20230522 13:31:28.006"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:28.006" level="INFO">${password_local} = invalid_password</msg>
+<status status="PASS" starttime="20230522 13:31:28.006" endtime="20230522 13:31:28.006"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:28.004" endtime="20230522 13:31:28.006"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.004" endtime="20230522 13:31:28.006"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:27.996" endtime="20230522 13:31:28.006"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.014" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:28.006" endtime="20230522 13:31:28.014"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.015" endtime="20230522 13:31:28.015"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.015" endtime="20230522 13:31:28.015"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:28.015" endtime="20230522 13:31:28.016"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.015" endtime="20230522 13:31:28.016"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:28.006" endtime="20230522 13:31:28.016"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.016" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.016" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.016"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.024"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.024"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.024"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:28.016" endtime="20230522 13:31:28.024"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.024" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.024" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.024"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.032"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.032" endtime="20230522 13:31:28.032"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.032"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.032"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:28.024" endtime="20230522 13:31:28.032"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:28.034" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:28.032" endtime="20230522 13:31:28.034"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.034" endtime="20230522 13:31:28.034"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.036" endtime="20230522 13:31:28.036"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.036" endtime="20230522 13:31:28.036"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:28.036" endtime="20230522 13:31:28.036"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:28.034" endtime="20230522 13:31:28.036"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:28.034" endtime="20230522 13:31:28.036"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:28.032" endtime="20230522 13:31:28.036"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:27.996" endtime="20230522 13:31:28.036"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:28.036" endtime="20230522 13:31:28.036"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:28.036" endtime="20230522 13:31:28.162"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:28.162" level="INFO">Typing text 'invalid_username' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:28.162" endtime="20230522 13:31:28.400"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:28.400" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:28.445" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:28.555" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:28.400" endtime="20230522 13:31:28.555"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:28.555" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:28.555" endtime="20230522 13:31:28.623"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ivu_ivp_error_msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:28.639" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20230522 13:31:28.623" endtime="20230522 13:31:28.645"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:28.645" endtime="20230522 13:31:31.026"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:25.231" endtime="20230522 13:31:31.026"/>
+</test>
+<test id="s1-t7" name="Enter null username and null password" line="167">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230522 13:31:25.503" level="INFO">Opening browser 'chrome' to base url 'https://saucedemo.com'.</msg>
+<status status="PASS" starttime="20230522 13:31:25.501" endtime="20230522 13:31:40.070"/>
+</kw>
+<kw name="Open Workbook" library="ExcellentLibrary">
+<arg>C:\\Users\\mani3359\\Downloads\\RFW-Practice\\TestCases with Excel\\..\\Test Data\\LoginPage.xlsx</arg>
+<arg>alias=Test Data</arg>
+<doc>Opens the workbook found at the given file path.
+_NOTE_: Please note that at present _XLS_ files are not supported.</doc>
+<status status="PASS" starttime="20230522 13:31:40.070" endtime="20230522 13:31:40.086"/>
+</kw>
+<kw name="Switch Sheet" library="ExcellentLibrary">
+<arg>${SUITE_NAME}</arg>
+<doc>Switches to the sheet with the supplied name within the active
+workbook.</doc>
+<status status="PASS" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<kw name="Read Sheet Data" library="ExcellentLibrary">
+<var>@{sheetData}</var>
+<arg>get_column_names_from_header_row=True</arg>
+<doc>Reads all the data from the active sheet.</doc>
+<msg timestamp="20230522 13:31:40.094" level="INFO">@{sheetData} = [ {'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'} | {'Test Case Name': 'Enter invalid username and valid password', 'u...</msg>
+<status status="PASS" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<for flavor="IN">
+<var>${row_data}</var>
+<value>@{sheetData}</value>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and invalid password', 'username': 'invalid_username', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.094" level="INFO">${TC_name_excel} = Enter invalid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.094"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.102"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter invalid username and valid password', 'username': 'invalid_username', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.102" level="INFO">${TC_name_excel} = Enter invalid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and invalid password', 'username': 'standard_user', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.102" level="INFO">${TC_name_excel} = Enter valid username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and invalid password', 'username': '', 'password': 'invalid_password'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.102" level="INFO">${TC_name_excel} = Enter null username and invalid password</msg>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.102"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.110"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.110"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.110"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.102" endtime="20230522 13:31:40.110"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and null password', 'username': 'standard_user', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.110" level="INFO">${TC_name_excel} = Enter valid username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter null username and null password', 'username': '', 'password': ''}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.110" level="INFO">${TC_name_excel} = Enter null username and null password</msg>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.110"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.118" level="INFO">${username_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.118" level="INFO">${password_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:40.118" level="INFO">${username_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230522 13:31:40.118" level="INFO">${password_local} = </msg>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.118"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.118"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.110" endtime="20230522 13:31:40.118"/>
+</iter>
+<iter>
+<var name="${row_data}">{'Test Case Name': 'Enter valid username and valid password', 'username': 'standard_user', 'password': 'secret_sauce'}</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${TC_name_excel}</var>
+<arg>${row_data}</arg>
+<arg>${primaryKey_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230522 13:31:40.118" level="INFO">${TC_name_excel} = Enter valid username and valid password</msg>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<if>
+<branch type="IF" condition="'${TEST_NAME}'=='${TC_name_excel}'">
+<kw name="Get From Dictionary" library="Collections">
+<var>${username_local}</var>
+<arg>${row_data}</arg>
+<arg>${username_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password_local}</var>
+<arg>${row_data}</arg>
+<arg>${password_excel}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${username_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${password_local}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<status status="NOT RUN" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</branch>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</if>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</iter>
+<status status="PASS" starttime="20230522 13:31:40.094" endtime="20230522 13:31:40.118"/>
+</for>
+<kw name="Close Workbook" library="ExcellentLibrary">
+<doc>Closes the workbook identified by the supplied alias.</doc>
+<status status="PASS" starttime="20230522 13:31:40.118" endtime="20230522 13:31:40.118"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230522 13:31:40.126" endtime="20230522 13:31:40.246"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${username_loc}</arg>
+<arg>${username_local}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:40.246" level="INFO">Typing text '' into text field '//input[@id='user-name']'.</msg>
+<status status="PASS" starttime="20230522 13:31:40.246" endtime="20230522 13:31:40.426"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${password_loc}</arg>
+<arg>${password_local}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:40.426" level="INFO">Typing password into text field '//input[@id='password']'.</msg>
+<msg timestamp="20230522 13:31:40.481" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230522 13:31:40.566" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230522 13:31:40.426" endtime="20230522 13:31:40.566"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${login_btn_loc}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230522 13:31:40.574" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<status status="PASS" starttime="20230522 13:31:40.574" endtime="20230522 13:31:40.795"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${uname_req_txt}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230522 13:31:40.818" level="INFO">Current page contains text 'Epic sadface: Username is required'.</msg>
+<status status="PASS" starttime="20230522 13:31:40.795" endtime="20230522 13:31:40.818"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230522 13:31:40.818" endtime="20230522 13:31:43.397"/>
+</kw>
+<status status="PASS" starttime="20230522 13:31:25.501" endtime="20230522 13:31:43.397"/>
+</test>
+<doc>This test suite is for tesing excellibrary</doc>
+<status status="PASS" starttime="20230522 13:30:49.539" endtime="20230522 13:31:44.390"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Login Scenario">Login Scenario</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

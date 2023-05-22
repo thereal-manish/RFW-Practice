@@ -4,3 +4,4 @@ selenium
 PyYAML
 robotframework-autoitlibrary
 robotframework-excellentlibrary
+robotframework-excellib
