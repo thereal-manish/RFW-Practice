@@ -6,3 +6,5 @@ robotframework-pabot
 PyYaml
 pillow
 robotframework-excelutil
+robotframework-excellentlibrary
+robotframework-excellib
