@@ -1,223 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230522 10:37:15.245" rpa="false" schemaversion="3">
-<suite id="s1" name="ExcelCellValidation" source="C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase\ExcelCellValidation.robot">
-<test id="s1-t1" name="Verify format of data from Each cell" line="9">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230525 10:50:03.161" rpa="false" schemaversion="3">
+<suite id="s1" name="Reg" source="C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase\reg.robot">
+<test id="s1-t1" name="Verify format of data from Each cell" line="11">
 <kw name="Open Excel" library="ExcelUtil">
 <arg>EmployeeDatas.xlsx</arg>
 <doc>Open excel file
 Arguments:
     | File             | Filename with fullpath to open and test upon        |</doc>
-<msg timestamp="20230522 10:37:15.454" level="FAIL">FileNotFoundError: [Errno 2] No such file or directory: 'EmployeeDatas.xlsx'</msg>
-<status status="FAIL" starttime="20230522 10:37:15.454" endtime="20230522 10:37:15.519"/>
+<msg timestamp="20230525 10:50:03.434" level="FAIL">FileNotFoundError: [Errno 2] No such file or directory: 'EmployeeDatas.xlsx'</msg>
+<status status="FAIL" starttime="20230525 10:50:03.434" endtime="20230525 10:50:03.493"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${sheetName}</var>
+<arg>EmployeeDetails</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Get Row Count" library="ExcelUtil">
-<var>${rowCount}</var>
-<arg>EmployeeDetails</arg>
+<var>${row_count}</var>
+<arg>${sheetName}</arg>
 <doc>Return the Row count of the given sheet
 Example:
 | Open Excel      |  C:\Data\ExcelTest.xlsx  |
 | Get Row count     |  Sheet1 |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.520" endtime="20230522 10:37:15.520"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${rowCount}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.520" endtime="20230522 10:37:15.520"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Get Column Count" library="ExcelUtil">
-<var>${colCount}</var>
-<arg>EmployeeDetails</arg>
+<var>${column_count}</var>
+<arg>${sheetName}</arg>
 <doc>Return the column count of the given sheet
 Example:
 | Open Excel      |  C:\Data\ExcelTest.xlsx  |
 | Get Column count     |  Sheet1 |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.520" endtime="20230522 10:37:15.520"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${colCount}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.521" endtime="20230522 10:37:15.521"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${regexes}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
+<for flavor="IN RANGE">
+<var>${columnIndex}</var>
+<value>1</value>
+<value>${column_count+1}</value>
+<iter>
+<var name="${columnIndex}"/>
 <kw name="Read Cell Data By Coordinates" library="ExcelUtil">
-<var>${data}</var>
-<arg>EmployeeDetails</arg>
-<arg>2</arg>
-<arg>3</arg>
+<var>${columnHeader}</var>
+<arg>${sheetName}</arg>
+<arg>1</arg>
+<arg>${columnIndex}</arg>
 <doc>Return the value of a cell by giving the sheetname, row value &amp; column value
 Example:
 | Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
 | Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
  To pass integer arguments
 | Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.521" endtime="20230522 10:37:15.521"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${data}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.522"/>
+<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
+<var>${regex}</var>
+<arg>${sheetName}</arg>
+<arg>2</arg>
+<arg>${columnIndex}</arg>
+<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
+Example:
+| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
+| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
+ To pass integer arguments
+| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${regexes}</arg>
+<arg>${columnHeader}</arg>
+<arg>${regex}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</kw>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</iter>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</for>
+<for flavor="IN RANGE">
+<var>${columnIndex}</var>
+<value>1</value>
+<value>${column_count}</value>
+<iter>
+<var name="${columnIndex}"/>
 <for flavor="IN RANGE">
 <var>${rowIndex}</var>
 <value>2</value>
-<value>${rowCount}+1</value>
+<value>${row_count+1}</value>
 <iter>
 <var name="${rowIndex}"/>
 <kw name="Read Cell Data By Coordinates" library="ExcelUtil">
-<var>${empId}</var>
-<arg>EmployeeDetails</arg>
-<arg>${rowIndex}</arg>
+<var>${columnHeader}</var>
+<arg>${sheetName}</arg>
 <arg>1</arg>
+<arg>${columnIndex}</arg>
 <doc>Return the value of a cell by giving the sheetname, row value &amp; column value
 Example:
 | Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
 | Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
  To pass integer arguments
 | Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.522"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${empId}</arg>
+<arg>${columnHeader}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.522"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${emp}</var>
-<arg>${empId}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.522"/>
-</kw>
-<kw name="Get Regexp Matches" library="String">
-<var>${emp1}</var>
-<arg>${emp}</arg>
-<arg>^\\d{6}</arg>
-<doc>Returns a list of all non-overlapping matches in the given string.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.522"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${emp1}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
-<var>${res}</var>
-<arg>${emp1} == ['987654']</arg>
-<arg>Write Data By Coordinates</arg>
-<arg>EmployeeDetails</arg>
-<arg>2</arg>
-<arg>5</arg>
-<arg>Fail</arg>
+<var>${regex}</var>
+<arg>${columnIndex} != ${column_count}</arg>
+<arg>Set Variable</arg>
+<arg>${regexes}[${columnHeader}]</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${res}</arg>
+<arg>${columnHeader}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Read Cell Data By Coordinates" library="ExcelUtil">
-<var>${name}</var>
-<arg>EmployeeDetails</arg>
+<var>${cellData}</var>
+<arg>${sheetName}</arg>
 <arg>${rowIndex}</arg>
-<arg>2</arg>
+<arg>${columnIndex}</arg>
 <doc>Return the value of a cell by giving the sheetname, row value &amp; column value
 Example:
 | Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
 | Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
  To pass integer arguments
 | Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${name}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Get Regexp Matches" library="String">
-<var>${empName}</var>
-<arg>${name}</arg>
-<arg>^[A-Za-z]{5,20}$</arg>
-<doc>Returns a list of all non-overlapping matches in the given string.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${empName}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
-<var>${email}</var>
-<arg>EmployeeDetails</arg>
-<arg>${rowIndex}</arg>
-<arg>3</arg>
-<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
-Example:
-| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
-| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
- To pass integer arguments
-| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${email}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Get Regexp Matches" library="String">
-<var>${empEmail}</var>
-<arg>${email}</arg>
-<arg>^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</arg>
-<doc>Returns a list of all non-overlapping matches in the given string.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${empEmail}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
-<var>${mobileNo}</var>
-<arg>EmployeeDetails</arg>
-<arg>${rowIndex}</arg>
-<arg>4</arg>
-<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
-Example:
-| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
-| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
- To pass integer arguments
-| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${mobileNo}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
-<var>${empMobile}</var>
-<arg>${mobileNo}</arg>
+<var>${Data}</var>
+<arg>${cellData}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Get Regexp Matches" library="String">
-<var>${empmobileNo}</var>
-<arg>${empMobile}</arg>
-<arg>^[0-9]{1,10}$</arg>
+<var>${matches}</var>
+<arg>${Data}</arg>
+<arg>${regex}</arg>
 <doc>Returns a list of all non-overlapping matches in the given string.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.523" endtime="20230522 10:37:15.523"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${empmobileNo}</arg>
+<arg>${regex}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20230522 10:37:15.524" endtime="20230522 10:37:15.524"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </kw>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.524"/>
+<if>
+<branch type="IF" condition="${matches} == []">
+<kw name="Write Data By Coordinates" library="ExcelUtil">
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>${column_count}</arg>
+<arg>Fail</arg>
+<doc>Write the value to a call using its co-ordinates
+Example:
+| Write Data By Coordinates    |  SheetName  | Row Number | Column Number |  Data  |
+| Write Data By Coordinates    | Sheet1 | 1 | 1 |  TestData  |</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</kw>
+<kw name="Save Excel" library="ExcelUtil">
+<arg>EmployeeDatas.xlsx</arg>
+<doc>Save the excel file after writing the data.
+Example:
+Update existing file:</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</kw>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</branch>
+<branch type="ELSE">
+<kw name="Write Data By Coordinates" library="ExcelUtil">
+<arg>${sheetName}</arg>
+<arg>${rowIndex}</arg>
+<arg>${column_count}</arg>
+<arg>Pass</arg>
+<doc>Write the value to a call using its co-ordinates
+Example:
+| Write Data By Coordinates    |  SheetName  | Row Number | Column Number |  Data  |
+| Write Data By Coordinates    | Sheet1 | 1 | 1 |  TestData  |</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</kw>
+<kw name="Save Excel" library="ExcelUtil">
+<arg>EmployeeDatas.xlsx</arg>
+<doc>Save the excel file after writing the data.
+Example:
+Update existing file:</doc>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</kw>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</branch>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</if>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </iter>
-<status status="NOT RUN" starttime="20230522 10:37:15.522" endtime="20230522 10:37:15.524"/>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
 </for>
-<status status="FAIL" starttime="20230522 10:37:15.454" endtime="20230522 10:37:15.524">FileNotFoundError: [Errno 2] No such file or directory: 'EmployeeDatas.xlsx'</status>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</iter>
+<status status="NOT RUN" starttime="20230525 10:50:03.501" endtime="20230525 10:50:03.501"/>
+</for>
+<status status="FAIL" starttime="20230525 10:50:03.428" endtime="20230525 10:50:03.501">FileNotFoundError: [Errno 2] No such file or directory: 'EmployeeDatas.xlsx'</status>
 </test>
 <doc>This file has to verify the format of each data cell</doc>
-<status status="FAIL" starttime="20230522 10:37:15.245" endtime="20230522 10:37:15.526"/>
+<status status="FAIL" starttime="20230525 10:50:03.176" endtime="20230525 10:50:03.509"/>
 </suite>
 <statistics>
 <total>
@@ -226,7 +221,7 @@ Example:
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="ExcelCellValidation">ExcelCellValidation</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Reg">Reg</stat>
 </suite>
 </statistics>
 <errors>

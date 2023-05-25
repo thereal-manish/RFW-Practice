@@ -8,3 +8,4 @@ pillow
 robotframework-excelutil
 robotframework-excellentlibrary
 robotframework-excellib
+robotframework-datadriver[xlsx]
