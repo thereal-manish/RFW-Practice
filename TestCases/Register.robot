@@ -30,7 +30,8 @@ Empty Firstname
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    *First Name is required
-   Capture Page Screenshot         C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot1.png
+   Take Screenshot    ${CURDIR}../../results/${TEST_NAME}.jpeg
+   # Capture Page Screenshot         C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot1.png
 
 Invalid Email
    Maximize Browser Window
@@ -46,6 +47,7 @@ Invalid Email
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    *Enter Valid Email   
+   Take Screenshot    ${CURDIR}../../results/${TEST_NAME}.png
    Capture Page Screenshot        C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot2.png
 
 Invalid Phonenumber
@@ -61,7 +63,8 @@ Invalid Phonenumber
    Input Password    ${txt_Confirmpassword}    ${mob_password}
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
-   Wait Until Page Contains    *Phone Number must be 10 digit   
+   Wait Until Page Contains    *Phone Number must be 10 digit  
+   Take Screenshot    ${CURDIR}../../results/${TEST_NAME}.png 
    Capture Page Screenshot          C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot3.png
 
 
@@ -79,6 +82,7 @@ Invalid Password
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains   *Password is required 
+   Take Screenshot    ${CURDIR}../../results/${TEST_NAME}.png
    Capture Page Screenshot         C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot4.png
 
 
@@ -104,4 +108,5 @@ Create new account
    Click Element    ${Chech_box}
    Click Button    ${btn_Login}   
    Wait Until Page Contains    Account Created Successfully
+   Take Screenshot    ${CURDIR}../../results/${TEST_NAME}.png
    Capture Page Screenshot          C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot5.png

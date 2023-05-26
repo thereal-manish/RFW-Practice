@@ -1,731 +1,725 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.5 on win32)" generated="20230516 10:02:16.212" rpa="false">
-<suite id="s1" name="Ecommerce" source="C:\Users\DhineshlingamNataraj\eclipse-workspace\Ecommerce">
-<suite id="s1-s1" name="TestCases" source="C:\Users\DhineshlingamNataraj\eclipse-workspace\Ecommerce\TestCases">
-<suite id="s1-s1-s1" name="Register" source="C:\Users\DhineshlingamNataraj\eclipse-workspace\Ecommerce\TestCases\Register.robot">
-<test id="s1-s1-s1-t1" name="Empty Firstname">
-<kw name="Open Browser" library="SeleniumLibrary" type="setup">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230517 18:39:21.206" rpa="false" schemaversion="3">
+<suite id="s1" name="RFW-Practice" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice">
+<suite id="s1-s1" name="TestCases" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases">
+<suite id="s1-s1-s1" name="Register" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases\Register.robot">
+<test id="s1-s1-s1-t1" name="Empty Firstname" line="18">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
 <arg>${browser}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:16.876" level="INFO">Opening browser 'Chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
-<status status="PASS" starttime="20230516 10:02:16.875" endtime="20230516 10:02:18.677"></status>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 18:39:21.810" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
+<status status="PASS" starttime="20230517 18:39:21.805" endtime="20230517 18:39:23.720"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 10:02:18.679" endtime="20230516 10:02:18.801"></status>
+<status status="PASS" starttime="20230517 18:39:23.720" endtime="20230517 18:39:23.859"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_RegisterHere}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:18.802" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
-<status status="PASS" starttime="20230516 10:02:18.802" endtime="20230516 10:02:18.897"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:23.859" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
+<status status="PASS" starttime="20230517 18:39:23.859" endtime="20230517 18:39:24.031"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_FirstName}</arg>
 <arg>${EmptyFirstName}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:18.898" level="INFO">Typing text '' into text field '//input[@id='firstName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:18.897" endtime="20230516 10:02:19.002"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.031" level="INFO">Typing text '' into text field '//input[@id='firstName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:24.031" endtime="20230517 18:39:24.157"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_LastName}</arg>
 <arg>${invalidLastname}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.003" level="INFO">Typing text '' into text field '//input[@id='lastName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.002" endtime="20230516 10:02:19.082"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.157" level="INFO">Typing text '' into text field '//input[@id='lastName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:24.157" endtime="20230517 18:39:24.273"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Email}</arg>
 <arg>${Emp_Firstname_Email}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.082" level="INFO">Typing text 'dhinesh@gmail.com' into text field '//input[@id='userEmail']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.082" endtime="20230516 10:02:19.206"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.284" level="INFO">Typing text 'dhinesh@gmail.com' into text field '//input[@id='userEmail']'.</msg>
+<status status="PASS" starttime="20230517 18:39:24.284" endtime="20230517 18:39:24.472"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_mobile}</arg>
 <arg>${Emp_mob}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.207" level="INFO">Typing text '6123457890' into text field '//input[@id='userMobile']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.206" endtime="20230516 10:02:19.307"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.472" level="INFO">Typing text '6123457890' into text field '//input[@id='userMobile']'.</msg>
+<status status="PASS" starttime="20230517 18:39:24.472" endtime="20230517 18:39:24.559"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:19.307" endtime="20230516 10:02:19.332"></status>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230517 18:39:24.559" endtime="20230517 18:39:24.572"/>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
 <arg>Doctor</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.333" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
-<status status="PASS" starttime="20230516 10:02:19.332" endtime="20230516 10:02:19.416"></status>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20230517 18:39:24.572" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
+<status status="PASS" starttime="20230517 18:39:24.572" endtime="20230517 18:39:24.723"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Radio}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.419" level="INFO">Clicking element '//input[@value='Male']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.417" endtime="20230516 10:02:19.475"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.723" level="INFO">Clicking element '//input[@value='Male']'.</msg>
+<status status="PASS" starttime="20230517 18:39:24.723" endtime="20230517 18:39:24.788"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_password}</arg>
 <arg>${Wrongpassword}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.475" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.475" endtime="20230516 10:02:19.587"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.788" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
+<msg timestamp="20230517 18:39:24.845" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:24.931" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:24.788" endtime="20230517 18:39:24.931"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Confirmpassword}</arg>
 <arg>${Wrongpassword}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.588" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.587" endtime="20230516 10:02:19.711"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:24.935" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
+<msg timestamp="20230517 18:39:24.991" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:25.077" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:24.935" endtime="20230517 18:39:25.077"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${Chech_box}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.712" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.712" endtime="20230516 10:02:19.780"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:25.077" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20230517 18:39:25.077" endtime="20230517 18:39:25.156"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks button identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Login}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:19.781" level="INFO">Clicking button '//input[@id='login']'.</msg>
-<status status="PASS" starttime="20230516 10:02:19.780" endtime="20230516 10:02:19.873"></status>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:25.156" level="INFO">Clicking button '//input[@id='login']'.</msg>
+<status status="PASS" starttime="20230517 18:39:25.156" endtime="20230517 18:39:25.256"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
-<arguments>
 <arg>*First Name is required</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:19.874" endtime="20230516 10:02:19.890"></status>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230517 18:39:25.256" endtime="20230517 18:39:25.272"/>
 </kw>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<arguments>
-<arg>C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png</arg>
-</arguments>
-<msg timestamp="20230516 10:02:20.050" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot.png"&gt;&lt;img src="Result/Screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230516 10:02:19.891" endtime="20230516 10:02:20.051"></status>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>C:\\Users\\DhineshlingamNataraj\\Downloads\\eclipse-workspace-robotframeworkNew2\\RFW-Practice\\TestCases../../results/${TEST_NAME}.png</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230517 18:39:25.353" level="INFO" html="true">&lt;a href="results/Empty%20Firstname.png_1.jpg"&gt;&lt;img src="results/Empty%20Firstname.png_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:25.272" endtime="20230517 18:39:25.353"/>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230516 10:02:20.051" endtime="20230516 10:02:22.223"></status>
+<status status="PASS" starttime="20230517 18:39:25.361" endtime="20230517 18:39:27.480"/>
 </kw>
-<status status="PASS" starttime="20230516 10:02:16.874" endtime="20230516 10:02:22.223" critical="yes"></status>
+<status status="PASS" starttime="20230517 18:39:21.805" endtime="20230517 18:39:27.480"/>
 </test>
-<test id="s1-s1-s1-t2" name="Invalid Email">
-<kw name="Open Browser" library="SeleniumLibrary" type="setup">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
+<test id="s1-s1-s1-t2" name="Invalid Email" line="36">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
 <arg>${browser}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:22.226" level="INFO">Opening browser 'Chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
-<status status="PASS" starttime="20230516 10:02:22.225" endtime="20230516 10:02:24.041"></status>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 18:39:27.484" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
+<status status="PASS" starttime="20230517 18:39:27.483" endtime="20230517 18:39:29.494"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 10:02:24.041" endtime="20230516 10:02:24.163"></status>
+<status status="PASS" starttime="20230517 18:39:29.494" endtime="20230517 18:39:29.617"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_RegisterHere}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.164" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.164" endtime="20230516 10:02:24.274"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:29.617" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
+<status status="PASS" starttime="20230517 18:39:29.617" endtime="20230517 18:39:29.729"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_FirstName}</arg>
-<arg>${Email_name}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.276" level="INFO">Typing text 'Lingam' into text field '//input[@id='firstName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.274" endtime="20230516 10:02:24.403"></status>
+<arg>${mail_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:29.733" level="INFO">Typing text 'Lingam' into text field '//input[@id='firstName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:29.733" endtime="20230517 18:39:29.909"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Email}</arg>
 <arg>${Invalid_Email}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.404" level="INFO">Typing text 'dini125gmail' into text field '//input[@id='userEmail']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.403" endtime="20230516 10:02:24.521"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:29.911" level="INFO">Typing text 'dini125gmail' into text field '//input[@id='userEmail']'.</msg>
+<status status="PASS" starttime="20230517 18:39:29.911" endtime="20230517 18:39:30.085"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_mobile}</arg>
 <arg>${Email_mob}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.521" level="INFO">Typing text '1234567880' into text field '//input[@id='userMobile']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.521" endtime="20230516 10:02:24.636"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:30.087" level="INFO">Typing text '1234567880' into text field '//input[@id='userMobile']'.</msg>
+<status status="PASS" starttime="20230517 18:39:30.087" endtime="20230517 18:39:30.173"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:24.636" endtime="20230516 10:02:24.667"></status>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230517 18:39:30.173" endtime="20230517 18:39:30.195"/>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
 <arg>Doctor</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.668" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
-<status status="PASS" starttime="20230516 10:02:24.667" endtime="20230516 10:02:24.764"></status>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20230517 18:39:30.195" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
+<status status="PASS" starttime="20230517 18:39:30.195" endtime="20230517 18:39:30.304"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Radio}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.765" level="INFO">Clicking element '//input[@value='Male']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.764" endtime="20230516 10:02:24.821"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:30.304" level="INFO">Clicking element '//input[@value='Male']'.</msg>
+<status status="PASS" starttime="20230517 18:39:30.304" endtime="20230517 18:39:30.375"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_password}</arg>
 <arg>${Email_password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.822" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.822" endtime="20230516 10:02:24.920"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:30.375" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
+<msg timestamp="20230517 18:39:30.431" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:30.505" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:30.375" endtime="20230517 18:39:30.505"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Confirmpassword}</arg>
 <arg>${Email_password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:24.921" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:24.920" endtime="20230516 10:02:25.038"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:30.505" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
+<msg timestamp="20230517 18:39:30.554" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:30.637" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:30.505" endtime="20230517 18:39:30.637"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${Chech_box}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:25.040" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
-<status status="PASS" starttime="20230516 10:02:25.039" endtime="20230516 10:02:25.097"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:30.639" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20230517 18:39:30.637" endtime="20230517 18:39:30.710"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks button identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Login}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:25.099" level="INFO">Clicking button '//input[@id='login']'.</msg>
-<status status="PASS" starttime="20230516 10:02:25.097" endtime="20230516 10:02:25.180"></status>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:30.710" level="INFO">Clicking button '//input[@id='login']'.</msg>
+<status status="PASS" starttime="20230517 18:39:30.710" endtime="20230517 18:39:30.804"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
-<arguments>
 <arg>*Enter Valid Email</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:25.181" endtime="20230516 10:02:25.195"></status>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230517 18:39:30.804" endtime="20230517 18:39:30.821"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>C:\\Users\\DhineshlingamNataraj\\Downloads\\eclipse-workspace-robotframeworkNew2\\RFW-Practice\\TestCases../../results/${TEST_NAME}.png</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230517 18:39:30.872" level="INFO" html="true">&lt;a href="results/Invalid%20Email.png_1.jpg"&gt;&lt;img src="results/Invalid%20Email.png_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:30.821" endtime="20230517 18:39:30.872"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<arguments>
-<arg>C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png</arg>
-</arguments>
-<msg timestamp="20230516 10:02:25.344" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot.png"&gt;&lt;img src="Result/Screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230516 10:02:25.196" endtime="20230516 10:02:25.345"></status>
+<arg>C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot2.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230517 18:39:31.044" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot2.png"&gt;&lt;img src="Result/Screenshot2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:30.872" endtime="20230517 18:39:31.044"/>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230516 10:02:25.346" endtime="20230516 10:02:27.519"></status>
+<status status="PASS" starttime="20230517 18:39:31.044" endtime="20230517 18:39:33.171"/>
 </kw>
-<status status="PASS" starttime="20230516 10:02:22.224" endtime="20230516 10:02:27.520" critical="yes"></status>
+<status status="PASS" starttime="20230517 18:39:27.480" endtime="20230517 18:39:33.171"/>
 </test>
-<test id="s1-s1-s1-t3" name="Invalid Phonenumber">
-<kw name="Open Browser" library="SeleniumLibrary" type="setup">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
+<test id="s1-s1-s1-t3" name="Invalid Phonenumber" line="53">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
 <arg>${browser}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:27.524" level="INFO">Opening browser 'Chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
-<status status="PASS" starttime="20230516 10:02:27.523" endtime="20230516 10:02:29.184"></status>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 18:39:33.177" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
+<status status="PASS" starttime="20230517 18:39:33.171" endtime="20230517 18:39:34.979"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 10:02:29.185" endtime="20230516 10:02:29.309"></status>
+<status status="PASS" starttime="20230517 18:39:34.979" endtime="20230517 18:39:35.099"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_RegisterHere}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.310" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.310" endtime="20230516 10:02:29.385"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:35.099" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
+<status status="PASS" starttime="20230517 18:39:35.099" endtime="20230517 18:39:35.254"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_FirstName}</arg>
 <arg>${mob_name}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.386" level="INFO">Typing text 'Sanjai' into text field '//input[@id='firstName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.386" endtime="20230516 10:02:29.492"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:35.256" level="INFO">Typing text 'Sanjai' into text field '//input[@id='firstName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:35.254" endtime="20230517 18:39:35.437"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Email}</arg>
 <arg>${mob_Email}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.493" level="INFO">Typing text 'san135@gmail.com' into text field '//input[@id='userEmail']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.492" endtime="20230516 10:02:29.591"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:35.437" level="INFO">Typing text 'san135@gmail.com' into text field '//input[@id='userEmail']'.</msg>
+<status status="PASS" starttime="20230517 18:39:35.437" endtime="20230517 18:39:35.569"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_mobile}</arg>
 <arg>${mob_no}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.592" level="INFO">Typing text '7687809' into text field '//input[@id='userMobile']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.591" endtime="20230516 10:02:29.669"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:35.569" level="INFO">Typing text '7687809' into text field '//input[@id='userMobile']'.</msg>
+<status status="PASS" starttime="20230517 18:39:35.569" endtime="20230517 18:39:35.656"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:29.669" endtime="20230516 10:02:29.689"></status>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230517 18:39:35.656" endtime="20230517 18:39:35.673"/>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
 <arg>Doctor</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.690" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
-<status status="PASS" starttime="20230516 10:02:29.689" endtime="20230516 10:02:29.758"></status>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20230517 18:39:35.673" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
+<status status="PASS" starttime="20230517 18:39:35.673" endtime="20230517 18:39:35.810"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Radio}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.760" level="INFO">Clicking element '//input[@value='Male']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.758" endtime="20230516 10:02:29.810"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:35.810" level="INFO">Clicking element '//input[@value='Male']'.</msg>
+<status status="PASS" starttime="20230517 18:39:35.810" endtime="20230517 18:39:35.891"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_password}</arg>
 <arg>${mob_password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.811" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.810" endtime="20230516 10:02:29.889"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:35.891" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
+<msg timestamp="20230517 18:39:35.950" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:36.040" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:35.891" endtime="20230517 18:39:36.040"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Confirmpassword}</arg>
 <arg>${mob_password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.890" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.889" endtime="20230516 10:02:29.966"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:36.040" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
+<msg timestamp="20230517 18:39:36.107" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:36.193" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:36.040" endtime="20230517 18:39:36.193"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${Chech_box}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:29.967" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
-<status status="PASS" starttime="20230516 10:02:29.967" endtime="20230516 10:02:30.011"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:36.193" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20230517 18:39:36.193" endtime="20230517 18:39:36.271"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks button identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Login}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:30.012" level="INFO">Clicking button '//input[@id='login']'.</msg>
-<status status="PASS" starttime="20230516 10:02:30.011" endtime="20230516 10:02:30.069"></status>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:36.271" level="INFO">Clicking button '//input[@id='login']'.</msg>
+<status status="PASS" starttime="20230517 18:39:36.271" endtime="20230517 18:39:36.347"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
-<arguments>
 <arg>*Phone Number must be 10 digit</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:30.069" endtime="20230516 10:02:30.082"></status>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230517 18:39:36.347" endtime="20230517 18:39:36.356"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>C:\\Users\\DhineshlingamNataraj\\Downloads\\eclipse-workspace-robotframeworkNew2\\RFW-Practice\\TestCases../../results/${TEST_NAME}.png</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230517 18:39:36.408" level="INFO" html="true">&lt;a href="results/Invalid%20Phonenumber.png_1.jpg"&gt;&lt;img src="results/Invalid%20Phonenumber.png_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:36.356" endtime="20230517 18:39:36.408"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<arguments>
-<arg>C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png</arg>
-</arguments>
-<msg timestamp="20230516 10:02:30.211" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot.png"&gt;&lt;img src="Result/Screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230516 10:02:30.082" endtime="20230516 10:02:30.211"></status>
+<arg>C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot3.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230517 18:39:36.569" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot3.png"&gt;&lt;img src="Result/Screenshot3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:36.408" endtime="20230517 18:39:36.569"/>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230516 10:02:30.212" endtime="20230516 10:02:32.328"></status>
+<status status="PASS" starttime="20230517 18:39:36.569" endtime="20230517 18:39:38.705"/>
 </kw>
-<status status="PASS" starttime="20230516 10:02:27.521" endtime="20230516 10:02:32.328" critical="yes"></status>
+<status status="PASS" starttime="20230517 18:39:33.171" endtime="20230517 18:39:38.707"/>
 </test>
-<test id="s1-s1-s1-t4" name="Invalid Password">
-<kw name="Open Browser" library="SeleniumLibrary" type="setup">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
+<test id="s1-s1-s1-t4" name="Invalid Password" line="71">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
 <arg>${browser}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:32.331" level="INFO">Opening browser 'Chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
-<status status="PASS" starttime="20230516 10:02:32.330" endtime="20230516 10:02:34.109"></status>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 18:39:38.712" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
+<status status="PASS" starttime="20230517 18:39:38.707" endtime="20230517 18:39:40.598"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 10:02:34.110" endtime="20230516 10:02:34.235"></status>
+<status status="PASS" starttime="20230517 18:39:40.598" endtime="20230517 18:39:40.716"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_RegisterHere}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.236" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.235" endtime="20230516 10:02:34.328"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:40.716" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
+<status status="PASS" starttime="20230517 18:39:40.716" endtime="20230517 18:39:40.821"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_FirstName}</arg>
 <arg>${pass_name}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.329" level="INFO">Typing text 'Kumaran' into text field '//input[@id='firstName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.329" endtime="20230516 10:02:34.433"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:40.821" level="INFO">Typing text 'Kumaran' into text field '//input[@id='firstName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:40.821" endtime="20230517 18:39:40.939"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Email}</arg>
 <arg>${pass_Email}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.434" level="INFO">Typing text 'kumaran@gmail.com' into text field '//input[@id='userEmail']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.434" endtime="20230516 10:02:34.529"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:40.949" level="INFO">Typing text 'kumaran@gmail.com' into text field '//input[@id='userEmail']'.</msg>
+<status status="PASS" starttime="20230517 18:39:40.939" endtime="20230517 18:39:41.066"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_mobile}</arg>
 <arg>${pass_mob}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.530" level="INFO">Typing text '1234567890' into text field '//input[@id='userMobile']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.530" endtime="20230516 10:02:34.611"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:41.066" level="INFO">Typing text '1234567890' into text field '//input[@id='userMobile']'.</msg>
+<status status="PASS" starttime="20230517 18:39:41.066" endtime="20230517 18:39:41.165"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:34.611" endtime="20230516 10:02:34.630"></status>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230517 18:39:41.165" endtime="20230517 18:39:41.187"/>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
 <arg>Doctor</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.631" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
-<status status="PASS" starttime="20230516 10:02:34.630" endtime="20230516 10:02:34.692"></status>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20230517 18:39:41.187" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
+<status status="PASS" starttime="20230517 18:39:41.187" endtime="20230517 18:39:41.275"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Radio}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.693" level="INFO">Clicking element '//input[@value='Male']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.693" endtime="20230516 10:02:34.731"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:41.275" level="INFO">Clicking element '//input[@value='Male']'.</msg>
+<status status="PASS" starttime="20230517 18:39:41.275" endtime="20230517 18:39:41.323"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_password}</arg>
 <arg>${pass_password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.732" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.732" endtime="20230516 10:02:34.795"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:41.323" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
+<msg timestamp="20230517 18:39:41.355" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:41.405" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:41.323" endtime="20230517 18:39:41.405"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Confirmpassword}</arg>
 <arg>${pass_password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.795" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.795" endtime="20230516 10:02:34.854"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:41.405" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
+<msg timestamp="20230517 18:39:41.438" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:41.481" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:41.405" endtime="20230517 18:39:41.481"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${Chech_box}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.854" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.854" endtime="20230516 10:02:34.892"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:41.486" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20230517 18:39:41.481" endtime="20230517 18:39:41.540"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks button identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Login}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:34.892" level="INFO">Clicking button '//input[@id='login']'.</msg>
-<status status="PASS" starttime="20230516 10:02:34.892" endtime="20230516 10:02:34.942"></status>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:41.540" level="INFO">Clicking button '//input[@id='login']'.</msg>
+<status status="PASS" starttime="20230517 18:39:41.540" endtime="20230517 18:39:41.600"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
-<arguments>
 <arg>*Password is required</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:34.942" endtime="20230516 10:02:34.953"></status>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230517 18:39:41.600" endtime="20230517 18:39:41.616"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>C:\\Users\\DhineshlingamNataraj\\Downloads\\eclipse-workspace-robotframeworkNew2\\RFW-Practice\\TestCases../../results/${TEST_NAME}.png</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230517 18:39:41.677" level="INFO" html="true">&lt;a href="results/Invalid%20Password.png_1.jpg"&gt;&lt;img src="results/Invalid%20Password.png_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:41.616" endtime="20230517 18:39:41.677"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<arguments>
-<arg>C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png</arg>
-</arguments>
-<msg timestamp="20230516 10:02:35.088" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot.png"&gt;&lt;img src="Result/Screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230516 10:02:34.953" endtime="20230516 10:02:35.089"></status>
+<arg>C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot4.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230517 18:39:41.801" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot4.png"&gt;&lt;img src="Result/Screenshot4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230517 18:39:41.677" endtime="20230517 18:39:41.801"/>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230516 10:02:35.089" endtime="20230516 10:02:37.192"></status>
+<status status="PASS" starttime="20230517 18:39:41.801" endtime="20230517 18:39:43.943"/>
 </kw>
-<status status="PASS" starttime="20230516 10:02:32.329" endtime="20230516 10:02:37.192" critical="yes"></status>
+<status status="PASS" starttime="20230517 18:39:38.707" endtime="20230517 18:39:43.943"/>
 </test>
-<test id="s1-s1-s1-t5" name="Create new account">
-<kw name="Open Browser" library="SeleniumLibrary" type="setup">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
+<test id="s1-s1-s1-t5" name="Create new account" line="89">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
 <arg>${browser}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:37.194" level="INFO">Opening browser 'Chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
-<status status="PASS" starttime="20230516 10:02:37.194" endtime="20230516 10:02:39.383"></status>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230517 18:39:43.943" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/client'.</msg>
+<status status="PASS" starttime="20230517 18:39:43.943" endtime="20230517 18:39:45.787"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230516 10:02:39.383" endtime="20230516 10:02:39.505"></status>
+<status status="PASS" starttime="20230517 18:39:45.787" endtime="20230517 18:39:45.917"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_RegisterHere}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.507" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
-<status status="PASS" starttime="20230516 10:02:39.505" endtime="20230516 10:02:39.619"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:45.917" level="INFO">Clicking element '//a[@class='text-reset']'.</msg>
+<status status="PASS" starttime="20230517 18:39:45.917" endtime="20230517 18:39:46.071"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
 <arg>${Email}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.622" level="INFO">${Email} = </msg>
-<status status="PASS" starttime="20230516 10:02:39.620" endtime="20230516 10:02:39.622"></status>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230517 18:39:46.071" level="INFO">${Email} = </msg>
+<status status="PASS" starttime="20230517 18:39:46.071" endtime="20230517 18:39:46.071"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
 <arg>${password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.623" level="INFO">${password} = </msg>
-<status status="PASS" starttime="20230516 10:02:39.623" endtime="20230516 10:02:39.623"></status>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230517 18:39:46.074" level="INFO">${password} = </msg>
+<status status="PASS" starttime="20230517 18:39:46.074" endtime="20230517 18:39:46.074"/>
 </kw>
 <kw name="First Name Male" library="FakerLibrary">
-<assign>
 <var>${Firstname}</var>
-</assign>
-<msg timestamp="20230516 10:02:39.624" level="INFO">${Firstname} = Oscar</msg>
-<status status="PASS" starttime="20230516 10:02:39.624" endtime="20230516 10:02:39.624"></status>
+<msg timestamp="20230517 18:39:46.074" level="INFO">${Firstname} = Joseph</msg>
+<status status="PASS" starttime="20230517 18:39:46.074" endtime="20230517 18:39:46.074"/>
 </kw>
 <kw name="Last Name" library="FakerLibrary">
-<assign>
 <var>${Lastname}</var>
-</assign>
-<msg timestamp="20230516 10:02:39.625" level="INFO">${Lastname} = Wood</msg>
-<status status="PASS" starttime="20230516 10:02:39.625" endtime="20230516 10:02:39.625"></status>
+<msg timestamp="20230517 18:39:46.074" level="INFO">${Lastname} = Andrade</msg>
+<status status="PASS" starttime="20230517 18:39:46.074" endtime="20230517 18:39:46.074"/>
 </kw>
 <kw name="Email" library="FakerLibrary">
-<assign>
 <var>${Email}</var>
-</assign>
-<msg timestamp="20230516 10:02:39.626" level="INFO">${Email} = shawn59@example.net</msg>
-<status status="PASS" starttime="20230516 10:02:39.625" endtime="20230516 10:02:39.626"></status>
+<msg timestamp="20230517 18:39:46.074" level="INFO">${Email} = jenniferwagner@example.com</msg>
+<status status="PASS" starttime="20230517 18:39:46.074" endtime="20230517 18:39:46.074"/>
 </kw>
 <kw name="Password" library="FakerLibrary">
-<doc>Generate a random password of the specified ``length``.</doc>
-<assign>
 <var>${password}</var>
-</assign>
-<msg timestamp="20230516 10:02:39.627" level="INFO">${password} = HS7rPW4g!4</msg>
-<status status="PASS" starttime="20230516 10:02:39.626" endtime="20230516 10:02:39.627"></status>
+<doc>Generate a random password of the specified ``length``.</doc>
+<msg timestamp="20230517 18:39:46.074" level="INFO">${password} = (22olFa8A4</msg>
+<status status="PASS" starttime="20230517 18:39:46.074" endtime="20230517 18:39:46.074"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_FirstName}</arg>
 <arg>${Firstname}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.628" level="INFO">Typing text 'Oscar' into text field '//input[@id='firstName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:39.627" endtime="20230516 10:02:39.754"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:46.079" level="INFO">Typing text 'Joseph' into text field '//input[@id='firstName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:46.079" endtime="20230517 18:39:46.250"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${Firstname}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230517 18:39:46.256" level="INFO">Joseph</msg>
+<status status="PASS" starttime="20230517 18:39:46.250" endtime="20230517 18:39:46.256"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_LastName}</arg>
 <arg>${Lastname}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.755" level="INFO">Typing text 'Wood' into text field '//input[@id='lastName']'.</msg>
-<status status="PASS" starttime="20230516 10:02:39.754" endtime="20230516 10:02:39.857"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:46.256" level="INFO">Typing text 'Andrade' into text field '//input[@id='lastName']'.</msg>
+<status status="PASS" starttime="20230517 18:39:46.256" endtime="20230517 18:39:46.417"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Email}</arg>
 <arg>${Email}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.858" level="INFO">Typing text 'shawn59@example.net' into text field '//input[@id='userEmail']'.</msg>
-<status status="PASS" starttime="20230516 10:02:39.858" endtime="20230516 10:02:39.980"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:46.417" level="INFO">Typing text 'jenniferwagner@example.com' into text field '//input[@id='userEmail']'.</msg>
+<status status="PASS" starttime="20230517 18:39:46.417" endtime="20230517 18:39:46.553"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_mobile}</arg>
 <arg>${mobileNo}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:39.981" level="INFO">Typing text '8932002123' into text field '//input[@id='userMobile']'.</msg>
-<status status="PASS" starttime="20230516 10:02:39.980" endtime="20230516 10:02:40.080"></status>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:46.553" level="INFO">Typing text '8932002123' into text field '//input[@id='userMobile']'.</msg>
+<status status="PASS" starttime="20230517 18:39:46.553" endtime="20230517 18:39:46.666"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:40.080" endtime="20230516 10:02:40.102"></status>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230517 18:39:46.666" endtime="20230517 18:39:46.696"/>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<arguments>
 <arg>${dropdown_btn}</arg>
 <arg>Doctor</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.102" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
-<status status="PASS" starttime="20230516 10:02:40.102" endtime="20230516 10:02:40.178"></status>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20230517 18:39:46.697" level="INFO">Selecting options from selection list '//select[@formcontrolname='occupation']' by label Doctor.</msg>
+<status status="PASS" starttime="20230517 18:39:46.697" endtime="20230517 18:39:46.799"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Radio}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.179" level="INFO">Clicking element '//input[@value='Male']'.</msg>
-<status status="PASS" starttime="20230516 10:02:40.179" endtime="20230516 10:02:40.223"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:46.799" level="INFO">Clicking element '//input[@value='Male']'.</msg>
+<status status="PASS" starttime="20230517 18:39:46.799" endtime="20230517 18:39:46.882"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_password}</arg>
 <arg>${password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.225" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:40.224" endtime="20230516 10:02:40.294"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:46.882" level="INFO">Typing password into text field '//input[@id='userPassword']'.</msg>
+<msg timestamp="20230517 18:39:46.947" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:47.015" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:46.882" endtime="20230517 18:39:47.015"/>
 </kw>
 <kw name="Input Password" library="SeleniumLibrary">
-<doc>Types the given password into text field identified by ``locator``.</doc>
-<arguments>
 <arg>${txt_Confirmpassword}</arg>
 <arg>${password}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.295" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
-<status status="PASS" starttime="20230516 10:02:40.295" endtime="20230516 10:02:40.399"></status>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:47.015" level="INFO">Typing password into text field '//input[@id='confirmPassword']'.</msg>
+<msg timestamp="20230517 18:39:47.078" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230517 18:39:47.163" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230517 18:39:47.015" endtime="20230517 18:39:47.163"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
 <arg>${Chech_box}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.399" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
-<status status="PASS" starttime="20230516 10:02:40.399" endtime="20230516 10:02:40.441"></status>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:47.165" level="INFO">Clicking element '//input[@type='checkbox']'.</msg>
+<status status="PASS" starttime="20230517 18:39:47.164" endtime="20230517 18:39:47.227"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks button identified by ``locator``.</doc>
-<arguments>
 <arg>${btn_Login}</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.441" level="INFO">Clicking button '//input[@id='login']'.</msg>
-<status status="PASS" starttime="20230516 10:02:40.441" endtime="20230516 10:02:40.495"></status>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230517 18:39:47.227" level="INFO">Clicking button '//input[@id='login']'.</msg>
+<status status="PASS" starttime="20230517 18:39:47.227" endtime="20230517 18:39:47.299"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
-<arguments>
 <arg>Account Created Successfully</arg>
-</arguments>
-<status status="PASS" starttime="20230516 10:02:40.496" endtime="20230516 10:02:40.727"></status>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<msg timestamp="20230517 18:39:50.944" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=113.0.5672.93)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00D78893+48451]
+	(No symbol) [0x00D0B8A1]
+	(No symbol) [0x00C15058]
+	(No symbol) [0x00BFD073]
+	(No symbol) [0x00C5DEBB]
+	(No symbol) [0x00C6BFD3]
+	(No symbol) [0x00C5A0B6]
+	(No symbol) [0x00C37E08]
+	(No symbol) [0x00C38F2D]
+	GetHandleVerifier [0x00FD8E3A+2540266]
+	GetHandleVerifier [0x01018959+2801161]
+	GetHandleVerifier [0x0101295C+2776588]
+	GetHandleVerifier [0x00E02280+612144]
+	(No symbol) [0x00D14F6C]
+	(No symbol) [0x00D111D8]
+	(No symbol) [0x00D112BB]
+	(No symbol) [0x00D04857]
+	BaseThreadInitThunk [0x758A7D59+25]
+	RtlInitializeExceptionChain [0x7722B74B+107]
+	RtlClearBits [0x7722B6CF+191]
+</msg>
+<msg timestamp="20230517 18:39:50.952" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=113.0.5672.93)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00D78893+48451]
+	(No symbol) [0x00D0B8A1]
+	(No symbol) [0x00C15058]
+	(No symbol) [0x00BFD073]
+	(No symbol) [0x00C5DEBB]
+	(No symbol) [0x00C6BFD3]
+	(No symbol) [0x00C5A0B6]
+	(No symbol) [0x00C37E08]
+	(No symbol) [0x00C38F2D]
+	GetHandleVerifier [0x00FD8E3A+2540266]
+	GetHandleVerifier [0x01018959+2801161]
+	GetHandleVerifier [0x0101295C+2776588]
+	GetHandleVerifier [0x00E02280+612144]
+	(No symbol) [0x00D14F6C]
+	(No symbol) [0x00D111D8]
+	(No symbol) [0x00D112BB]
+	(No symbol) [0x00D04857]
+	BaseThreadInitThunk [0x758A7D59+25]
+	RtlInitializeExceptionChain [0x7722B74B+107]
+	RtlClearBits [0x7722B6CF+191]
+</msg>
+<status status="FAIL" starttime="20230517 18:39:47.307" endtime="20230517 18:39:50.952"/>
+</kw>
+<kw name="Take Screenshot" library="Screenshot">
+<arg>C:\\Users\\DhineshlingamNataraj\\Downloads\\eclipse-workspace-robotframeworkNew2\\RFW-Practice\\TestCases../../results/${TEST_NAME}.png</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<status status="NOT RUN" starttime="20230517 18:39:50.952" endtime="20230517 18:39:50.952"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<arguments>
-<arg>C:/Users/DhineshlingamNataraj/eclipse-workspace/Ecommerce/Result/Screenshot.png</arg>
-</arguments>
-<msg timestamp="20230516 10:02:40.888" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Result/Screenshot.png"&gt;&lt;img src="Result/Screenshot.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230516 10:02:40.728" endtime="20230516 10:02:40.889"></status>
+<arg>C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/Result/Screenshot5.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20230517 18:39:50.952" endtime="20230517 18:39:50.952"/>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230516 10:02:40.889" endtime="20230516 10:02:42.994"></status>
+<status status="PASS" starttime="20230517 18:39:50.952" endtime="20230517 18:39:53.034"/>
 </kw>
-<status status="PASS" starttime="20230516 10:02:37.193" endtime="20230516 10:02:42.994" critical="yes"></status>
+<status status="FAIL" starttime="20230517 18:39:43.943" endtime="20230517 18:39:53.035">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=113.0.5672.93)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00D78893+48451]
+	(No symbol) [0x00D0B8A1]
+	(No symbol) [0x00C15058]
+	(No symbol) [0x00BFD073]
+	(No symbol) [0x00C5DEBB]
+	(No symbol) [0x00C6BFD3]
+	(No symbol) [0x00C5A0B6]
+	(No symbol) [0x00C37E08]
+	(No symbol) [0x00C38F2D]
+	GetHandleVerifier [0x00FD8E3A+2540266]
+	GetHandleVerifier [0x01018959+2801161]
+	GetHandleVerifier [0x0101295C+2776588]
+	GetHandleVerifier [0x00E02280+612144]
+	(No symbol) [0x00D14F6C]
+	(No symbol) [0x00D111D8]
+	(No symbol) [0x00D112BB]
+	(No symbol) [0x00D04857]
+	BaseThreadInitThunk [0x758A7D59+25]
+	RtlInitializeExceptionChain [0x7722B74B+107]
+	RtlClearBits [0x7722B6CF+191]
+</status>
 </test>
 <doc>Create new account</doc>
-<status status="PASS" starttime="20230516 10:02:16.261" endtime="20230516 10:02:42.995"></status>
+<status status="FAIL" starttime="20230517 18:39:21.229" endtime="20230517 18:39:53.042"/>
 </suite>
-<status status="PASS" starttime="20230516 10:02:16.257" endtime="20230516 10:02:43.000"></status>
+<status status="FAIL" starttime="20230517 18:39:21.226" endtime="20230517 18:39:53.042"/>
 </suite>
-<status status="PASS" starttime="20230516 10:02:16.241" endtime="20230516 10:02:43.003"></status>
+<status status="FAIL" starttime="20230517 18:39:21.211" endtime="20230517 18:39:53.042"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0">Critical Tests</stat>
-<stat pass="5" fail="0">All Tests</stat>
+<stat pass="4" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="5" fail="0" id="s1" name="Ecommerce">Ecommerce</stat>
-<stat pass="5" fail="0" id="s1-s1" name="TestCases">Ecommerce.TestCases</stat>
-<stat pass="5" fail="0" id="s1-s1-s1" name="Register">Ecommerce.TestCases.Register</stat>
+<stat pass="4" fail="1" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
+<stat pass="4" fail="1" skip="0" id="s1-s1" name="TestCases">RFW-Practice.TestCases</stat>
+<stat pass="4" fail="1" skip="0" id="s1-s1-s1" name="Register">RFW-Practice.TestCases.Register</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20230517 18:39:50.944" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=113.0.5672.93)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00D78893+48451]
+	(No symbol) [0x00D0B8A1]
+	(No symbol) [0x00C15058]
+	(No symbol) [0x00BFD073]
+	(No symbol) [0x00C5DEBB]
+	(No symbol) [0x00C6BFD3]
+	(No symbol) [0x00C5A0B6]
+	(No symbol) [0x00C37E08]
+	(No symbol) [0x00C38F2D]
+	GetHandleVerifier [0x00FD8E3A+2540266]
+	GetHandleVerifier [0x01018959+2801161]
+	GetHandleVerifier [0x0101295C+2776588]
+	GetHandleVerifier [0x00E02280+612144]
+	(No symbol) [0x00D14F6C]
+	(No symbol) [0x00D111D8]
+	(No symbol) [0x00D112BB]
+	(No symbol) [0x00D04857]
+	BaseThreadInitThunk [0x758A7D59+25]
+	RtlInitializeExceptionChain [0x7722B74B+107]
+	RtlClearBits [0x7722B6CF+191]
+</msg>
 </errors>
 </robot>

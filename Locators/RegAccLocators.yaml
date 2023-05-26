@@ -9,3 +9,9 @@ txt_password: "//input[@id='userPassword']"
 txt_Confirmpassword: "//input[@id='confirmPassword']"
 Chech_box: "//input[@type='checkbox']"
 btn_Login: "//input[@id='login']"
+
+
+#Datadriven
+usernameTXT: //input[@id='user-name']
+passwordTXT:  //input[@id='password']
+loginbtn:  //input[@id='login-button']

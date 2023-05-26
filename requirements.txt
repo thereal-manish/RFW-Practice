@@ -1,7 +1,14 @@
 robotframework
-robotframework-seleniumlibrary
 robotframework-faker
+robotframework-seleniumlibrary
 selenium
 PyYaml
-robotframework-pabot
-Screenshot
+pillow
+robotframework-excellib
+robotframework-excelutil
+robotframework-excellentlibrary
+robotframework-datadriver
+robotframework-datadriver[XLS]
+Openpyxl
+rpaframework
+robotframework-openpyxl
