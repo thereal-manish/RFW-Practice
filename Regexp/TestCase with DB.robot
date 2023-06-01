@@ -73,6 +73,7 @@ Insert data into EmployeeDetails table
 
 get regexps and compare
     [Documentation]    This keyword checks regexps for all the database
+    Execute Sql String    update ${tableName} SET ${result_colname}='Pass' where ${columnList}[0]!='${emp_regexp}'
     FOR    ${curr_column}    IN    @{columnList}    
         @{regexp_row}    Query    select ${curr_column} from ${tableName} limit 1
         ${regexp_txt}    String.Strip String    @{regexp_row}[0]
