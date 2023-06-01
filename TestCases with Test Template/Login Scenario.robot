@@ -7,8 +7,8 @@ Library            ExcelLibrary
 Variables          ../Test Data/Login_with_excel.yaml
 Variables          ../Locators/LoginPage.yaml
 Variables          ../Config/Config.yaml
-Suite Setup        Set Selenium Implicit Wait    3s
-suite Setup         Open Browser    ${url}    ${browser}
+#Suite Setup        Set Selenium Implicit Wait    3s
+Suite Setup         Open Browser    ${url}    ${browser}
 # Test Teardown      Close Browser
 Test Template      Login Template
 

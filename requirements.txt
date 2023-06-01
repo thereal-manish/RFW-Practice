@@ -7,3 +7,6 @@ robotframework-excellentlibrary
 robotframework-excellib
 openpyxl
 robotframework-datadriver
+robotframework-databaselibrary
+robotframework-excelutil
+pymysql

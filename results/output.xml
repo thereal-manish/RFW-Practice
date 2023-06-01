@@ -1,0 +1,2685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230601 23:07:37.744" rpa="false" schemaversion="3">
+<suite id="s1" name="RFW-Practice" source="C:\Users\mani3359\Downloads\RFW-Practice">
+<suite id="s1-s1" name="Regexp" source="C:\Users\mani3359\Downloads\RFW-Practice\Regexp">
+<suite id="s1-s1-s1" name="TestCase with DB" source="C:\Users\mani3359\Downloads\RFW-Practice\Regexp\TestCase with DB.robot">
+<kw name="Connect To Database" library="DatabaseLibrary" type="SETUP">
+<arg>pymysql</arg>
+<arg>${DBName}</arg>
+<arg>${DBUser}</arg>
+<arg>${DBPass}</arg>
+<arg>${DBHost}</arg>
+<arg>${DBPort}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<msg timestamp="20230601 23:07:38.201" level="INFO">Connecting using : pymysql.connect(db=regexp, user=root, passwd=root, host=localhost, port=4306, charset=None) </msg>
+<status status="PASS" starttime="20230601 23:07:38.201" endtime="20230601 23:07:38.217"/>
+</kw>
+<test id="s1-s1-s1-t1" name="get regexps and compare" line="74">
+<for flavor="IN">
+<var>${curr_column}</var>
+<value>@{columnList}</value>
+<iter>
+<var name="${curr_column}">employee_Id</var>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{regexp_row}</var>
+<arg>select ${curr_column} from ${tableName} limit 1</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.225" level="INFO">Executing : Query  |  select employee_Id from employeeDetails limit 1 </msg>
+<msg timestamp="20230601 23:07:38.233" level="INFO">@{regexp_row} = [ ('\\d{1,6}',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.225" endtime="20230601 23:07:38.233"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${regexp_txt}</var>
+<arg>@{regexp_row}[0]</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.235" level="INFO">${regexp_txt} = \d{1,6}</msg>
+<status status="PASS" starttime="20230601 23:07:38.235" endtime="20230601 23:07:38.235"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${regexp_txt_with_escape}</var>
+<arg>${regexp_txt}</arg>
+<arg>search_for=\\</arg>
+<arg>replace_with=\\\</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20230601 23:07:38.235" level="INFO">${regexp_txt_with_escape} = \d{1,6}</msg>
+<status status="PASS" starttime="20230601 23:07:38.235" endtime="20230601 23:07:38.235"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${get_row}</var>
+<arg>select ${curr_column} from ${tableName} where ${curr_column} != '${regexp_txt_with_escape}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.243" level="INFO">${get_row} = select employee_Id from employeeDetails where employee_Id != '\d{1,6}'</msg>
+<status status="PASS" starttime="20230601 23:07:38.235" endtime="20230601 23:07:38.243"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{curr_row}</var>
+<arg>${get_row}</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.243" level="INFO">Executing : Query  |  select employee_Id from employeeDetails where employee_Id != '\d{1,6}' </msg>
+<msg timestamp="20230601 23:07:38.243" level="INFO">@{curr_row} = [ ('\\d{1,6}',) | ('1',) | ('2',) | ('3',) | ('4',) | ('5ldsjl',) | ('6',) | ('7',) | ('8',) | ('9',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.243" endtime="20230601 23:07:38.243"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{curr_row}</value>
+<iter>
+<var name="${row}">('\\d{1,6}',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.251" level="INFO">${curr_cell} = \d{1,6}</msg>
+<status status="PASS" starttime="20230601 23:07:38.251" endtime="20230601 23:07:38.251"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.251" endtime="20230601 23:07:38.259"/>
+</kw>
+<msg timestamp="20230601 23:07:38.259" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.251" endtime="20230601 23:07:38.259"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.259"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.259"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.259"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.259"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.259"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.267"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.267"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.259" endtime="20230601 23:07:38.267"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.251" endtime="20230601 23:07:38.267"/>
+</iter>
+<iter>
+<var name="${row}">('1',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.267" level="INFO">${curr_cell} = 1</msg>
+<status status="PASS" starttime="20230601 23:07:38.267" endtime="20230601 23:07:38.267"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.267" endtime="20230601 23:07:38.275"/>
+</kw>
+<msg timestamp="20230601 23:07:38.275" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.267" endtime="20230601 23:07:38.275"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.275"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.267" endtime="20230601 23:07:38.275"/>
+</iter>
+<iter>
+<var name="${row}">('2',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.283" level="INFO">${curr_cell} = 2</msg>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<msg timestamp="20230601 23:07:38.283" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.275" endtime="20230601 23:07:38.283"/>
+</iter>
+<iter>
+<var name="${row}">('3',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.283" level="INFO">${curr_cell} = 3</msg>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.283"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.299" endtime="20230601 23:07:38.299"/>
+</kw>
+<msg timestamp="20230601 23:07:38.302" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.302"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.302"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.302"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.302"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.302"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.302"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.302"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.309"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.302" endtime="20230601 23:07:38.309"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.283" endtime="20230601 23:07:38.309"/>
+</iter>
+<iter>
+<var name="${row}">('4',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.309" level="INFO">${curr_cell} = 4</msg>
+<status status="PASS" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<msg timestamp="20230601 23:07:38.309" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.309"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.317"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.309" endtime="20230601 23:07:38.317"/>
+</iter>
+<iter>
+<var name="${row}">('5ldsjl',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.317" level="INFO">${curr_cell} = 5ldsjl</msg>
+<status status="PASS" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.317"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.317"/>
+</kw>
+<msg timestamp="20230601 23:07:38.317" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.317"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.317"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.317"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.325"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.325" endtime="20230601 23:07:38.325"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.325"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.325"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.325"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.325"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.317" endtime="20230601 23:07:38.325"/>
+</iter>
+<iter>
+<var name="${row}">('6',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.325" level="INFO">${curr_cell} = 6</msg>
+<status status="PASS" starttime="20230601 23:07:38.325" endtime="20230601 23:07:38.325"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.325" endtime="20230601 23:07:38.333"/>
+</kw>
+<msg timestamp="20230601 23:07:38.333" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.325" endtime="20230601 23:07:38.333"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.333"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.333"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.333"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.333"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.333"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.341"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.341"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.333" endtime="20230601 23:07:38.341"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.325" endtime="20230601 23:07:38.341"/>
+</iter>
+<iter>
+<var name="${row}">('7',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.341" level="INFO">${curr_cell} = 7</msg>
+<status status="PASS" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.341"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.341"/>
+</kw>
+<msg timestamp="20230601 23:07:38.341" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.341"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.341"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.349"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.349"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.349"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.341" endtime="20230601 23:07:38.349"/>
+</iter>
+<iter>
+<var name="${row}">('8',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.349" level="INFO">${curr_cell} = 8</msg>
+<status status="PASS" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</kw>
+<msg timestamp="20230601 23:07:38.349" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.349"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.357"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.357"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.349" endtime="20230601 23:07:38.357"/>
+</iter>
+<iter>
+<var name="${row}">('9',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.357" level="INFO">${curr_cell} = 9</msg>
+<status status="PASS" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<msg timestamp="20230601 23:07:38.357" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.357"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.365" endtime="20230601 23:07:38.365"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.365" endtime="20230601 23:07:38.368"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.368" endtime="20230601 23:07:38.368"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.365" endtime="20230601 23:07:38.368"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.365" endtime="20230601 23:07:38.368"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.368"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.368"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.357" endtime="20230601 23:07:38.368"/>
+</iter>
+<status status="PASS" starttime="20230601 23:07:38.243" endtime="20230601 23:07:38.368"/>
+</for>
+<status status="PASS" starttime="20230601 23:07:38.225" endtime="20230601 23:07:38.368"/>
+</iter>
+<iter>
+<var name="${curr_column}">employee_Name</var>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{regexp_row}</var>
+<arg>select ${curr_column} from ${tableName} limit 1</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.368" level="INFO">Executing : Query  |  select employee_Name from employeeDetails limit 1 </msg>
+<msg timestamp="20230601 23:07:38.368" level="INFO">@{regexp_row} = [ ('^[A-Za-z ]{5,20}$',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.368" endtime="20230601 23:07:38.368"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${regexp_txt}</var>
+<arg>@{regexp_row}[0]</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.368" level="INFO">${regexp_txt} = ^[A-Za-z ]{5,20}$</msg>
+<status status="PASS" starttime="20230601 23:07:38.368" endtime="20230601 23:07:38.368"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${regexp_txt_with_escape}</var>
+<arg>${regexp_txt}</arg>
+<arg>search_for=\\</arg>
+<arg>replace_with=\\\</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20230601 23:07:38.368" level="INFO">${regexp_txt_with_escape} = ^[A-Za-z ]{5,20}$</msg>
+<status status="PASS" starttime="20230601 23:07:38.368" endtime="20230601 23:07:38.368"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${get_row}</var>
+<arg>select ${curr_column} from ${tableName} where ${curr_column} != '${regexp_txt_with_escape}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.376" level="INFO">${get_row} = select employee_Name from employeeDetails where employee_Name != '^[A-Za-z ]{5,20}$'</msg>
+<status status="PASS" starttime="20230601 23:07:38.368" endtime="20230601 23:07:38.376"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{curr_row}</var>
+<arg>${get_row}</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.376" level="INFO">Executing : Query  |  select employee_Name from employeeDetails where employee_Name != '^[A-Za-z ]{5,20}$' </msg>
+<msg timestamp="20230601 23:07:38.376" level="INFO">@{curr_row} = [ ('Manish',) | ('Manish$%^&amp;*(',) | ('Manish',) | ('Manish',) | ('Manish',) | ('Manish',) | ('Manish',) | ('Manish',) | ('Manish',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.376" endtime="20230601 23:07:38.376"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{curr_row}</value>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.376" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.376" endtime="20230601 23:07:38.376"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</kw>
+<msg timestamp="20230601 23:07:38.384" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.384"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.392"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.392"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.384" endtime="20230601 23:07:38.392"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.376" endtime="20230601 23:07:38.392"/>
+</iter>
+<iter>
+<var name="${row}">('Manish$%^&amp;*(',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.392" level="INFO">${curr_cell} = Manish$%^&amp;*(</msg>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.392"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20230601 23:07:38.392" level="FAIL">'Manish$%^&amp;*(' does not match '^[A-Za-z ]{5,20}$'</msg>
+<status status="FAIL" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.392"/>
+</kw>
+<msg timestamp="20230601 23:07:38.392" level="INFO">${regexp_match} = False</msg>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.392"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.392" level="INFO">${result_sql_string} = Select validation_Results from employeeDetails where employee_Name='Manish$%^&amp;*(' AND validation_Results='Fail'</msg>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.392"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.392" level="INFO">Executing : Execute SQL String  |  Select validation_Results from employeeDetails where employee_Name='Manish$%^&amp;*(' AND validation_Results='Fail' </msg>
+<msg timestamp="20230601 23:07:38.401" level="INFO">${result_curr_cell} = None</msg>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.401"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.401" level="INFO">${result_query} = update employeeDetails SET validation_Results='Fail' where employee_Name='Manish$%^&amp;*('</msg>
+<status status="PASS" starttime="20230601 23:07:38.401" endtime="20230601 23:07:38.401"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.401" level="INFO">Executing : Execute SQL String  |  update employeeDetails SET validation_Results='Fail' where employee_Name='Manish$%^&amp;*(' </msg>
+<status status="PASS" starttime="20230601 23:07:38.401" endtime="20230601 23:07:38.401"/>
+</kw>
+<status status="PASS" starttime="20230601 23:07:38.401" endtime="20230601 23:07:38.401"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.401" endtime="20230601 23:07:38.401"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.401"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.409"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.392" endtime="20230601 23:07:38.409"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.409" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<msg timestamp="20230601 23:07:38.409" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.409"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.417"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.417"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.417"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.417"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.409" endtime="20230601 23:07:38.417"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.417" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.417"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.417"/>
+</kw>
+<msg timestamp="20230601 23:07:38.417" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.417"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.417"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.417"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.417"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.425"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.425"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.425"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.425"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.425"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.417" endtime="20230601 23:07:38.425"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.425" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.425"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.425"/>
+</kw>
+<msg timestamp="20230601 23:07:38.425" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.425"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.425"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.425"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.434"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.434"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.434"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.434"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.434"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.434"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.425" endtime="20230601 23:07:38.434"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.434" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.434"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.434"/>
+</kw>
+<msg timestamp="20230601 23:07:38.434" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.434"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.434"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.442"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.442"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.442"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.434" endtime="20230601 23:07:38.442"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.442" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</kw>
+<msg timestamp="20230601 23:07:38.442" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.442"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.450"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.450"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.450"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.450"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.450"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.450"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.450"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.450"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.442" endtime="20230601 23:07:38.450"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.450" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.458"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.458"/>
+</kw>
+<msg timestamp="20230601 23:07:38.458" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.458"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.458"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.458"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.458"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.466"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.466"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.466"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.466"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.458" endtime="20230601 23:07:38.466"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.450" endtime="20230601 23:07:38.466"/>
+</iter>
+<iter>
+<var name="${row}">('Manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.466" level="INFO">${curr_cell} = Manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.466" endtime="20230601 23:07:38.466"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.466" endtime="20230601 23:07:38.466"/>
+</kw>
+<msg timestamp="20230601 23:07:38.466" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.466" endtime="20230601 23:07:38.466"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.474" endtime="20230601 23:07:38.474"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.474" endtime="20230601 23:07:38.474"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.474" endtime="20230601 23:07:38.474"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.474" endtime="20230601 23:07:38.474"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.474" endtime="20230601 23:07:38.474"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.474" endtime="20230601 23:07:38.474"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.466" endtime="20230601 23:07:38.474"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.466" endtime="20230601 23:07:38.474"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.466" endtime="20230601 23:07:38.474"/>
+</iter>
+<status status="PASS" starttime="20230601 23:07:38.376" endtime="20230601 23:07:38.474"/>
+</for>
+<status status="PASS" starttime="20230601 23:07:38.368" endtime="20230601 23:07:38.474"/>
+</iter>
+<iter>
+<var name="${curr_column}">email</var>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{regexp_row}</var>
+<arg>select ${curr_column} from ${tableName} limit 1</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.484" level="INFO">Executing : Query  |  select email from employeeDetails limit 1 </msg>
+<msg timestamp="20230601 23:07:38.484" level="INFO">@{regexp_row} = [ ('^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.482" endtime="20230601 23:07:38.484"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${regexp_txt}</var>
+<arg>@{regexp_row}[0]</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.484" level="INFO">${regexp_txt} = ^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</msg>
+<status status="PASS" starttime="20230601 23:07:38.484" endtime="20230601 23:07:38.484"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${regexp_txt_with_escape}</var>
+<arg>${regexp_txt}</arg>
+<arg>search_for=\\</arg>
+<arg>replace_with=\\\</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20230601 23:07:38.492" level="INFO">${regexp_txt_with_escape} = ^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</msg>
+<status status="PASS" starttime="20230601 23:07:38.484" endtime="20230601 23:07:38.492"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${get_row}</var>
+<arg>select ${curr_column} from ${tableName} where ${curr_column} != '${regexp_txt_with_escape}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.492" level="INFO">${get_row} = select email from employeeDetails where email != '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</msg>
+<status status="PASS" starttime="20230601 23:07:38.492" endtime="20230601 23:07:38.492"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{curr_row}</var>
+<arg>${get_row}</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.492" level="INFO">Executing : Query  |  select email from employeeDetails where email != '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$' </msg>
+<msg timestamp="20230601 23:07:38.492" level="INFO">@{curr_row} = [ ('^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$',) | ('manish@mail.com',) | ('manish@mail.com',) | ('manish',) | ('manish@mail.com',) | ('manish@mail.com',) | ('manishskdfhkmail.com',) | ('manish@...</msg>
+<status status="PASS" starttime="20230601 23:07:38.492" endtime="20230601 23:07:38.492"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{curr_row}</value>
+<iter>
+<var name="${row}">('^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.500" level="INFO">${curr_cell} = ^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</msg>
+<status status="PASS" starttime="20230601 23:07:38.492" endtime="20230601 23:07:38.500"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20230601 23:07:38.500" level="FAIL">'^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$' does not match '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</msg>
+<status status="FAIL" starttime="20230601 23:07:38.500" endtime="20230601 23:07:38.500"/>
+</kw>
+<msg timestamp="20230601 23:07:38.500" level="INFO">${regexp_match} = False</msg>
+<status status="PASS" starttime="20230601 23:07:38.500" endtime="20230601 23:07:38.500"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.508" level="INFO">${result_sql_string} = Select validation_Results from employeeDetails where email='^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$' AND validation_Results='Fail'</msg>
+<status status="PASS" starttime="20230601 23:07:38.508" endtime="20230601 23:07:38.508"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.508" level="INFO">Executing : Execute SQL String  |  Select validation_Results from employeeDetails where email='^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$' AND validation_Results='Fail' </msg>
+<msg timestamp="20230601 23:07:38.508" level="INFO">${result_curr_cell} = None</msg>
+<status status="PASS" starttime="20230601 23:07:38.508" endtime="20230601 23:07:38.516"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.520" level="INFO">${result_query} = update employeeDetails SET validation_Results='Fail' where email='^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</msg>
+<status status="PASS" starttime="20230601 23:07:38.517" endtime="20230601 23:07:38.520"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.520" level="INFO">Executing : Execute SQL String  |  update employeeDetails SET validation_Results='Fail' where email='^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$' </msg>
+<status status="PASS" starttime="20230601 23:07:38.520" endtime="20230601 23:07:38.520"/>
+</kw>
+<status status="PASS" starttime="20230601 23:07:38.516" endtime="20230601 23:07:38.520"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.516" endtime="20230601 23:07:38.520"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.508" endtime="20230601 23:07:38.520"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.508" endtime="20230601 23:07:38.520"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.492" endtime="20230601 23:07:38.520"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.520" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.520" endtime="20230601 23:07:38.520"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.520" endtime="20230601 23:07:38.528"/>
+</kw>
+<msg timestamp="20230601 23:07:38.528" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.520" endtime="20230601 23:07:38.528"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.528"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.520" endtime="20230601 23:07:38.528"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.536" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<msg timestamp="20230601 23:07:38.536" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.536"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.528" endtime="20230601 23:07:38.536"/>
+</iter>
+<iter>
+<var name="${row}">('manish',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.544" level="INFO">${curr_cell} = manish</msg>
+<status status="PASS" starttime="20230601 23:07:38.544" endtime="20230601 23:07:38.544"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20230601 23:07:38.544" level="FAIL">'manish' does not match '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</msg>
+<status status="FAIL" starttime="20230601 23:07:38.544" endtime="20230601 23:07:38.544"/>
+</kw>
+<msg timestamp="20230601 23:07:38.544" level="INFO">${regexp_match} = False</msg>
+<status status="PASS" starttime="20230601 23:07:38.544" endtime="20230601 23:07:38.544"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.544" level="INFO">${result_sql_string} = Select validation_Results from employeeDetails where email='manish' AND validation_Results='Fail'</msg>
+<status status="PASS" starttime="20230601 23:07:38.544" endtime="20230601 23:07:38.552"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.552" level="INFO">Executing : Execute SQL String  |  Select validation_Results from employeeDetails where email='manish' AND validation_Results='Fail' </msg>
+<msg timestamp="20230601 23:07:38.552" level="INFO">${result_curr_cell} = None</msg>
+<status status="PASS" starttime="20230601 23:07:38.552" endtime="20230601 23:07:38.552"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.552" level="INFO">${result_query} = update employeeDetails SET validation_Results='Fail' where email='manish'</msg>
+<status status="PASS" starttime="20230601 23:07:38.552" endtime="20230601 23:07:38.552"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.552" level="INFO">Executing : Execute SQL String  |  update employeeDetails SET validation_Results='Fail' where email='manish' </msg>
+<status status="PASS" starttime="20230601 23:07:38.552" endtime="20230601 23:07:38.560"/>
+</kw>
+<status status="PASS" starttime="20230601 23:07:38.552" endtime="20230601 23:07:38.560"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.552" endtime="20230601 23:07:38.560"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.544" endtime="20230601 23:07:38.560"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.544" endtime="20230601 23:07:38.560"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.536" endtime="20230601 23:07:38.560"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.560" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.560" endtime="20230601 23:07:38.560"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.560" endtime="20230601 23:07:38.560"/>
+</kw>
+<msg timestamp="20230601 23:07:38.560" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.560" endtime="20230601 23:07:38.560"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.560" endtime="20230601 23:07:38.568"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.560" endtime="20230601 23:07:38.568"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.560" endtime="20230601 23:07:38.568"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.568" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<msg timestamp="20230601 23:07:38.568" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.568"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.576"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.576"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.568" endtime="20230601 23:07:38.576"/>
+</iter>
+<iter>
+<var name="${row}">('manishskdfhkmail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.576" level="INFO">${curr_cell} = manishskdfhkmail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20230601 23:07:38.576" level="FAIL">'manishskdfhkmail.com' does not match '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</msg>
+<status status="FAIL" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.576"/>
+</kw>
+<msg timestamp="20230601 23:07:38.584" level="INFO">${regexp_match} = False</msg>
+<status status="PASS" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.584"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.584" level="INFO">${result_sql_string} = Select validation_Results from employeeDetails where email='manishskdfhkmail.com' AND validation_Results='Fail'</msg>
+<status status="PASS" starttime="20230601 23:07:38.584" endtime="20230601 23:07:38.584"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.584" level="INFO">Executing : Execute SQL String  |  Select validation_Results from employeeDetails where email='manishskdfhkmail.com' AND validation_Results='Fail' </msg>
+<msg timestamp="20230601 23:07:38.592" level="INFO">${result_curr_cell} = None</msg>
+<status status="PASS" starttime="20230601 23:07:38.584" endtime="20230601 23:07:38.592"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.592" level="INFO">${result_query} = update employeeDetails SET validation_Results='Fail' where email='manishskdfhkmail.com'</msg>
+<status status="PASS" starttime="20230601 23:07:38.592" endtime="20230601 23:07:38.592"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.592" level="INFO">Executing : Execute SQL String  |  update employeeDetails SET validation_Results='Fail' where email='manishskdfhkmail.com' </msg>
+<status status="PASS" starttime="20230601 23:07:38.592" endtime="20230601 23:07:38.592"/>
+</kw>
+<status status="PASS" starttime="20230601 23:07:38.592" endtime="20230601 23:07:38.592"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.592" endtime="20230601 23:07:38.592"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.584" endtime="20230601 23:07:38.592"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.584" endtime="20230601 23:07:38.592"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.576" endtime="20230601 23:07:38.592"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.600" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.592" endtime="20230601 23:07:38.602"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</kw>
+<msg timestamp="20230601 23:07:38.602" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.602" endtime="20230601 23:07:38.602"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.592" endtime="20230601 23:07:38.602"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.610" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<msg timestamp="20230601 23:07:38.610" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.610"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.618"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.610" endtime="20230601 23:07:38.618"/>
+</iter>
+<iter>
+<var name="${row}">('manish@mail.com',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.618" level="INFO">${curr_cell} = manish@mail.com</msg>
+<status status="PASS" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.618"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.618"/>
+</kw>
+<msg timestamp="20230601 23:07:38.618" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.618"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.618"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.618"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.626"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.626"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.626"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.626"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.626"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.626"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.618" endtime="20230601 23:07:38.626"/>
+</iter>
+<status status="PASS" starttime="20230601 23:07:38.492" endtime="20230601 23:07:38.626"/>
+</for>
+<status status="PASS" starttime="20230601 23:07:38.482" endtime="20230601 23:07:38.626"/>
+</iter>
+<iter>
+<var name="${curr_column}">mobile_Number</var>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{regexp_row}</var>
+<arg>select ${curr_column} from ${tableName} limit 1</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.626" level="INFO">Executing : Query  |  select mobile_Number from employeeDetails limit 1 </msg>
+<msg timestamp="20230601 23:07:38.626" level="INFO">@{regexp_row} = [ ('^[0-9]{10}$',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.626"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${regexp_txt}</var>
+<arg>@{regexp_row}[0]</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.626" level="INFO">${regexp_txt} = ^[0-9]{10}$</msg>
+<status status="PASS" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.626"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${regexp_txt_with_escape}</var>
+<arg>${regexp_txt}</arg>
+<arg>search_for=\\</arg>
+<arg>replace_with=\\\</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20230601 23:07:38.626" level="INFO">${regexp_txt_with_escape} = ^[0-9]{10}$</msg>
+<status status="PASS" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.626"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${get_row}</var>
+<arg>select ${curr_column} from ${tableName} where ${curr_column} != '${regexp_txt_with_escape}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.634" level="INFO">${get_row} = select mobile_Number from employeeDetails where mobile_Number != '^[0-9]{10}$'</msg>
+<status status="PASS" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.634"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{curr_row}</var>
+<arg>${get_row}</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230601 23:07:38.634" level="INFO">Executing : Query  |  select mobile_Number from employeeDetails where mobile_Number != '^[0-9]{10}$' </msg>
+<msg timestamp="20230601 23:07:38.634" level="INFO">@{curr_row} = [ ('8098120434',) | ('8098120435',) | ('8098120436',) | ('8098120437',) | ('8098120438',) | ('8098120439',) | ('8098120440',) | ('812044',) | ('8098120442',) ]</msg>
+<status status="PASS" starttime="20230601 23:07:38.634" endtime="20230601 23:07:38.634"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{curr_row}</value>
+<iter>
+<var name="${row}">('8098120434',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.642" level="INFO">${curr_cell} = 8098120434</msg>
+<status status="PASS" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.642"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.642"/>
+</kw>
+<msg timestamp="20230601 23:07:38.642" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.642"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.642"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.642"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.650"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.650" endtime="20230601 23:07:38.650"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.650"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.650"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.650"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.650"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.642" endtime="20230601 23:07:38.650"/>
+</iter>
+<iter>
+<var name="${row}">('8098120435',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.654" level="INFO">${curr_cell} = 8098120435</msg>
+<status status="PASS" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.654"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.654"/>
+</kw>
+<msg timestamp="20230601 23:07:38.654" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.654"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.654"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.654"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.662"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.662" endtime="20230601 23:07:38.662"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.662"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.662"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.662"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.662"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.654" endtime="20230601 23:07:38.662"/>
+</iter>
+<iter>
+<var name="${row}">('8098120436',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.662" level="INFO">${curr_cell} = 8098120436</msg>
+<status status="PASS" starttime="20230601 23:07:38.662" endtime="20230601 23:07:38.662"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.662" endtime="20230601 23:07:38.662"/>
+</kw>
+<msg timestamp="20230601 23:07:38.662" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.662" endtime="20230601 23:07:38.670"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.662" endtime="20230601 23:07:38.670"/>
+</iter>
+<iter>
+<var name="${row}">('8098120437',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.670" level="INFO">${curr_cell} = 8098120437</msg>
+<status status="PASS" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.670"/>
+</kw>
+<msg timestamp="20230601 23:07:38.678" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.678"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.678"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.670" endtime="20230601 23:07:38.678"/>
+</iter>
+<iter>
+<var name="${row}">('8098120438',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.686" level="INFO">${curr_cell} = 8098120438</msg>
+<status status="PASS" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.686"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</kw>
+<msg timestamp="20230601 23:07:38.686" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.686"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.686" endtime="20230601 23:07:38.694"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.678" endtime="20230601 23:07:38.694"/>
+</iter>
+<iter>
+<var name="${row}">('8098120439',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.694" level="INFO">${curr_cell} = 8098120439</msg>
+<status status="PASS" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.694"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.694"/>
+</kw>
+<msg timestamp="20230601 23:07:38.694" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.694"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.694"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.694"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.694"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.702"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.702"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.702"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.702"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.702"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.694" endtime="20230601 23:07:38.702"/>
+</iter>
+<iter>
+<var name="${row}">('8098120440',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.702" level="INFO">${curr_cell} = 8098120440</msg>
+<status status="PASS" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.702"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.702"/>
+</kw>
+<msg timestamp="20230601 23:07:38.702" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.702"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.702"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.702"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.702"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.710"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.710"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.710"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.710"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.710"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.702" endtime="20230601 23:07:38.710"/>
+</iter>
+<iter>
+<var name="${row}">('812044',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.710" level="INFO">${curr_cell} = 812044</msg>
+<status status="PASS" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.710"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20230601 23:07:38.710" level="FAIL">'812044' does not match '^[0-9]{10}$'</msg>
+<status status="FAIL" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.710"/>
+</kw>
+<msg timestamp="20230601 23:07:38.710" level="INFO">${regexp_match} = False</msg>
+<status status="PASS" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.710"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.718" level="INFO">${result_sql_string} = Select validation_Results from employeeDetails where mobile_Number='812044' AND validation_Results='Fail'</msg>
+<status status="PASS" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.718"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.718" level="INFO">Executing : Execute SQL String  |  Select validation_Results from employeeDetails where mobile_Number='812044' AND validation_Results='Fail' </msg>
+<msg timestamp="20230601 23:07:38.718" level="INFO">${result_curr_cell} = None</msg>
+<status status="PASS" starttime="20230601 23:07:38.718" endtime="20230601 23:07:38.718"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230601 23:07:38.718" level="INFO">${result_query} = update employeeDetails SET validation_Results='Fail' where mobile_Number='812044'</msg>
+<status status="PASS" starttime="20230601 23:07:38.718" endtime="20230601 23:07:38.726"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230601 23:07:38.726" level="INFO">Executing : Execute SQL String  |  update employeeDetails SET validation_Results='Fail' where mobile_Number='812044' </msg>
+<status status="PASS" starttime="20230601 23:07:38.726" endtime="20230601 23:07:38.726"/>
+</kw>
+<status status="PASS" starttime="20230601 23:07:38.718" endtime="20230601 23:07:38.726"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.718" endtime="20230601 23:07:38.726"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.726"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.734"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.710" endtime="20230601 23:07:38.734"/>
+</iter>
+<iter>
+<var name="${row}">('8098120442',)</var>
+<kw name="Strip String" library="String">
+<var>${curr_cell}</var>
+<arg>@{row}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20230601 23:07:38.734" level="INFO">${curr_cell} = 8098120442</msg>
+<status status="PASS" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.734"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${regexp_match}</var>
+<arg>should match regexp</arg>
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${curr_cell}</arg>
+<arg>${regexp_txt_with_escape}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.734"/>
+</kw>
+<msg timestamp="20230601 23:07:38.734" level="INFO">${regexp_match} = True</msg>
+<status status="PASS" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.734"/>
+</kw>
+<if>
+<branch type="IF" condition="'${regexp_match}' == 'False'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_sql_string}</var>
+<arg>Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.734"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result_curr_cell}</var>
+<arg>${result_sql_string}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.734"/>
+</kw>
+<if>
+<branch type="IF" condition="'${result_curr_cell}'=='${NULL}'">
+<kw name="Set Variable" library="BuiltIn">
+<var>${result_query}</var>
+<arg>update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.742" endtime="20230601 23:07:38.742"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${result_query}</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<status status="NOT RUN" starttime="20230601 23:07:38.742" endtime="20230601 23:07:38.742"/>
+</kw>
+<status status="NOT RUN" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.742"/>
+</branch>
+<status status="NOT RUN" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.742"/>
+</if>
+<status status="NOT RUN" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.742"/>
+</branch>
+<status status="PASS" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.742"/>
+</if>
+<status status="PASS" starttime="20230601 23:07:38.734" endtime="20230601 23:07:38.742"/>
+</iter>
+<status status="PASS" starttime="20230601 23:07:38.634" endtime="20230601 23:07:38.742"/>
+</for>
+<status status="PASS" starttime="20230601 23:07:38.626" endtime="20230601 23:07:38.742"/>
+</iter>
+<status status="PASS" starttime="20230601 23:07:38.225" endtime="20230601 23:07:38.742"/>
+</for>
+<doc>This keyword checks regexps for all the database</doc>
+<status status="PASS" starttime="20230601 23:07:38.217" endtime="20230601 23:07:38.742"/>
+</test>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20230601 23:07:38.742" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20230601 23:07:38.742" endtime="20230601 23:07:38.750"/>
+</kw>
+<doc>This file has to verify the format of each data cell</doc>
+<status status="PASS" starttime="20230601 23:07:37.809" endtime="20230601 23:07:38.751"/>
+</suite>
+<status status="PASS" starttime="20230601 23:07:37.809" endtime="20230601 23:07:38.751"/>
+</suite>
+<status status="PASS" starttime="20230601 23:07:37.752" endtime="20230601 23:07:38.759"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Regexp">RFW-Practice.Regexp</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="TestCase with DB">RFW-Practice.Regexp.TestCase with DB</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
