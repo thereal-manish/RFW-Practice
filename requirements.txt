@@ -5,3 +5,5 @@ PyYAML
 robotframework-autoitlibrary
 robotframework-excellentlibrary
 robotframework-excellib
+openpyxl
+robotframework-datadriver
