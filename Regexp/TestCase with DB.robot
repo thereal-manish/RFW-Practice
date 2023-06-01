@@ -87,8 +87,6 @@ get regexps and compare
             FOR  ${row}  IN  @{curr_row}
                 ${curr_cell}    Strip String    @{row}
                 # Get Regexp Matches    ${curr_cell}    ${regexp_txt}
-                
-                
 
                 ${regexp_match}    Run Keyword And Return Status     should match regexp    ${curr_cell}    ${regexp_txt_with_escape}
                 IF  '${regexp_match}' == 'False'
