@@ -15,7 +15,7 @@ Verify format of data from Each cell
     Log    ${rowCount}
     ${colCount}    Get Column Count    EmployeeDetails 
     Log    ${colCount}  
- 
+
     FOR  ${rowIndex}  IN RANGE  2    ${rowCount}+1
 
         FOR  ${colIndex}  IN RANGE  1    ${colCount}
