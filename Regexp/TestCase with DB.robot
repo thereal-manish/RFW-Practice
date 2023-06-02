@@ -19,10 +19,10 @@ ${DBPort}         4306
 ${DBUser}         root
 
 #data
-${empID}          0
+${empID}          999701
 ${empName}        Manish
 ${email}          manish@mail.com
-${mobileNo}       8098120433 
+${mobileNo}       9999999801 
 
 #regexp
 ${emp_regexp}     \\\\d{1,6}
@@ -65,7 +65,7 @@ Insert regexps
 
 Insert data into EmployeeDetails table
     [Documentation]  This step inserts data into database table
-    FOR  ${INDEX}  IN RANGE    1    10
+    FOR  ${INDEX}  IN RANGE    1    1000
         ${empID}    Evaluate    ${empID}+1
         ${mobileNo}    Evaluate    ${mobileNo}+1
         Execute SQL String    INSERT INTO ${tableName} (${empID_colname},${empName_colname},${email_colname},${mobile_colname}) values ('${empID}','${empName}','${email}','${mobileNo}')    
@@ -85,22 +85,22 @@ get regexps and compare
         ${get_row}    Set Variable    select ${curr_column} from ${tableName} where ${curr_column} != '${regexp_txt_with_escape}'
         @{curr_row}    Query    ${get_row} 
             
-            FOR  ${row}  IN  @{curr_row}
-                ${curr_cell}    Strip String    @{row}
-                # Get Regexp Matches    ${curr_cell}    ${regexp_txt}
+        FOR  ${row}  IN  @{curr_row}
+            ${curr_cell}    Strip String    @{row}
+            # Get Regexp Matches    ${curr_cell}    ${regexp_txt}
 
-                ${regexp_match}    Run Keyword And Return Status     should match regexp    ${curr_cell}    ${regexp_txt_with_escape}
-                IF  '${regexp_match}' == 'False'
-                    ${result_sql_string}    Set Variable    Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'
-                    ${result_curr_cell}    Execute Sql String    ${result_sql_string}
-                    IF  '${result_curr_cell}'=='${NULL}'
-                        ${result_query}    Set Variable    update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'
-                        Execute Sql String    ${result_query}
-                    END                    
-                END
-                # Run Keyword If    ${regexp_match}
-                
+            ${regexp_match}    Run Keyword And Return Status     should match regexp    ${curr_cell}    ${regexp_txt_with_escape}
+            IF  '${regexp_match}' == 'False'
+                ${result_sql_string}    Set Variable    Select ${result_colname} from ${tableName} where ${curr_column}='${curr_cell}' AND ${result_colname}='Fail'
+                ${result_curr_cell}    Execute Sql String    ${result_sql_string}
+                IF  '${result_curr_cell}'=='${NULL}'
+                    ${result_query}    Set Variable    update ${tableName} SET ${result_colname}='Fail' where ${curr_column}='${curr_cell}'
+                    Execute Sql String    ${result_query}
+                END                    
             END
-        
+            # Run Keyword If    ${regexp_match}
+            
+        END
+    
 
     END
