@@ -11,4 +11,6 @@ robotframework-datadriver
 robotframework-datadriver[XLS]
 Openpyxl
 rpaframework
-robotframework-openpyxl
+robotframework-databaselibrary
+pymysql
+AngularJSLibrary

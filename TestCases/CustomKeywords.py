@@ -1,14 +1,12 @@
-import xlwings as xw
-from robot.api.deco import keyword
+from openpyxl.styles import PatternFill
+from openpyxl import load_workbook
 
-@keyword("Set Cell Background Color")
-def set_cell_background_color(workbook, sheet_name, cell, color):
-    # Open the workbook and select the specified sheet
-    wb = xw.Book(workbook)
-    sheet = wb.sheets[sheet_name]
+def set_cell_color(file_path, sheet_name, cell, color):
+    workbook = load_workbook(file_path)
+    sheet = workbook[sheet_name]
 
-    # Set the background color of the specified cell
-    sheet.range(cell).color = color
+    fill = PatternFill(start_color=color, end_color=color, fill_type="solid")
+    sheet[cell].fill = fill
 
-    # Save the workbook
-    wb.save()
+    workbook.save(file_path)
+    workbook.close()

@@ -1,168 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230523 13:33:29.175" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.11.3 on win32)" generated="20230605 11:08:00.264" rpa="false" schemaversion="3">
 <suite id="s1" name="RFW-Practice" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice">
 <suite id="s1-s1" name="TestCases" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases">
-<suite id="s1-s1-s1" name="Regex2" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases\Regex2.robot">
-<test id="s1-s1-s1-t1" name="Verify format of data from Each cell" line="9">
-<kw name="Open Excel" library="ExcelUtil">
-<arg>EmployeeDatas.xlsx</arg>
-<doc>Open excel file
-Arguments:
-    | File             | Filename with fullpath to open and test upon        |</doc>
-<msg timestamp="20230523 13:33:29.434" level="FAIL">FileNotFoundError: [Errno 2] No such file or directory: 'EmployeeDatas.xlsx'</msg>
-<status status="FAIL" starttime="20230523 13:33:29.434" endtime="20230523 13:33:29.482"/>
+<suite id="s1-s1-s1" name="Database" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases\Database.robot">
+<kw name="Connect To Database" library="DatabaseLibrary" type="SETUP">
+<arg>pymysql</arg>
+<arg>regex</arg>
+<arg>root</arg>
+<arg>root</arg>
+<arg>localhost</arg>
+<arg>4306</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<msg timestamp="20230605 11:08:00.901" level="INFO">Connecting using : pymysql.connect(db=regex, user=root, passwd=root, host=localhost, port=4306, charset=None) </msg>
+<status status="PASS" starttime="20230605 11:08:00.899" endtime="20230605 11:08:00.913"/>
 </kw>
-<kw name="Get Row Count" library="ExcelUtil">
-<var>${rowCount}</var>
-<arg>EmployeeDetails</arg>
-<doc>Return the Row count of the given sheet
-Example:
-| Open Excel      |  C:\Data\ExcelTest.xlsx  |
-| Get Row count     |  Sheet1 |</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.482"/>
+<test id="s1-s1-s1-t1" name="Create Table" line="16">
+<kw name="Query" library="DatabaseLibrary">
+<arg>DROP TABLE regex.employeedatas</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230605 11:08:00.914" level="INFO">Executing : Query  |  DROP TABLE regex.employeedatas </msg>
+<status status="PASS" starttime="20230605 11:08:00.914" endtime="20230605 11:08:00.935"/>
 </kw>
-<kw name="Get Column Count" library="ExcelUtil">
-<var>${columnCount}</var>
-<arg>EmployeeDetails</arg>
-<doc>Return the column count of the given sheet
-Example:
-| Open Excel      |  C:\Data\ExcelTest.xlsx  |
-| Get Column count     |  Sheet1 |</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.482"/>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${table}</var>
+<arg>CREATE TABLE regex.employeedatas (empid varchar(255),ename varchar(255),email varchar(255),phoneNo varchar(255),result varchar(255));</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230605 11:08:00.936" level="INFO">Executing : Execute SQL String  |  CREATE TABLE regex.employeedatas (empid varchar(255),ename varchar(255),email varchar(255),phoneNo varchar(255),result varchar(255)); </msg>
+<msg timestamp="20230605 11:08:00.962" level="INFO">${table} = None</msg>
+<status status="PASS" starttime="20230605 11:08:00.936" endtime="20230605 11:08:00.962"/>
 </kw>
-<for flavor="IN RANGE">
-<var>${rowIndex}</var>
-<value>2</value>
-<value>${rowCount}+1</value>
+<kw name="Log" library="BuiltIn">
+<arg>${table}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230605 11:08:00.963" level="INFO">None</msg>
+<status status="PASS" starttime="20230605 11:08:00.963" endtime="20230605 11:08:00.963"/>
+</kw>
+<kw name="Execute Sql Script" library="DatabaseLibrary">
+<var>${insert}</var>
+<arg>C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/TestCases/datas.sql</arg>
+<doc>Executes the content of the `sqlScriptFileName` as SQL commands. Useful for setting the database to a known
+state before running your tests, or clearing out your test data after running each a test. Set optional input
+`sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230605 11:08:00.965" level="INFO">Executing : Execute SQL Script  |  C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/TestCases/datas.sql </msg>
+<msg timestamp="20230605 11:08:00.972" level="INFO">${insert} = None</msg>
+<status status="PASS" starttime="20230605 11:08:00.964" endtime="20230605 11:08:00.972"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>${row1value}</var>
+<arg>SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230605 11:08:00.973" level="INFO">Executing : Query  |  SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1; </msg>
+<msg timestamp="20230605 11:08:00.974" level="INFO">${row1value} = (('^[0-9]{6}$', '^[A-Za-z ]{5,20}$', '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$', '^[0-9]{10}$', 'RegexResult'),)</msg>
+<status status="PASS" starttime="20230605 11:08:00.973" endtime="20230605 11:08:00.975"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>${row2}</var>
+<arg>SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1 Offset 1;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230605 11:08:00.976" level="INFO">Executing : Query  |  SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1 Offset 1; </msg>
+<msg timestamp="20230605 11:08:00.977" level="INFO">${row2} = (('123456', 'Dhinesh', 'dhinesh2001@gmail.com', '6379829866', ''),)</msg>
+<status status="PASS" starttime="20230605 11:08:00.975" endtime="20230605 11:08:00.977"/>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{columnHeader}</var>
+<arg>SELECT COLUMN_NAME FROM information_schema.columns where table_schema='regex' AND table_name='employeedatas' AND column_name!='result'</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230605 11:08:00.978" level="INFO">Executing : Query  |  SELECT COLUMN_NAME FROM information_schema.columns where table_schema='regex' AND table_name='employeedatas' AND column_name!='result' </msg>
+<msg timestamp="20230605 11:08:00.979" level="INFO">@{columnHeader} = [ ('empid',) | ('ename',) | ('email',) | ('phoneNo',) ]</msg>
+<status status="PASS" starttime="20230605 11:08:00.977" endtime="20230605 11:08:00.980"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${index}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230605 11:08:00.981" level="INFO">${index} = 0</msg>
+<status status="PASS" starttime="20230605 11:08:00.980" endtime="20230605 11:08:00.981"/>
+</kw>
+<for flavor="IN">
+<var>${columnvalue}</var>
+<value>@{ColumnHeader}</value>
 <iter>
-<var name="${rowIndex}"/>
-<for flavor="IN RANGE">
-<var>${columnIndex}</var>
-<value>1</value>
-<value>${columnCount}</value>
+<var name="${columnvalue}">('empid',)</var>
+<kw name="Log" library="BuiltIn">
+<arg>${columnvalue}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230605 11:08:00.982" level="INFO">('empid',)</msg>
+<status status="PASS" starttime="20230605 11:08:00.982" endtime="20230605 11:08:00.982"/>
+</kw>
+<status status="PASS" starttime="20230605 11:08:00.981" endtime="20230605 11:08:00.982"/>
+</iter>
 <iter>
-<var name="${columnIndex}"/>
-<kw name="Run Keyword If" library="BuiltIn">
-<var>${regex}</var>
-<arg>${columnIndex} == 1</arg>
-<arg>Set Variable</arg>
-<arg>${Regex_empID}</arg>
-<arg>ELSE IF</arg>
-<arg>${columnIndex} == 2</arg>
-<arg>Set Variable</arg>
-<arg>${Regex_name}</arg>
-<arg>ELSE IF</arg>
-<arg>${columnIndex} == 3</arg>
-<arg>Set Variable</arg>
-<arg>${Regex_mail}</arg>
-<arg>ELSE IF</arg>
-<arg>${columnIndex} == 4</arg>
-<arg>Set Variable</arg>
-<arg>${Regex_mobile}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.482"/>
+<var name="${columnvalue}">('ename',)</var>
+<kw name="Log" library="BuiltIn">
+<arg>${columnvalue}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230605 11:08:00.983" level="INFO">('ename',)</msg>
+<status status="PASS" starttime="20230605 11:08:00.983" endtime="20230605 11:08:00.984"/>
 </kw>
-<kw name="Read Cell Data By Coordinates" library="ExcelUtil">
-<var>${Data}</var>
-<arg>EmployeeDetails</arg>
-<arg>${rowIndex}</arg>
-<arg>${columnIndex}</arg>
-<doc>Return the value of a cell by giving the sheetname, row value &amp; column value
-Example:
-| Read Cell Data By Coordinates     |  SheetName | Row Number |  Column Number  |
-| Read Cell Data By Coordinates     |  Sheet1 |  1  |  1  |
- To pass integer arguments
-| Read Cell Data By Coordinates     |  Sheet1 |  ${1}  |  ${3}  |</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.482"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${cellData}</var>
-<arg>${Data}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.482"/>
-</kw>
-<kw name="Get Regexp Matches" library="String">
-<var>${matches}</var>
-<arg>${cellData}</arg>
-<arg>${regex}</arg>
-<doc>Returns a list of all non-overlapping matches in the given string.</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.482"/>
-</kw>
-<if>
-<branch type="IF" condition="${matches} == []">
-<kw name="Write Data By Coordinates" library="ExcelUtil">
-<arg>EmployeeDetails</arg>
-<arg>${rowIndex}</arg>
-<arg>${columnCount}</arg>
-<arg>fail</arg>
-<doc>Write the value to a call using its co-ordinates
-Example:
-| Write Data By Coordinates    |  SheetName  | Row Number | Column Number |  Data  |
-| Write Data By Coordinates    | Sheet1 | 1 | 1 |  TestData  |</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.490" endtime="20230523 13:33:29.490"/>
-</kw>
-<kw name="Save Excel" library="ExcelUtil">
-<arg>EmployeeDatas.xlsx</arg>
-<doc>Save the excel file after writing the data.
-Example:
-Update existing file:</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.490" endtime="20230523 13:33:29.490"/>
-</kw>
-<break>
-<status status="NOT RUN" starttime="20230523 13:33:29.490" endtime="20230523 13:33:29.490"/>
-</break>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.490"/>
-</branch>
-<branch type="ELSE">
-<kw name="Write Data By Coordinates" library="ExcelUtil">
-<arg>EmployeeDetails</arg>
-<arg>${rowIndex}</arg>
-<arg>${columnCount}</arg>
-<arg>pass</arg>
-<doc>Write the value to a call using its co-ordinates
-Example:
-| Write Data By Coordinates    |  SheetName  | Row Number | Column Number |  Data  |
-| Write Data By Coordinates    | Sheet1 | 1 | 1 |  TestData  |</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.490" endtime="20230523 13:33:29.490"/>
-</kw>
-<kw name="Save Excel" library="ExcelUtil">
-<arg>EmployeeDatas.xlsx</arg>
-<doc>Save the excel file after writing the data.
-Example:
-Update existing file:</doc>
-<status status="NOT RUN" starttime="20230523 13:33:29.490" endtime="20230523 13:33:29.490"/>
-</kw>
-<status status="NOT RUN" starttime="20230523 13:33:29.490" endtime="20230523 13:33:29.490"/>
-</branch>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.490"/>
-</if>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.490"/>
+<status status="PASS" starttime="20230605 11:08:00.982" endtime="20230605 11:08:00.984"/>
 </iter>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.490"/>
-</for>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.490"/>
+<iter>
+<var name="${columnvalue}">('email',)</var>
+<kw name="Log" library="BuiltIn">
+<arg>${columnvalue}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230605 11:08:00.985" level="INFO">('email',)</msg>
+<status status="PASS" starttime="20230605 11:08:00.984" endtime="20230605 11:08:00.985"/>
+</kw>
+<status status="PASS" starttime="20230605 11:08:00.984" endtime="20230605 11:08:00.985"/>
 </iter>
-<status status="NOT RUN" starttime="20230523 13:33:29.482" endtime="20230523 13:33:29.490"/>
+<iter>
+<var name="${columnvalue}">('phoneNo',)</var>
+<kw name="Log" library="BuiltIn">
+<arg>${columnvalue}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230605 11:08:00.986" level="INFO">('phoneNo',)</msg>
+<status status="PASS" starttime="20230605 11:08:00.986" endtime="20230605 11:08:00.986"/>
+</kw>
+<status status="PASS" starttime="20230605 11:08:00.985" endtime="20230605 11:08:00.986"/>
+</iter>
+<status status="PASS" starttime="20230605 11:08:00.981" endtime="20230605 11:08:00.986"/>
 </for>
-<status status="FAIL" starttime="20230523 13:33:29.434" endtime="20230523 13:33:29.490">FileNotFoundError: [Errno 2] No such file or directory: 'EmployeeDatas.xlsx'</status>
+<status status="PASS" starttime="20230605 11:08:00.913" endtime="20230605 11:08:00.987"/>
 </test>
 <doc>This file has to verify the format of each data cell</doc>
-<status status="FAIL" starttime="20230523 13:33:29.215" endtime="20230523 13:33:29.490"/>
+<status status="PASS" starttime="20230605 11:08:00.295" endtime="20230605 11:08:00.989"/>
 </suite>
-<status status="FAIL" starttime="20230523 13:33:29.207" endtime="20230523 13:33:29.498"/>
+<status status="PASS" starttime="20230605 11:08:00.291" endtime="20230605 11:08:00.994"/>
 </suite>
-<status status="FAIL" starttime="20230523 13:33:29.183" endtime="20230523 13:33:29.498"/>
+<status status="PASS" starttime="20230605 11:08:00.269" endtime="20230605 11:08:00.997"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1" name="TestCases">RFW-Practice.TestCases</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Regex2">RFW-Practice.TestCases.Regex2</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="TestCases">RFW-Practice.TestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Database">RFW-Practice.TestCases.Database</stat>
 </suite>
 </statistics>
 <errors>
