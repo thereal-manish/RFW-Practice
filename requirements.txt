@@ -13,4 +13,6 @@ Openpyxl
 rpaframework
 robotframework-databaselibrary
 pymysql
-AngularJSLibrary
+# AngularJSLibrary
+robotframework-lint
+robotframework-gherkin

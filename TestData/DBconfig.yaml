@@ -1,0 +1,8 @@
+DB: "pymysql"
+DBname: "regex"
+DBusername: "root"
+DBpassword: "root"
+DBhost: "localhost"
+DBport: "4306"
+tablename: "employeedatas"
+result_colname: "result"

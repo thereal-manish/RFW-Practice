@@ -1,0 +1,4 @@
+createQuery:  "CREATE TABLE regex.employeedatas (empid varchar(255),ename varchar(255),email varchar(255),phoneNo varchar(255),result varchar(255));"
+InsertQuery:  "C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/TestCases/datas.sql"
+columnHeader_val: "SELECT COLUMN_NAME FROM information_schema.columns where table_schema='regex' AND table_name='employeedatas' AND column_name!='result'"
+Count: "SELECT COUNT(*) AS Row_Count FROM employeedatas;"
