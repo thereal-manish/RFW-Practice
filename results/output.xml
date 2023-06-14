@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230601 12:14:10.799" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230602 18:27:53.213" rpa="false" schemaversion="3">
 <suite id="s1" name="RFW-Practice" source="C:\Users\UdhayaParanthaman\Downloads\RFW-Practice">
 <suite id="s1-s1" name="TestCase" source="C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase">
 <suite id="s1-s1-s1" name="databaseFromDatas" source="C:\Users\UdhayaParanthaman\Downloads\RFW-Practice\TestCase\databaseFromDatas.robot">
@@ -12,38 +12,39 @@
 <arg>${DBPort}</arg>
 <doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
 connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
-<msg timestamp="20230601 12:14:11.043" level="INFO">Connecting using : pymysql.connect(db=demo, user=root, passwd=root, host=localhost, port=3306, charset=None) </msg>
-<status status="PASS" starttime="20230601 12:14:11.042" endtime="20230601 12:14:11.053"/>
+<msg timestamp="20230602 18:27:53.709" level="INFO">Connecting using : pymysql.connect(db=demo, user=root, passwd=root, host=localhost, port=3306, charset=None) </msg>
+<status status="PASS" starttime="20230602 18:27:53.709" endtime="20230602 18:27:53.727"/>
 </kw>
-<test id="s1-s1-s1-t1" name="Verify count row" line="34">
-<kw name="Execute Sql String" library="DatabaseLibrary">
-<var>${rowcount}</var>
-<arg>SELECT COUNT(empId) FROM EmployeeDetails</arg>
-<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
-True to run command without an explicit transaction commit or rollback.</doc>
-<msg timestamp="20230601 12:14:11.056" level="INFO">Executing : Execute SQL String  |  SELECT COUNT(empId) FROM EmployeeDetails </msg>
-<msg timestamp="20230601 12:14:11.058" level="INFO">${rowcount} = None</msg>
-<status status="PASS" starttime="20230601 12:14:11.055" endtime="20230601 12:14:11.058"/>
+<test id="s1-s1-s1-t1" name="Verify regexps and compare with Test Datas" line="63">
+<kw name="Query" library="DatabaseLibrary">
+<var>${data}</var>
+<arg>Select * from EmployeeDetails</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230602 18:27:53.727" level="INFO">Executing : Query  |  Select * from EmployeeDetails </msg>
+<msg timestamp="20230602 18:27:53.734" level="INFO">${data} = (('d{6}', '[A-Za-z ]{5,20}$', '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$', '^[0-9]{10}$', ''), ('12343', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('8122', 'udhaya', 'udhaya@gmail.com', '81675...</msg>
+<status status="PASS" starttime="20230602 18:27:53.727" endtime="20230602 18:27:53.734"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${rowcount}</arg>
+<arg>${data}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230601 12:14:11.060" level="INFO">None</msg>
-<status status="PASS" starttime="20230601 12:14:11.059" endtime="20230601 12:14:11.060"/>
+<msg timestamp="20230602 18:27:53.736" level="INFO">(('d{6}', '[A-Za-z ]{5,20}$', '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$', '^[0-9]{10}$', ''), ('12343', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('8122', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('1287', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('443656', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('765456', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('9876', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('123456', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('5678', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('23456', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('19876', 'udhaya', 'udhaya@gmail.com', '8167538', ''), ('657352', 'udhaya', 'udhaya@gmail.com', '8167538', ''))</msg>
+<status status="PASS" starttime="20230602 18:27:53.736" endtime="20230602 18:27:53.736"/>
 </kw>
-<status status="PASS" starttime="20230601 12:14:11.054" endtime="20230601 12:14:11.061"/>
+<status status="PASS" starttime="20230602 18:27:53.727" endtime="20230602 18:27:53.742"/>
 </test>
 <kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
 <doc>Disconnects from the database.</doc>
-<msg timestamp="20230601 12:14:11.063" level="INFO">Executing : Disconnect From Database</msg>
-<status status="PASS" starttime="20230601 12:14:11.063" endtime="20230601 12:14:11.064"/>
+<msg timestamp="20230602 18:27:53.742" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20230602 18:27:53.742" endtime="20230602 18:27:53.750"/>
 </kw>
 <doc>This file has to verify the format of each data cell</doc>
-<status status="PASS" starttime="20230601 12:14:10.829" endtime="20230601 12:14:11.065"/>
+<status status="PASS" starttime="20230602 18:27:53.284" endtime="20230602 18:27:53.750"/>
 </suite>
-<status status="PASS" starttime="20230601 12:14:10.824" endtime="20230601 12:14:11.068"/>
+<status status="PASS" starttime="20230602 18:27:53.275" endtime="20230602 18:27:53.750"/>
 </suite>
-<status status="PASS" starttime="20230601 12:14:10.803" endtime="20230601 12:14:11.071"/>
+<status status="PASS" starttime="20230602 18:27:53.219" endtime="20230602 18:27:53.758"/>
 </suite>
 <statistics>
 <total>

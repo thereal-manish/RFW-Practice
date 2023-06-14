@@ -12,3 +12,4 @@ robotframework-datadriver[xlsx]
 openpyxl
 robotframework-databaselibrary
 pymysql
+robotframework-lint
