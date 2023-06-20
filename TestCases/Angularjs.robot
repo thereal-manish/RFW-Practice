@@ -9,10 +9,10 @@ Variables    ../TestData/AngularVariables.yaml
 *** Test Cases ***
 Create new user
     [Documentation]    using Bdd Framework
-    Given user is on login page and Navigate to Register page
-    When User enters valid credentials to register
-    And Clicks the Register button
-    Then User should be redirected to the Login page and enter valid credential to login
+    Given user is on login page and Navigate to Register page    #Precondition
+    When User enters valid credentials to register    #Action
+    And Clicks the Register button     #To add additional steps or condition
+    Then User should be redirected to the Login page and enter valid credential to login      #Results
 
 *** Keywords ***
 user is on login page and Navigate to Register page

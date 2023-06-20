@@ -15,4 +15,3 @@ robotframework-databaselibrary
 pymysql
 # AngularJSLibrary
 robotframework-lint
-robotframework-gherkin
