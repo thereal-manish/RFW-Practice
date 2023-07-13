@@ -1,11 +1,12 @@
 url: https://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login
 browser:  Chrome
 Reg_click: //a[normalize-space()='Register']
-Reg_Firstname: model=vm.user.firstName
-Reg_lastname: model=vm.user.lastName
-Reg_username:  model=vm.user.username
-Reg_password: model=vm.user.password
-Register_btn: angular.element(document.querySelector('button[ng-disabled="form.$invalid || vm.dataLoading"]')).click()
+Reg_Firstname: //input[@name="firstName"]
+Reg_lastname: //input[@name="lastName"]
+Reg_username:  //input[@name="username"]
+Reg_password: //input[@name="password"]
+Register_btn: //input[@name="password"]
 Log_username: model=vm.username
 Log_password: model=vm.password
 Login_btn: angular.element(document.querySelector('button[ng-disabled="form.$invalid || vm.dataLoading"]')).click()
+

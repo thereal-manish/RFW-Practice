@@ -5,6 +5,7 @@ Library         AngularJSLibrary
 Library    OperatingSystem
 Variables    ../Locators/angularLocator.yaml
 Variables    ../TestData/AngularVariables.yaml
+Library    PerfectoLibrary
 
 *** Test Cases ***
 Create new user
@@ -19,6 +20,8 @@ user is on login page and Navigate to Register page
     [Documentation]    User navigate to register page
     Open Browser    ${url}    ${browser}
     Click Element    ${Reg_click}
+
+    
 
 User enters valid credentials to register
     [Documentation]    Enter Valid Credential to Register

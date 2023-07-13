@@ -1,144 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.11.3 on win32)" generated="20230605 11:08:00.264" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.11.3 on win32)" generated="20230712 17:43:57.949" rpa="false" schemaversion="3">
 <suite id="s1" name="RFW-Practice" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice">
 <suite id="s1-s1" name="TestCases" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases">
-<suite id="s1-s1-s1" name="Database" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases\Database.robot">
-<kw name="Connect To Database" library="DatabaseLibrary" type="SETUP">
-<arg>pymysql</arg>
-<arg>regex</arg>
-<arg>root</arg>
-<arg>root</arg>
-<arg>localhost</arg>
-<arg>4306</arg>
-<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
-connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
-<msg timestamp="20230605 11:08:00.901" level="INFO">Connecting using : pymysql.connect(db=regex, user=root, passwd=root, host=localhost, port=4306, charset=None) </msg>
-<status status="PASS" starttime="20230605 11:08:00.899" endtime="20230605 11:08:00.913"/>
+<suite id="s1-s1-s1" name="APITesting" source="C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\TestCases\APITesting.robot">
+<test id="s1-s1-s1-t1" name="Get petID" line="7">
+<kw name="Demo ApiTesting to get petId">
+<kw name="GET" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>https://petstore3.swagger.io/api/v3/pet/${petId}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230712 17:43:59.466" level="INFO">GET Request : url=https://petstore3.swagger.io/api/v3/pet/5 
+ path_url=/api/v3/pet/5 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230712 17:43:59.466" level="INFO">GET Response : url=https://petstore3.swagger.io/api/v3/pet/5 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 12 Jul 2023 12:14:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '156', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"id":5,"category":{"id":1,"name":"Dogs"},"name":"Dog 2","photoUrls":["url1","url2"],"tags":[{"id":1,"name":"tag2"},{"id":2,"name":"tag3"}],"status":"sold"} 
+ </msg>
+<msg timestamp="20230712 17:43:59.466" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230712 17:43:58.291" endtime="20230712 17:43:59.466"/>
 </kw>
-<test id="s1-s1-s1-t1" name="Create Table" line="16">
-<kw name="Query" library="DatabaseLibrary">
-<arg>DROP TABLE regex.employeedatas</arg>
-<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
-input `sansTran` to True to run command without an explicit transaction commit or rollback.
-Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
-<msg timestamp="20230605 11:08:00.914" level="INFO">Executing : Query  |  DROP TABLE regex.employeedatas </msg>
-<status status="PASS" starttime="20230605 11:08:00.914" endtime="20230605 11:08:00.935"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230712 17:43:59.466" endtime="20230712 17:43:59.466"/>
 </kw>
-<kw name="Execute Sql String" library="DatabaseLibrary">
-<var>${table}</var>
-<arg>CREATE TABLE regex.employeedatas (empid varchar(255),ename varchar(255),email varchar(255),phoneNo varchar(255),result varchar(255));</arg>
-<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
-True to run command without an explicit transaction commit or rollback.</doc>
-<msg timestamp="20230605 11:08:00.936" level="INFO">Executing : Execute SQL String  |  CREATE TABLE regex.employeedatas (empid varchar(255),ename varchar(255),email varchar(255),phoneNo varchar(255),result varchar(255)); </msg>
-<msg timestamp="20230605 11:08:00.962" level="INFO">${table} = None</msg>
-<status status="PASS" starttime="20230605 11:08:00.936" endtime="20230605 11:08:00.962"/>
+<status status="PASS" starttime="20230712 17:43:58.291" endtime="20230712 17:43:59.471"/>
+</kw>
+<kw name="Demo PostApi">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>id=10</arg>
+<arg>name=doggie</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230712 17:43:59.472" level="INFO">${body} = {'id': '10', 'name': 'doggie'}</msg>
+<status status="PASS" starttime="20230712 17:43:59.472" endtime="20230712 17:43:59.472"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://petstore3.swagger.io/api/v3/pet</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20230712 17:44:00.592" level="INFO">POST Request : url=https://petstore3.swagger.io/api/v3/pet 
+ path_url=/api/v3/pet 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '30', 'Content-Type': 'application/json'} 
+ body=b'{"id": "10", "name": "doggie"}' 
+ </msg>
+<msg timestamp="20230712 17:44:00.592" level="INFO">POST Response : url=https://petstore3.swagger.io/api/v3/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 12 Jul 2023 12:14:02 GMT', 'Content-Type': 'application/json', 'Content-Length': '50', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"id":10,"name":"doggie","photoUrls":[],"tags":[]} 
+ </msg>
+<msg timestamp="20230712 17:44:00.592" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230712 17:43:59.472" endtime="20230712 17:44:00.600"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${table}</arg>
+<arg>${response}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230605 11:08:00.963" level="INFO">None</msg>
-<status status="PASS" starttime="20230605 11:08:00.963" endtime="20230605 11:08:00.963"/>
+<msg timestamp="20230712 17:44:00.600" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230712 17:44:00.600" endtime="20230712 17:44:00.600"/>
 </kw>
-<kw name="Execute Sql Script" library="DatabaseLibrary">
-<var>${insert}</var>
-<arg>C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/TestCases/datas.sql</arg>
-<doc>Executes the content of the `sqlScriptFileName` as SQL commands. Useful for setting the database to a known
-state before running your tests, or clearing out your test data after running each a test. Set optional input
-`sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
-<msg timestamp="20230605 11:08:00.965" level="INFO">Executing : Execute SQL Script  |  C:/Users/DhineshlingamNataraj/Downloads/eclipse-workspace-robotframeworkNew2/RFW-Practice/TestCases/datas.sql </msg>
-<msg timestamp="20230605 11:08:00.972" level="INFO">${insert} = None</msg>
-<status status="PASS" starttime="20230605 11:08:00.964" endtime="20230605 11:08:00.972"/>
+<kw name="Get Binary File" library="OperatingSystem">
+<arg>results/Empty Firstname.jpeg</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20230712 17:44:00.600" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\results\Empty Firstname.jpeg"&gt;C:\Users\DhineshlingamNataraj\Downloads\eclipse-workspace-robotframeworkNew2\RFW-Practice\results\Empty Firstname.jpeg&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230712 17:44:00.600" endtime="20230712 17:44:00.600"/>
 </kw>
-<kw name="Query" library="DatabaseLibrary">
-<var>${row1value}</var>
-<arg>SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1;</arg>
-<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
-input `sansTran` to True to run command without an explicit transaction commit or rollback.
-Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
-<msg timestamp="20230605 11:08:00.973" level="INFO">Executing : Query  |  SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1; </msg>
-<msg timestamp="20230605 11:08:00.974" level="INFO">${row1value} = (('^[0-9]{6}$', '^[A-Za-z ]{5,20}$', '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$', '^[0-9]{10}$', 'RegexResult'),)</msg>
-<status status="PASS" starttime="20230605 11:08:00.973" endtime="20230605 11:08:00.975"/>
+<status status="PASS" starttime="20230712 17:43:59.472" endtime="20230712 17:44:00.600"/>
 </kw>
-<kw name="Query" library="DatabaseLibrary">
-<var>${row2}</var>
-<arg>SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1 Offset 1;</arg>
-<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
-input `sansTran` to True to run command without an explicit transaction commit or rollback.
-Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
-<msg timestamp="20230605 11:08:00.976" level="INFO">Executing : Query  |  SELECT empid, ename, email,phoneNo,result FROM employeedatas LIMIT 1 Offset 1; </msg>
-<msg timestamp="20230605 11:08:00.977" level="INFO">${row2} = (('123456', 'Dhinesh', 'dhinesh2001@gmail.com', '6379829866', ''),)</msg>
-<status status="PASS" starttime="20230605 11:08:00.975" endtime="20230605 11:08:00.977"/>
-</kw>
-<kw name="Query" library="DatabaseLibrary">
-<var>@{columnHeader}</var>
-<arg>SELECT COLUMN_NAME FROM information_schema.columns where table_schema='regex' AND table_name='employeedatas' AND column_name!='result'</arg>
-<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
-input `sansTran` to True to run command without an explicit transaction commit or rollback.
-Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
-<msg timestamp="20230605 11:08:00.978" level="INFO">Executing : Query  |  SELECT COLUMN_NAME FROM information_schema.columns where table_schema='regex' AND table_name='employeedatas' AND column_name!='result' </msg>
-<msg timestamp="20230605 11:08:00.979" level="INFO">@{columnHeader} = [ ('empid',) | ('ename',) | ('email',) | ('phoneNo',) ]</msg>
-<status status="PASS" starttime="20230605 11:08:00.977" endtime="20230605 11:08:00.980"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${index}</var>
-<arg>0</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230605 11:08:00.981" level="INFO">${index} = 0</msg>
-<status status="PASS" starttime="20230605 11:08:00.980" endtime="20230605 11:08:00.981"/>
-</kw>
-<for flavor="IN">
-<var>${columnvalue}</var>
-<value>@{ColumnHeader}</value>
-<iter>
-<var name="${columnvalue}">('empid',)</var>
-<kw name="Log" library="BuiltIn">
-<arg>${columnvalue}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230605 11:08:00.982" level="INFO">('empid',)</msg>
-<status status="PASS" starttime="20230605 11:08:00.982" endtime="20230605 11:08:00.982"/>
-</kw>
-<status status="PASS" starttime="20230605 11:08:00.981" endtime="20230605 11:08:00.982"/>
-</iter>
-<iter>
-<var name="${columnvalue}">('ename',)</var>
-<kw name="Log" library="BuiltIn">
-<arg>${columnvalue}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230605 11:08:00.983" level="INFO">('ename',)</msg>
-<status status="PASS" starttime="20230605 11:08:00.983" endtime="20230605 11:08:00.984"/>
-</kw>
-<status status="PASS" starttime="20230605 11:08:00.982" endtime="20230605 11:08:00.984"/>
-</iter>
-<iter>
-<var name="${columnvalue}">('email',)</var>
-<kw name="Log" library="BuiltIn">
-<arg>${columnvalue}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230605 11:08:00.985" level="INFO">('email',)</msg>
-<status status="PASS" starttime="20230605 11:08:00.984" endtime="20230605 11:08:00.985"/>
-</kw>
-<status status="PASS" starttime="20230605 11:08:00.984" endtime="20230605 11:08:00.985"/>
-</iter>
-<iter>
-<var name="${columnvalue}">('phoneNo',)</var>
-<kw name="Log" library="BuiltIn">
-<arg>${columnvalue}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230605 11:08:00.986" level="INFO">('phoneNo',)</msg>
-<status status="PASS" starttime="20230605 11:08:00.986" endtime="20230605 11:08:00.986"/>
-</kw>
-<status status="PASS" starttime="20230605 11:08:00.985" endtime="20230605 11:08:00.986"/>
-</iter>
-<status status="PASS" starttime="20230605 11:08:00.981" endtime="20230605 11:08:00.986"/>
-</for>
-<status status="PASS" starttime="20230605 11:08:00.913" endtime="20230605 11:08:00.987"/>
+<status status="PASS" starttime="20230712 17:43:58.291" endtime="20230712 17:44:00.600"/>
 </test>
-<doc>This file has to verify the format of each data cell</doc>
-<status status="PASS" starttime="20230605 11:08:00.295" endtime="20230605 11:08:00.989"/>
+<status status="PASS" starttime="20230712 17:43:57.982" endtime="20230712 17:44:00.608"/>
 </suite>
-<status status="PASS" starttime="20230605 11:08:00.291" endtime="20230605 11:08:00.994"/>
+<status status="PASS" starttime="20230712 17:43:57.982" endtime="20230712 17:44:00.608"/>
 </suite>
-<status status="PASS" starttime="20230605 11:08:00.269" endtime="20230605 11:08:00.997"/>
+<status status="PASS" starttime="20230712 17:43:57.958" endtime="20230712 17:44:00.608"/>
 </suite>
 <statistics>
 <total>
@@ -149,7 +88,7 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="RFW-Practice">RFW-Practice</stat>
 <stat pass="1" fail="0" skip="0" id="s1-s1" name="TestCases">RFW-Practice.TestCases</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Database">RFW-Practice.TestCases.Database</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="APITesting">RFW-Practice.TestCases.APITesting</stat>
 </suite>
 </statistics>
 <errors>
